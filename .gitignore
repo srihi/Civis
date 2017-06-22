@@ -1,11 +1,13 @@
+.idea
 *.iml
+local.properties
+build
 .gradle
-/local.properties
-/.idea/workspace.xml
-/.idea/tasks.xml
-/.idea/gradle.xml
-/.idea/libraries
-.DS_Store
-/build
+# Eclipse project files
+.project
+.settings/
+.classpath
 /captures
 .externalNativeBuild
+# Mac storage file
+.DS_Store
