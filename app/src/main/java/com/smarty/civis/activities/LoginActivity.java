@@ -33,6 +33,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.smarty.civis.R;
+import com.smarty.civis.activities.sync.DigitalTownAuthService;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 import static android.Manifest.permission.READ_CONTACTS;
 
@@ -94,6 +99,20 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
+
+        DigitalTownAuthService.getInstance()
+                .authorize()
+                .enqueue(new Callback<String>() {
+                    @Override
+                    public void onResponse(Call<String> call, Response<String> response) {
+                        String val = response.message();
+                    }
+
+                    @Override
+                    public void onFailure(Call<String> call, Throwable t) {
+                        String val = t.getMessage();
+                    }
+                });
     }
 
     private void populateAutoComplete() {

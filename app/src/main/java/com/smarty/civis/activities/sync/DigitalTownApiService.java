@@ -1,5 +1,6 @@
 package com.smarty.civis.activities.sync;
 
+import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.moshi.MoshiConverterFactory;
 
@@ -10,7 +11,7 @@ import retrofit2.converter.moshi.MoshiConverterFactory;
 public class DigitalTownApiService {
     private static DigitalTownApiService INSTANCE;
 
-    private static final String URL = "";
+    private static final String URL = "https://api.digitaltown.com/";
     private Retrofit mRetrofit;
     private IDigitalTownApi mDigitalTownApi;
 
@@ -35,6 +36,5 @@ public class DigitalTownApiService {
 
 
     interface IDigitalTownApi{
-
     }
 }
