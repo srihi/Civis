@@ -1,1 +1,1 @@
-include ':app', ':digital-town-client'
+include ':app'
