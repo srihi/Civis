@@ -11,3 +11,4 @@ build
 .externalNativeBuild
 # Mac storage file
 .DS_Store
+docs/
