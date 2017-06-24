@@ -16,4 +16,6 @@
     <string name="title_performed">Performed</string>
     <string name="title_offered">Offered</string>
     <string name="pref_access_token_key">AccessTokenKey</string>
+    <string name="signup">No account yet? Create one</string>
+    <string name="skip">Skip login</string>
 </resources>
