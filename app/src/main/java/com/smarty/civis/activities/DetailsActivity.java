@@ -22,12 +22,12 @@ import butterknife.ButterKnife;
 
 public class DetailsActivity extends AppCompatActivity {
 
-    @BindView(R.id.detailsViewPager)
+   // @BindView(R.id.detailsViewPager)
     ViewPager viewPager;
 
     PagerAdapter adapter;
 
-    @BindView(R.id.detailsTabLayout)
+   // @BindView(R.id.detailsTabLayout)
     TabLayout tabLayout;
 
     Fragment[] pages = new Fragment[2];
@@ -49,7 +49,6 @@ public class DetailsActivity extends AppCompatActivity {
             }
         });
 
-        setupViewPager();
     }
 
 
