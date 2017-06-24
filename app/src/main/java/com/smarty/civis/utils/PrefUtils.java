@@ -1,4 +1,4 @@
-package com.smarty.civis.activities.utils;
+package com.smarty.civis.utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;

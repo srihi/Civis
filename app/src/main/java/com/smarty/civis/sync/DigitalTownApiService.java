@@ -1,6 +1,5 @@
-package com.smarty.civis.activities.sync;
+package com.smarty.civis.sync;
 
-import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.moshi.MoshiConverterFactory;
 
