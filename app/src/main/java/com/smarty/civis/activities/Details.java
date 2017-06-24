@@ -8,6 +8,6 @@ import android.os.Parcelable;
 
 public class Details {
 
-    private String title, date, price;
+    private String title, price;
 
 }
