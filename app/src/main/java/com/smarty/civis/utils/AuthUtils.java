@@ -17,7 +17,7 @@ public class AuthUtils {
     private static final String RESPONSE_TYPE = "code";
 
     private static final String SCOPE_PARAM = "scope";
-    private static final String SCOPE = "ID,email,first_name,last_name,avatar,reputation_score";
+    private static final String SCOPE = "email";
 
     private static final String REDIRECT_URI_PARAM = "redirect_uri";
     private static final String REDIRECT_URI = "http://auth/callback";
