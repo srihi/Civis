@@ -14,4 +14,33 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+
+    <!-- Strings related to addScreen -->
+    <string name="add_screen_activity_title">Add New Task</string>
+    <string name="add_form_title_hint">Title</string>
+    <string name="add_form_desc_hint">Description</string>
+    <string name="add_form_price_hint">Reward ( $ )</string>
+    <string name="add_form_date_hint">Due Date</string>
+    <string name="add_form_offer_text">I Offer</string>
+    <string name="add_form_need_text">I Need</string>
+    <string name="add_form_type_text">Type</string>
+    <string-array name="add_form_types">
+        <item>Babysitting</item>
+        <item>Cleaning</item>
+        <item>Educational</item>
+        <item>Maintenance</item>
+        <item>Printing</item>
+        <item>Repairing</item>
+        <item>Shopping</item>
+        <item>Videotaping</item>
+    </string-array>
+    <string name="add_form_submit_button">Add Service</string>
+    <string name="error_empty_title">Task title is required</string>
+    <string name="error_empty_desc">Task Description is required</string>
+    <string name="error_wrong_price">Task Reward is required</string>
+    <string name="error_wrong_date">Please select a day after today.</string>
+    <string name="error_select_offer_or_need">Please specify if you want to offer a Task or you need it.</string>
+    <string name="error_select_service_type">Please select the type of the service.</string>
+    <string name="success_add_form">Your Task has been added successfully.</string>
+
 </resources>
