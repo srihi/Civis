@@ -1,9 +1,12 @@
 package com.smarty.civis.activities;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -12,6 +15,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.smarty.civis.R;
+import com.smarty.civis.utils.AuthUtils;
 
 /**
  * A login screen that offers login via email/password.
@@ -66,6 +70,10 @@ public class LoginActivity extends AppCompatActivity {
             return;
         }
 
+        Intent intent = AuthUtils.getAuthenticationIntent();
+        startActivity(intent);
+
+        /*
         // Reset errors.
         mEmailView.setError(null);
         mPasswordView.setError(null);
@@ -106,6 +114,7 @@ public class LoginActivity extends AppCompatActivity {
             mAuthTask = new UserLoginTask(email, password);
             mAuthTask.execute((Void) null);
         }
+        */
     }
 
     private boolean isEmailValid(String email) {
@@ -183,6 +192,16 @@ public class LoginActivity extends AppCompatActivity {
         protected void onCancelled() {
             mAuthTask = null;
             showProgress(false);
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Uri uri = getIntent().getData();
+        if (uri != null){
+            String code = uri.getQueryParameter("code");
+            Log.i("", code);
         }
     }
 }
