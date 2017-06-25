@@ -2,27 +2,34 @@ package com.smarty.civis.activities.main;
 
 
 import android.content.Context;
-import android.os.Bundle;
+import android.graphics.drawable.Drawable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.ImageSpan;
 
 import com.smarty.civis.R;
 
-/**
- * A simple {@link Fragment} subclass.
- */
-public class FragmentPagerAdapter extends android.support.v4.app.FragmentPagerAdapter {
+public class ListFragmentPagerAdapter extends android.support.v4.app.FragmentPagerAdapter {
+
+    Context context;
 
     final int PAGE_COUNT = 2;
 
-    private String tabTitles[] = new String[] {"TrendingOffers", "BookmarkedOffers"};
+    private String tabTitles[] = {
+            "Offers",
+            "Bookmarks"
+    };
 
-    public FragmentPagerAdapter(FragmentManager fragmentManager, Context context) {
+    private int[] imageResId = {
+            R.drawable.ic_assignment_black_24dp,
+            R.drawable.ic_bookmark_black_24dp
+    };
+
+    public ListFragmentPagerAdapter(FragmentManager fragmentManager, Context context) {
         super(fragmentManager);
+        this.context = context;
     }
 
     @Override
@@ -37,6 +44,11 @@ public class FragmentPagerAdapter extends android.support.v4.app.FragmentPagerAd
 
     @Override
     public CharSequence getPageTitle(int position) {
-        return tabTitles[position];
+        Drawable image = context.getResources().getDrawable(imageResId[position]);
+        image.setBounds(0, 0, image.getIntrinsicWidth(), image.getIntrinsicHeight());
+        SpannableString sb = new SpannableString("   " + tabTitles[position]);
+        ImageSpan imageSpan = new ImageSpan(image, ImageSpan.ALIGN_BOTTOM);
+        sb.setSpan(imageSpan, 0, 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        return sb;
     }
 }

@@ -10,10 +10,6 @@ import android.widget.TextView;
 
 import com.smarty.civis.R;
 
-/**
- * Created by itaseski on 6/23/17.
- */
-
 public class OfferAdapter extends RecyclerView.Adapter<OfferAdapter.OfferViewHolder> {
 
 
@@ -47,13 +43,11 @@ public class OfferAdapter extends RecyclerView.Adapter<OfferAdapter.OfferViewHol
     public void onBindViewHolder(OfferViewHolder holder, int position) {
         //cursor.moveToPosition(position);
 
-        holder.title.setText("Hello World !");
+        holder.title.setText("Skilled mobile developer needed for video streaming app");
 
-        holder.price.setText("1000$");
+        holder.price.setText("$790");
 
-        holder.location.setText("London, Cambridge 7994");
-
-        holder.description.setText("Hello we are looking for a hello worlder who would like to become part of a team.");
+        holder.location.setText("London, Cambridge 7994 - 18 mins ago");
     }
 
     @Override
@@ -72,11 +66,9 @@ public class OfferAdapter extends RecyclerView.Adapter<OfferAdapter.OfferViewHol
 
         TextView title;
 
-        TextView location;
-
-        TextView description;
-
         TextView price;
+
+        TextView location;
 
         OfferViewHolder(View itemView) {
             super(itemView);
@@ -88,7 +80,6 @@ public class OfferAdapter extends RecyclerView.Adapter<OfferAdapter.OfferViewHol
                 }
             });
             location = (TextView) itemView.findViewById(R.id.tv_location);
-            description = (TextView) itemView.findViewById(R.id.tv_description);
             price = (TextView) itemView.findViewById(R.id.tv_price);
         }
     }
