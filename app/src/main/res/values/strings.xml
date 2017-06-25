@@ -5,23 +5,42 @@
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
-    <string name="action_sign_in">Sign in</string>
+    <string name="action_sign_in">Sign in or register</string>
     <string name="action_sign_in_short">Sign in</string>
     <string name="error_invalid_email">This email address is invalid</string>
     <string name="error_invalid_password">This password is too short</string>
     <string name="error_incorrect_password">This password is incorrect</string>
     <string name="error_field_required">This field is required</string>
-    <string name="title_activity_profile">Profile</string>
-    <string name="title_profile">Profile</string>
-    <string name="title_performed">Performed</string>
-    <string name="title_offered">Offered</string>
-    <string name="pref_access_token_key">AccessTokenKey</string>
-    <string name="signup">No account yet? Create one</string>
-    <string name="skip">Skip login</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="sample_user_name">John Smith</string>
-    <string name="performed">Performed</string>
-    <string name="offered">Offered</string>
+    <!-- Strings related to addScreen -->
+    <string name="add_screen_activity_title">Add New Task</string>
+    <string name="add_form_title_hint">Title</string>
+    <string name="add_form_desc_hint">Description</string>
+    <string name="add_form_price_hint">Reward ( $ )</string>
+    <string name="add_form_date_hint">Due Date</string>
+    <string name="add_form_offer_text">I Offer</string>
+    <string name="add_form_need_text">I Need</string>
+    <string name="add_form_type_text">Type</string>
+    <string-array name="add_form_types">
+        <item>Babysitting</item>
+        <item>Cleaning</item>
+        <item>Educational</item>
+        <item>Maintenance</item>
+        <item>Printing</item>
+        <item>Repairing</item>
+        <item>Shopping</item>
+        <item>Videotaping</item>
+    </string-array>
+    <string name="add_form_submit_button">Add Service</string>
+    <string name="error_empty_title">Task title is required</string>
+    <string name="error_empty_desc">Task Description is required</string>
+    <string name="error_wrong_price">Task Reward is required</string>
+    <string name="error_wrong_date">Please select a day after today.</string>
+    <string name="error_select_offer_or_need">Please specify if you want to offer a Task or you need it.</string>
+    <string name="error_select_service_type">Please select the type of the service.</string>
+    <string name="success_add_form">Your Task has been added successfully.</string>
+
 </resources>
