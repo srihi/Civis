@@ -6,7 +6,14 @@ import java.util.Date;
  * Created by anh.hoang on 6/25/17.
  */
 
-public class CivisTask {
+public class Task {
+    public static final int ACTIVE = 0;
+    public static final int RESERVED = 1;
+    public static final int IN_PROGRESS = 2;
+    public static final int PAID = 3;
+    public static final int DONE = 4;
+    public static final int EXPIRED = 5;
+
     private int id;
     private String title;
     private String description;
@@ -16,9 +23,9 @@ public class CivisTask {
     private Date startTime;
     private Date endTime;
     private String location; // will be changed to pick currents location or have location picker with map
-    private boolean isDone;
-    private User owner;
-    private User takenBy; // Person who took the job & finished it
+    private int status;
+    private int ownerId;
+    private int takenBy; // Person who took the job & finished it
 
     public int getId() {
         return id;
@@ -92,27 +99,27 @@ public class CivisTask {
         this.location = location;
     }
 
-    public User getOwner() {
-        return owner;
+    public int getOwnerId() {
+        return ownerId;
     }
 
-    public void setOwner(User owner) {
-        this.owner = owner;
+    public void setOwnerId(int ownerId) {
+        this.ownerId = ownerId;
     }
 
-    public boolean isDone() {
-        return isDone;
+    public int getStatus() {
+        return status;
     }
 
-    public void setDone(boolean done) {
-        isDone = done;
+    public void setStatus(int status) {
+        this.status = status;
     }
 
-    public User getTakenBy() {
+    public int getTakenBy() {
         return takenBy;
     }
 
-    public void setTakenBy(User takenBy) {
+    public void setTakenBy(int takenBy) {
         this.takenBy = takenBy;
     }
 }

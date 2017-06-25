@@ -12,8 +12,8 @@ public class User {
     private String lastName;
     private String email;
     private String phone;
-    private List<CivisTask> ownTasks; // Requests and offers
-    private List<CivisTask> tasksDone; // Requests from others that have been done by this user;
+    private List<Task> ownTasks; // Requests and offers
+    private List<Task> tasksDone; // Requests from others that have been done by this user;
 
     public int getId() {
         return id;
@@ -55,19 +55,19 @@ public class User {
         this.phone = phone;
     }
 
-    public List<CivisTask> getOwnTasks() {
+    public List<Task> getOwnTasks() {
         return ownTasks;
     }
 
-    public void setOwnTasks(List<CivisTask> ownTasks) {
+    public void setOwnTasks(List<Task> ownTasks) {
         this.ownTasks = ownTasks;
     }
 
-    public List<CivisTask> getTasksDone() {
+    public List<Task> getTasksDone() {
         return tasksDone;
     }
 
-    public void setTasksDone(List<CivisTask> tasksDone) {
+    public void setTasksDone(List<Task> tasksDone) {
         this.tasksDone = tasksDone;
     }
 }
