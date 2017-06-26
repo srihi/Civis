@@ -35,6 +35,11 @@
             android:name=".activities.ProfileActivity"
             android:label="@string/title_activity_profile">
         </activity>
+        <activity
+            android:name=".activities.AddActivity"
+            android:label="@string/add_screen_activity_title"
+            >
+        </activity>
     </application>
 
 </manifest>
