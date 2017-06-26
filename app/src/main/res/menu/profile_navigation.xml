@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_profile"
+        android:icon="@drawable/ic_account_box_black_24dp"
+        android:title="@string/title_profile" />
+
+    <item
+        android:id="@+id/nav_jobs_performed"
+        android:icon="@drawable/ic_done_black_24dp"
+        android:title="@string/title_performed" />
+
+    <item
+        android:id="@+id/nav_jobs_offered"
+        android:icon="@drawable/ic_work_black_24dp"
+        android:title="@string/title_offered" />
+
+</menu>
