@@ -54,9 +54,9 @@ public class TasksTable implements TableInterface
                 Entry._ID+" INTEGER PRIMARY KEY AUTOINCREMENT, "+
                 Entry.COLUMN_TITLE+" TEXT NOT NULL, "+
                 Entry.COLUMN_DESCRIPTION+" TEXT NOT NULL, "+
-                Entry.COLUMN_JOB_TYPE+" INTEGER NOT NULL, "+
+                Entry.COLUMN_JOB_TYPE+" STRING NOT NULL, "+
                 Entry.COLUMN_REWARD+" FLOAT NOT NULL, "+
-                Entry.COLUMN_IS_REQUEST+" INTEGER NOT NULL, "+
+                Entry.COLUMN_IS_REQUEST+" INTEGER NOT NULL DEFAULT 1, "+
                 Entry.COLUMN_DUE_DATE+" INTEGER NOT NULL, "+
                 Entry.COLUMN_STATUS+" INTEGER NOT NULL DEFAULT 0, "+
                 Entry.COLUMN_OWNER_ID+" INTEGER NOT NULL, "+

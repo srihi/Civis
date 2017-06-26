@@ -7,11 +7,12 @@ import android.net.Uri;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
 import android.test.ProviderTestCase2;
-import android.test.mock.MockContentProvider;
 import android.test.mock.MockContentResolver;
 
 import com.smarty.civis.data.content.CivisContract;
+import com.smarty.civis.data.tables.TasksTable;
 import com.smarty.civis.data.tables.UsersTable;
+import com.smarty.civis.utils.ProjectionUtils;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -70,8 +71,57 @@ public class CivisProviderTest extends ProviderTestCase2<CivisProvider>
         // get that user
         String user_id = "1";
         Uri uri = CivisContract.BASE_CONTENT_URI.buildUpon().appendPath(UsersTable.PATH_USERS).appendPath(user_id).build();
-        Cursor c = mMockResolver.query(uri,null,null,null,null);
-        assertEquals(1, c.getCount());
+        Cursor c = mMockResolver.query(uri, ProjectionUtils.USER_PROJECTION,null,null,null);
+        c.moveToFirst();
+        assertEquals("Mohammed", c.getString(ProjectionUtils.INDEX_USER_FIRST_NAME));
+        assertEquals("Abuiriban", c.getString(ProjectionUtils.INDEX_USER_LAST_NAME));
+        assertEquals("m.g.iriban@gmail.com", c.getString(ProjectionUtils.INDEX_USER_EMAIL));
+        assertEquals("+4912345678", c.getString(ProjectionUtils.INDEX_USER_PHONE));
+        c.close();
+    }
+
+    @Test
+    public void insertNewTaskTest()
+    {
+        Uri uri = insertNewTask();
+        assertEquals(1L, ContentUris.parseId(uri));
+    }
+
+    private Uri insertNewTask()
+    {
+        Uri uri = CivisContract.BASE_CONTENT_URI.buildUpon().appendPath(TasksTable.PATH_TASKS).build();
+        Uri insertedUri = mMockResolver.insert(uri, getTaskContentValues());
+        return insertedUri;
+    }
+
+    private ContentValues getTaskContentValues()
+    {
+        ContentValues contentValues = new ContentValues(6);
+        contentValues.put(TasksTable.Entry.COLUMN_TITLE, "Test Task Title");
+        contentValues.put(TasksTable.Entry.COLUMN_DESCRIPTION, "Test Task Description");
+        contentValues.put(TasksTable.Entry.COLUMN_DUE_DATE, 1498515674); // timestamp
+        contentValues.put(TasksTable.Entry.COLUMN_REWARD, 13.50); // float
+        contentValues.put(TasksTable.Entry.COLUMN_JOB_TYPE, "Babysitter"); // string [ for MVP only ]
+        contentValues.put(TasksTable.Entry.COLUMN_OWNER_ID, 1); // user id
+        return contentValues;
+    }
+
+    @Test
+    public void selectTaskTest()
+    {
+        // insert task first
+        insertNewTask();
+        // get that user
+        String task_id = "1";
+        Uri uri = CivisContract.BASE_CONTENT_URI.buildUpon().appendPath(TasksTable.PATH_TASKS).appendPath(task_id).build();
+        Cursor c = mMockResolver.query(uri, ProjectionUtils.TASK_PROJECTION,null,null,null);
+        c.moveToFirst();
+        assertEquals("Test Task Title", c.getString(ProjectionUtils.INDEX_TASK_TITLE));
+        assertEquals("Test Task Description", c.getString(ProjectionUtils.INDEX_TASK_DESC));
+        assertEquals(1498515674, c.getInt(ProjectionUtils.INDEX_TASK_DUE_DATE));
+        assertEquals(13.50f, c.getFloat(ProjectionUtils.INDEX_TASK_REWARD));
+        assertEquals("Babysitter", c.getString(ProjectionUtils.INDEX_TASK_JOB_TYPE));
+        assertEquals(1, c.getInt(ProjectionUtils.INDEX_TASK_OWNER_ID));
         c.close();
     }
 
