@@ -1,13 +1,16 @@
-package com.smarty.civis.activities.main;
+package com.smarty.civis.activities;
 
+import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 
 
 import com.smarty.civis.R;
+import com.smarty.civis.adapters.ListFragmentPagerAdapter;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -30,4 +33,13 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.action_profile) {
+            Intent intent = new Intent(this, ProfileActivity.class);
+            startActivity(intent);
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }

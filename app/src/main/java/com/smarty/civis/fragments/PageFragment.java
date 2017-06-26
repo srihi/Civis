@@ -1,5 +1,6 @@
-package com.smarty.civis.activities.main;
+package com.smarty.civis.fragments;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -12,6 +13,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.smarty.civis.R;
+import com.smarty.civis.activities.AddActivity;
+import com.smarty.civis.adapters.AssignmentAdapter;
 
 public class PageFragment extends Fragment implements AssignmentAdapter.AssignmentAdapterOnClickHandler,
         LoaderManager.LoaderCallbacks<Cursor> {
@@ -58,6 +61,10 @@ public class PageFragment extends Fragment implements AssignmentAdapter.Assignme
         return view;
     }
 
+    public void button(View view) {
+        Intent intent = new Intent(getContext(), AddActivity.class);
+        getContext().startActivity(intent);
+    }
     @Override
     public void onClick(int position) {
 

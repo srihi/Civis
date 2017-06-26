@@ -1,4 +1,4 @@
-package com.smarty.civis.activities.main;
+package com.smarty.civis.adapters;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -19,15 +19,15 @@ public class AssignmentAdapter extends RecyclerView.Adapter<AssignmentAdapter.Of
 
     private AssignmentAdapterOnClickHandler clickHandler;
 
-    AssignmentAdapter(Context context) {
+    public AssignmentAdapter(Context context) {
         this.context = context;
     }
 
-    void setClickHandler(AssignmentAdapterOnClickHandler  clickHandler) {
+    public void setClickHandler(AssignmentAdapterOnClickHandler  clickHandler) {
         this.clickHandler = clickHandler;
     }
 
-    void setCursor(Cursor cursor) {
+    public void setCursor(Cursor cursor) {
         this.cursor = cursor;
         notifyDataSetChanged();
     }
@@ -58,7 +58,7 @@ public class AssignmentAdapter extends RecyclerView.Adapter<AssignmentAdapter.Of
         return 10;
     }
 
-    interface AssignmentAdapterOnClickHandler  {
+    public interface AssignmentAdapterOnClickHandler  {
         void onClick(int position);
     }
 

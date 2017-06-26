@@ -1,9 +1,8 @@
-package com.smarty.civis.activities.main;
+package com.smarty.civis.adapters;
 
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.content.ContextCompat;
@@ -12,6 +11,7 @@ import android.text.SpannableString;
 import android.text.style.ImageSpan;
 
 import com.smarty.civis.R;
+import com.smarty.civis.fragments.PageFragment;
 
 public class ListFragmentPagerAdapter extends android.support.v4.app.FragmentPagerAdapter {
 
