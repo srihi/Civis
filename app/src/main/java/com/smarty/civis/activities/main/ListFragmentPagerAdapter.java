@@ -3,8 +3,10 @@ package com.smarty.civis.activities.main;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.content.ContextCompat;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.ImageSpan;
@@ -18,7 +20,7 @@ public class ListFragmentPagerAdapter extends android.support.v4.app.FragmentPag
     final int PAGE_COUNT = 2;
 
     private String tabTitles[] = {
-            "Offers",
+            "Assignments",
             "Bookmarks"
     };
 
@@ -34,7 +36,7 @@ public class ListFragmentPagerAdapter extends android.support.v4.app.FragmentPag
 
     @Override
     public Fragment getItem(int position) {
-        return PageFragment.newInstance();
+        return PageFragment.newInstance(position);
     }
 
     @Override
@@ -44,7 +46,7 @@ public class ListFragmentPagerAdapter extends android.support.v4.app.FragmentPag
 
     @Override
     public CharSequence getPageTitle(int position) {
-        Drawable image = context.getResources().getDrawable(imageResId[position]);
+        Drawable image = ContextCompat.getDrawable(context, imageResId[position]);
         image.setBounds(0, 0, image.getIntrinsicWidth(), image.getIntrinsicHeight());
         SpannableString sb = new SpannableString("   " + tabTitles[position]);
         ImageSpan imageSpan = new ImageSpan(image, ImageSpan.ALIGN_BOTTOM);

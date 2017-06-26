@@ -10,20 +10,20 @@ import android.widget.TextView;
 
 import com.smarty.civis.R;
 
-public class OfferAdapter extends RecyclerView.Adapter<OfferAdapter.OfferViewHolder> {
+public class AssignmentAdapter extends RecyclerView.Adapter<AssignmentAdapter.OfferViewHolder> {
 
 
     private final Context context;
 
     private Cursor cursor;
 
-    private OfferAdapterOnClickHandler clickHandler;
+    private AssignmentAdapterOnClickHandler clickHandler;
 
-    OfferAdapter(Context context) {
+    AssignmentAdapter(Context context) {
         this.context = context;
     }
 
-    void setClickHandler(OfferAdapterOnClickHandler clickHandler) {
+    void setClickHandler(AssignmentAdapterOnClickHandler  clickHandler) {
         this.clickHandler = clickHandler;
     }
 
@@ -34,7 +34,7 @@ public class OfferAdapter extends RecyclerView.Adapter<OfferAdapter.OfferViewHol
 
     @Override
     public OfferViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View item = LayoutInflater.from(context).inflate(R.layout.offer_list_item, parent, false);
+        View item = LayoutInflater.from(context).inflate(R.layout.list_item_assignment, parent, false);
 
         return new OfferViewHolder(item);
     }
@@ -58,8 +58,8 @@ public class OfferAdapter extends RecyclerView.Adapter<OfferAdapter.OfferViewHol
         return 10;
     }
 
-    interface OfferAdapterOnClickHandler {
-        void onClick();
+    interface AssignmentAdapterOnClickHandler  {
+        void onClick(int position);
     }
 
     class OfferViewHolder extends RecyclerView.ViewHolder {
@@ -72,14 +72,17 @@ public class OfferAdapter extends RecyclerView.Adapter<OfferAdapter.OfferViewHol
 
         OfferViewHolder(View itemView) {
             super(itemView);
+
             title = (TextView) itemView.findViewById(R.id.tv_title);
             title.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    clickHandler.onClick();
+                    clickHandler.onClick(getAdapterPosition());
                 }
             });
+
             location = (TextView) itemView.findViewById(R.id.tv_location);
+
             price = (TextView) itemView.findViewById(R.id.tv_price);
         }
     }

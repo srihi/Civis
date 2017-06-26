@@ -6,7 +6,7 @@
     tools:context="com.smarty.civis.activities.main.PageFragment">
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_offer"
+        android:id="@+id/rv_assignment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
