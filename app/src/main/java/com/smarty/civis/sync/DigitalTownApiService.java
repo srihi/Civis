@@ -1,9 +1,13 @@
 package com.smarty.civis.sync;
 
+import com.smarty.civis.models.User;
+
 import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.moshi.MoshiConverterFactory;
 import retrofit2.http.Body;
+import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.POST;
 
 /**
@@ -40,6 +44,11 @@ public class DigitalTownApiService {
     interface IDigitalTownApi{
         @POST("sso/token")
         Call<TokenResponse> token(@Body TokenRequest tokenRequest);
+        @POST("sso/refresh")
+        Call<TokenResponse> refreshToken(@Body TokenRefreshRequest tokenRefreshRequest);
+        @GET("sso/users")
+        Call<User> user(@Header("authorization") String authorization);
 
+        // Further implementation of currencies, wallets & Transactions
     }
 }

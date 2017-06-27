@@ -1,6 +1,9 @@
 package com.smarty.civis.models;
 
+import com.squareup.moshi.Json;
+
 import java.util.List;
+import java.util.UUID;
 
 /**
  * Created by anh.hoang on 6/25/17.
@@ -8,7 +11,10 @@ import java.util.List;
 
 public class User {
     private int id;
+    private UUID uuid;
+    @Json(name = "first_name")
     private String firstName;
+    @Json(name = "last_name")
     private String lastName;
     private String email;
     private String phone;
@@ -21,6 +27,14 @@ public class User {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public UUID getUuid() {
+        return uuid;
+    }
+
+    public void setUuid(UUID uuid) {
+        this.uuid = uuid;
     }
 
     public String getFirstName() {
