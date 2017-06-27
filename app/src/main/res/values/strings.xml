@@ -58,4 +58,6 @@
     <string name="performed">Performed</string>
     <string name="offered">Offered</string>
     <string name="login_failed">Login unsuccessful. Please try again.</string>
+    <string name="pref_refresh_token_key">RefreshTokenKey</string>
+    <string name="pref_expire_time_key">ExpireTimeKey</string>
 </resources>
