@@ -46,4 +46,32 @@ public class PrefUtils {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
         return preferences.getString(context.getString(R.string.pref_code_key), null);
     }
+
+    public static void putRefreshToken(Context context, String refreshToken) {
+        if (!TextUtils.isEmpty(refreshToken)) {
+            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.putString(context.getString(R.string.pref_refresh_token_key), refreshToken);
+            editor.commit();
+        }
+    }
+
+    public static String getRefreshToken(Context context) {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        return preferences.getString(context.getString(R.string.pref_refresh_token_key), null);
+    }
+
+    public static void putExpireTime(Context context, long time) {
+        if (time > 0) {
+            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.putLong(context.getString(R.string.pref_expire_time_key), time);
+            editor.commit();
+        }
+    }
+
+    public static long getExpireTime(Context context) {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        return preferences.getLong(context.getString(R.string.pref_expire_time_key), -1);
+    }
 }
