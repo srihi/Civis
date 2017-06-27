@@ -119,7 +119,8 @@ public class CivisProviderTest extends ProviderTestCase2<CivisProvider>
         c.moveToFirst();
         assertEquals("Test Task Title", c.getString(ProjectionUtils.INDEX_TASK_TITLE));
         assertEquals("Test Task Description", c.getString(ProjectionUtils.INDEX_TASK_DESC));
-        assertEquals(1498515674, c.getInt(ProjectionUtils.INDEX_TASK_DUE_DATE));
+        assertEquals(1498515674l, c.getInt(ProjectionUtils.INDEX_TASK_DUE_DATE));
+        assertEquals(1497415674l, c.getInt(ProjectionUtils.INDEX_TASK_CREATION_DATE));
         assertEquals(13.50f, c.getFloat(ProjectionUtils.INDEX_TASK_REWARD));
         assertEquals("Babysitter", c.getString(ProjectionUtils.INDEX_TASK_JOB_TYPE));
         assertEquals(1, c.getInt(ProjectionUtils.INDEX_TASK_OWNER_ID));

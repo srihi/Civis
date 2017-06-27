@@ -30,11 +30,12 @@ public class ProjectionUtils
     public static final int INDEX_TASK_DESC = 2;
     public static final int INDEX_TASK_JOB_TYPE = 3;
     public static final int INDEX_TASK_REWARD = 4;
-    public static final int INDEX_TASK_DUE_DATE = 5;
-    public static final int INDEX_TASK_IS_REQUEST = 6;
-    public static final int INDEX_TASK_OWNER_ID = 7;
-    public static final int INDEX_TASK_TAKEN_BY_ID = 8;
-    public static final int INDEX_TASK_STATUS = 9;
+    public static final int INDEX_TASK_CREATION_DATE = 5;
+    public static final int INDEX_TASK_DUE_DATE = 6;
+    public static final int INDEX_TASK_IS_REQUEST = 7;
+    public static final int INDEX_TASK_OWNER_ID = 8;
+    public static final int INDEX_TASK_TAKEN_BY_ID = 9;
+    public static final int INDEX_TASK_STATUS = 10;
 
     /*
         Should be The same order as index below

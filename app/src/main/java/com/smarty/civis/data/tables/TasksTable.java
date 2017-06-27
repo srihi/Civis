@@ -52,7 +52,7 @@ public class TasksTable implements TableInterface
     public void onCreate(SQLiteDatabase db)
     {
         final String CREATE_TASKS_TABLE = "CREATE TABLE "+Entry.TABLE_NAME+" ("+
-                Entry._ID+" LONG PRIMARY KEY AUTOINCREMENT, "+
+                Entry._ID+" INTEGER PRIMARY KEY AUTOINCREMENT, "+
                 Entry.COLUMN_TITLE+" TEXT NOT NULL, "+
                 Entry.COLUMN_DESCRIPTION+" TEXT NOT NULL, "+
                 Entry.COLUMN_JOB_TYPE+" STRING NOT NULL, "+
