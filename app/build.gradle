@@ -19,6 +19,7 @@ android {
         }
         buildTypes.each {
             it.buildConfigField("String", 'DT_CLIENT_ID', DigitalTownClientId)
+            it.buildConfigField("String", 'DT_CLIENT_SECRET', DigitalTownClientSecret)
         }
     }
     packagingOptions {
