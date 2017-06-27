@@ -7,8 +7,8 @@ import com.squareup.moshi.Json;
  */
 
 class TokenRequest {
-    @Json(name = "grand_type")
-    private final String grandType;
+    @Json(name = "grant_type")
+    private final String grantType;
     @Json(name = "client_id")
     private final String clientId;
     @Json(name = "client_secret")
@@ -18,9 +18,9 @@ class TokenRequest {
     @Json(name = "code")
     private final String authorizationCode;
 
-    public TokenRequest(String grandType, String clientId, String clientSecret, String redirectUri, String authorizationCode){
+    public TokenRequest(String grantType, String clientId, String clientSecret, String redirectUri, String authorizationCode){
 
-        this.grandType = grandType;
+        this.grantType = grantType;
         this.clientId = clientId;
         this.clientSecret = clientSecret;
         this.redirectUri = redirectUri;
