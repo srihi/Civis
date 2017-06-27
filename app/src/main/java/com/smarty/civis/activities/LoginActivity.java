@@ -39,9 +39,9 @@ public class LoginActivity extends AppCompatActivity {
 //    private UserLoginTask mAuthTask = null;
 
     // UI references.
-    private AutoCompleteTextView mEmailView;
-    private EditText mPasswordView;
-    private View mLoginOverlay;
+//    private AutoCompleteTextView mEmailView;
+//    private EditText mPasswordView;
+//    private View mLoginOverlay;
 
     private boolean mLoginRequested = false;
 
@@ -57,20 +57,20 @@ public class LoginActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_login);
         // Set up the login form.
-        mLoginOverlay = findViewById(R.id.login_overlay);
-        mEmailView = (AutoCompleteTextView) findViewById(R.id.email_text);
-
-        mPasswordView = (EditText) findViewById(R.id.password);
-        mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
-                if (id == R.id.login_text || id == EditorInfo.IME_NULL) {
-                    attemptLogin(findViewById(R.id.login_button));
-                    return true;
-                }
-                return false;
-            }
-        });
+//        mLoginOverlay = findViewById(R.id.login_overlay);
+//        mEmailView = (AutoCompleteTextView) findViewById(R.id.email_text);
+//
+//        mPasswordView = (EditText) findViewById(R.id.password);
+//        mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+//            @Override
+//            public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
+//                if (id == R.id.login_text || id == EditorInfo.IME_NULL) {
+//                    attemptLogin(findViewById(R.id.login_button));
+//                    return true;
+//                }
+//                return false;
+//            }
+//        });
     }
 
     public void skipLogin(View view) {

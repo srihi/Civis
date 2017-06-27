@@ -16,9 +16,9 @@
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
@@ -31,23 +31,20 @@
                     android:scheme="http" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.MainActivity">
-
-        </activity>
+        <activity android:name=".activities.MainActivity"></activity>
         <activity
             android:name=".activities.ProfileActivity"
-            android:label="@string/title_activity_profile">
-        </activity>
+            android:label="@string/title_activity_profile"></activity>
         <activity
             android:name=".activities.AddActivity"
-            android:label="@string/add_screen_activity_title">
-        </activity>
+            android:label="@string/add_screen_activity_title"></activity>
 
         <provider
-            android:authorities="com.smarty.civis"
             android:name=".data.CivisProvider"
-            android:exported="false"
-            />
+            android:authorities="com.smarty.civis"
+            android:exported="false" />
+
+        <activity android:name=".activities.LoadingActivity"></activity>
     </application>
 
 </manifest>
