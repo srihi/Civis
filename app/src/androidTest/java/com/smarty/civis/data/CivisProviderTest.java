@@ -99,6 +99,7 @@ public class CivisProviderTest extends ProviderTestCase2<CivisProvider>
         ContentValues contentValues = new ContentValues(6);
         contentValues.put(TasksTable.Entry.COLUMN_TITLE, "Test Task Title");
         contentValues.put(TasksTable.Entry.COLUMN_DESCRIPTION, "Test Task Description");
+        contentValues.put(TasksTable.Entry.COLUMN_CREATION_DATE, 1497415674); // timestamp
         contentValues.put(TasksTable.Entry.COLUMN_DUE_DATE, 1498515674); // timestamp
         contentValues.put(TasksTable.Entry.COLUMN_REWARD, 13.50); // float
         contentValues.put(TasksTable.Entry.COLUMN_JOB_TYPE, "Babysitter"); // string [ for MVP only ]

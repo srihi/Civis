@@ -18,6 +18,7 @@ public class ProjectionUtils
             TasksTable.Entry.COLUMN_DESCRIPTION,
             TasksTable.Entry.COLUMN_JOB_TYPE,
             TasksTable.Entry.COLUMN_REWARD,
+            TasksTable.Entry.COLUMN_CREATION_DATE,
             TasksTable.Entry.COLUMN_DUE_DATE,
             TasksTable.Entry.COLUMN_IS_REQUEST,
             TasksTable.Entry.COLUMN_OWNER_ID,

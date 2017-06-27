@@ -9,13 +9,14 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.smarty.civis.R;
+import com.smarty.civis.models.Task;
 
 public class AssignmentAdapter extends RecyclerView.Adapter<AssignmentAdapter.OfferViewHolder> {
 
 
     private final Context context;
 
-    private Cursor cursor;
+    private Cursor mCursor;
 
     private AssignmentAdapterOnClickHandler clickHandler;
 
@@ -28,7 +29,10 @@ public class AssignmentAdapter extends RecyclerView.Adapter<AssignmentAdapter.Of
     }
 
     public void setCursor(Cursor cursor) {
-        this.cursor = cursor;
+        if (mCursor != null) {
+            mCursor.close();
+        }
+        mCursor = cursor;
         notifyDataSetChanged();
     }
 
@@ -41,21 +45,24 @@ public class AssignmentAdapter extends RecyclerView.Adapter<AssignmentAdapter.Of
 
     @Override
     public void onBindViewHolder(OfferViewHolder holder, int position) {
-        //cursor.moveToPosition(position);
+        if (mCursor == null) {
+            return;
+        }
+        mCursor.moveToPosition(position);
+        Task task = new Task(mCursor);
 
-        holder.title.setText("Skilled mobile developer needed for video streaming app");
+        holder.title.setText(task.getTitle());
+        holder.price.setText(String.valueOf(task.getReward()));
+        holder.location.setText(task.getLocation());
 
-        holder.price.setText("$790");
-
-        holder.location.setText("London, Cambridge 7994 - 18 mins ago");
+//        holder.title.setText("Skilled mobile developer needed for video streaming app");
+//        holder.price.setText("$790");
+//        holder.location.setText("London, Cambridge 7994 - 18 mins ago");
     }
 
     @Override
     public int getItemCount() {
-        //if (cursor != null) {
-          //  return cursor.getCount();
-        //}
-        return 10;
+        return (mCursor != null) ? mCursor.getCount() : 0;
     }
 
     public interface AssignmentAdapterOnClickHandler  {
@@ -65,10 +72,12 @@ public class AssignmentAdapter extends RecyclerView.Adapter<AssignmentAdapter.Of
     class OfferViewHolder extends RecyclerView.ViewHolder {
 
         TextView title;
-
         TextView price;
-
         TextView location;
+
+        void bindViews(Task task){
+
+        }
 
         OfferViewHolder(View itemView) {
             super(itemView);
@@ -87,4 +96,15 @@ public class AssignmentAdapter extends RecyclerView.Adapter<AssignmentAdapter.Of
         }
     }
 
+//    class DoneTaksViewHolder extends OfferViewHolder{
+//        DoneTaksViewHolder(View itemView) {
+//            super(itemView);
+//
+//        }
+//
+//        @Override
+//        void bindViews(Object task) {
+//
+//        }
+//    }
 }

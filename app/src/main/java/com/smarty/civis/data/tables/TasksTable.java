@@ -26,6 +26,7 @@ public class TasksTable implements TableInterface
         public static final String COLUMN_JOB_TYPE = "job_type";
         public static final String COLUMN_REWARD = "reward";
         public static final String COLUMN_IS_REQUEST = "is_request";
+        public static final String COLUMN_CREATION_DATE = "creation_date";
         public static final String COLUMN_DUE_DATE = "due_date";
         public static final String COLUMN_STATUS = "status";
         public static final String COLUMN_OWNER_ID = "owner_id";
@@ -51,13 +52,14 @@ public class TasksTable implements TableInterface
     public void onCreate(SQLiteDatabase db)
     {
         final String CREATE_TASKS_TABLE = "CREATE TABLE "+Entry.TABLE_NAME+" ("+
-                Entry._ID+" INTEGER PRIMARY KEY AUTOINCREMENT, "+
+                Entry._ID+" LONG PRIMARY KEY AUTOINCREMENT, "+
                 Entry.COLUMN_TITLE+" TEXT NOT NULL, "+
                 Entry.COLUMN_DESCRIPTION+" TEXT NOT NULL, "+
                 Entry.COLUMN_JOB_TYPE+" STRING NOT NULL, "+
                 Entry.COLUMN_REWARD+" FLOAT NOT NULL, "+
                 Entry.COLUMN_IS_REQUEST+" INTEGER NOT NULL DEFAULT 1, "+
-                Entry.COLUMN_DUE_DATE+" INTEGER NOT NULL, "+
+                Entry.COLUMN_CREATION_DATE+" LONG NOT NULL, "+
+                Entry.COLUMN_DUE_DATE+" LONG NOT NULL, "+
                 Entry.COLUMN_STATUS+" INTEGER NOT NULL DEFAULT 0, "+
                 Entry.COLUMN_OWNER_ID+" INTEGER NOT NULL, "+
                 Entry.COLUMN_TAKEN_BY_ID+" INTEGER NOT NULL DEFAULT -1"+
