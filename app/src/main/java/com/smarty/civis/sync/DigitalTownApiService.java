@@ -1,7 +1,10 @@
 package com.smarty.civis.sync;
 
+import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.moshi.MoshiConverterFactory;
+import retrofit2.http.Body;
+import retrofit2.http.POST;
 
 /**
  * Created by Anh.Hoang on 6/22/2017.
@@ -35,5 +38,8 @@ public class DigitalTownApiService {
 
 
     interface IDigitalTownApi{
+        @POST("sso/token")
+        Call<TokenResponse> token(@Body TokenRequest tokenRequest);
+
     }
 }
