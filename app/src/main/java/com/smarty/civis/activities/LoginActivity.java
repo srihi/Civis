@@ -64,9 +64,7 @@ public class LoginActivity extends AppCompatActivity {
 
         @Override
         public void onResponse(Call<TokenResponse> call, Response<TokenResponse> response) {
-            boolean success = false;
             if (response.code() == HttpURLConnection.HTTP_OK) { // 200
-                success = true;
                 TokenResponse tokenResponse = response.body();
                 long expireTime = Calendar.getInstance().getTimeInMillis() + tokenResponse.getExpiresIn();
                 PrefUtils.putToken(LoginActivity.this, tokenResponse.getAccessToken());

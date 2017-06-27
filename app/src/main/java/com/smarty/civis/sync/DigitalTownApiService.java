@@ -56,7 +56,7 @@ public class DigitalTownApiService {
         return mDigitalTownApi.token(request);
     }
 
-    public Call<TokenResponse> getRefreshToken(String refreshToken) {
+    public Call<TokenResponse> refreshToken(String refreshToken) {
         TokenRefreshRequest request = new TokenRefreshRequest(
                 REFRESH_TOKEN_GRANT_TYPE,
                 BuildConfig.DT_CLIENT_ID,
