@@ -21,6 +21,7 @@
     <string name="title_performed">Performed</string>
     <string name="title_offered">Offered</string>
     <string name="pref_access_token_key">AccessTokenKey</string>
+    <string name="pref_code_key">CodeKey</string>
     <string name="signup">No account yet? Create one</string>
     <string name="skip">Skip login</string>
 
@@ -56,4 +57,5 @@
     <string name="sample_user_name">John Smith</string>
     <string name="performed">Performed</string>
     <string name="offered">Offered</string>
+    <string name="login_failed">Login unsuccessful. Please try again.</string>
 </resources>
