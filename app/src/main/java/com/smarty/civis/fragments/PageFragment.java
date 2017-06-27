@@ -3,6 +3,7 @@ package com.smarty.civis.fragments;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
@@ -22,6 +23,8 @@ public class PageFragment extends Fragment implements AssignmentAdapter.Assignme
     private static final String ARG_PAGE = "page";
 
     private int page;
+
+    private FloatingActionButton fButton;
 
     public PageFragment() {
 
@@ -48,6 +51,15 @@ public class PageFragment extends Fragment implements AssignmentAdapter.Assignme
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_page, container, false);
 
+        fButton = (FloatingActionButton) view.findViewById(R.id.fab);
+        fButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), AddActivity.class);
+                getContext().startActivity(intent);
+            }
+        });
+
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.rv_assignment);
 
         AssignmentAdapter adapter = new AssignmentAdapter(getContext());
@@ -61,10 +73,6 @@ public class PageFragment extends Fragment implements AssignmentAdapter.Assignme
         return view;
     }
 
-    public void button(View view) {
-        Intent intent = new Intent(getContext(), AddActivity.class);
-        getContext().startActivity(intent);
-    }
     @Override
     public void onClick(int position) {
 
@@ -84,4 +92,5 @@ public class PageFragment extends Fragment implements AssignmentAdapter.Assignme
     public void onLoaderReset(Loader<Cursor> loader) {
 
     }
+
 }
