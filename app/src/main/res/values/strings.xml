@@ -62,4 +62,8 @@
     <string name="pref_access_token_key">AccessTokenKey</string>
     <string name="pref_code_key">CodeKey</string>
 
+    <!-- MyTasks screen -->
+    <string name="my_requests">My Requests</string>
+    <string name="my_offers">My Offers</string>
+
 </resources>

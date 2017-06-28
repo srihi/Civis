@@ -1,9 +1,12 @@
 package com.smarty.civis.models;
 
+import android.content.ContentValues;
+import android.content.Context;
 import android.database.Cursor;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.smarty.civis.data.tables.TasksTable;
 import com.smarty.civis.utils.ProjectionUtils;
 
 /**
@@ -236,5 +239,22 @@ public class Task implements Parcelable {
         dest.writeInt(ownerId);
         dest.writeInt(takenBy);
     }
+
+    public ContentValues getContentValues() {
+        ContentValues values = new ContentValues(11);
+        values.put(TasksTable.Entry.COLUMN_TITLE, getTitle());
+        values.put(TasksTable.Entry.COLUMN_DESCRIPTION, getDescription());
+        values.put(TasksTable.Entry.COLUMN_JOB_TYPE, getJobType());
+        values.put(TasksTable.Entry.COLUMN_REWARD, getReward());
+        values.put(TasksTable.Entry.COLUMN_IS_REQUEST, isRequest());
+        values.put(TasksTable.Entry.COLUMN_CREATION_DATE, getStartTime());
+        values.put(TasksTable.Entry.COLUMN_DUE_DATE, getEndTime());
+        values.put(TasksTable.Entry.COLUMN_LOCATION, getLocation());
+        values.put(TasksTable.Entry.COLUMN_STATUS, getStatus());
+        values.put(TasksTable.Entry.COLUMN_OWNER_ID, getOwnerId());
+        values.put(TasksTable.Entry.COLUMN_TAKEN_BY_ID, getTakenBy());
+        return values;
+    }
+
 }
 

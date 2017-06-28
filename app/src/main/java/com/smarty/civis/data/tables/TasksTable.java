@@ -10,6 +10,8 @@ import android.provider.BaseColumns;
 
 import com.smarty.civis.data.content.CivisContract;
 
+import static android.R.attr.id;
+
 /**
  * Created by mohammed on 6/26/17.
  */
@@ -117,7 +119,9 @@ public class TasksTable implements TableInterface
         switch (sUriMatcher.match(uri))
         {
             case CODE_CERTAIN_TASK:
-                numberOfRows = db.update(Entry.TABLE_NAME,values,selection,selectionArgs);
+                String id = uri.getPathSegments().get(1);
+                numberOfRows = db.update(
+                        Entry.TABLE_NAME, values, "_id=?", new String[]{id});
                 break;
         }
         return numberOfRows;
