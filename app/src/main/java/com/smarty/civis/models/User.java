@@ -1,7 +1,11 @@
 package com.smarty.civis.models;
 
+import android.content.ContentValues;
 import android.os.Parcel;
 import android.os.Parcelable;
+
+import com.smarty.civis.data.tables.TasksTable;
+import com.smarty.civis.data.tables.UsersTable;
 
 import java.util.List;
 
@@ -9,7 +13,7 @@ import java.util.List;
  * Created by anh.hoang on 6/25/17.
  */
 
-public class User implements Parcelable{
+public class User implements Parcelable {
     private int id;
     private String firstName;
     private String lastName;
@@ -115,5 +119,14 @@ public class User implements Parcelable{
         dest.writeString(phone);
         dest.writeTypedList(ownTasks);
         dest.writeTypedList(tasksDone);
+    }
+
+    public ContentValues getContentValues() {
+        ContentValues values = new ContentValues(4);
+        values.put(UsersTable.Entry.COLUMN_FIRST_NAME, getFirstName());
+        values.put(UsersTable.Entry.COLUMN_LAST_NAME, getLastName());
+        values.put(UsersTable.Entry.COLUMN_EMAIL, getEmail());
+        values.put(UsersTable.Entry.COLUMN_PHONE, getPhone());
+        return values;
     }
 }
