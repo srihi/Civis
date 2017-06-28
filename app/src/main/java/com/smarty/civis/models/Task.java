@@ -30,6 +30,9 @@ public class Task implements Parcelable {
     private int ownerId;
     private int takenBy; // Person who took the job & finished it
 
+    public Task(){}
+
+  
     protected Task(Parcel in) {
         id = in.readInt();
         title = in.readString();
