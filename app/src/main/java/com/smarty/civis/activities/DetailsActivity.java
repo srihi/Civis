@@ -74,7 +74,7 @@ public class DetailsActivity extends AppCompatActivity {
         price.setText(NumberFormat.getCurrencyInstance().format(task.getReward()));
         title.setText(task.getTitle());
         disc.setText(task.getDescription());
-        Date date = task.getEndTime();
+        Date date = new Date(task.getEndTime());
         String _day = (String) DateFormat.format("dd",   date);
         String _monthString  = (String) DateFormat.format("MMM",  date);
         day.setText(_day);
