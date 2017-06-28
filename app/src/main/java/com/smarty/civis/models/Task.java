@@ -6,13 +6,15 @@ import android.os.Parcelable;
 
 import com.smarty.civis.utils.ProjectionUtils;
 
-import java.util.Date;
-
 /**
  * Created by anh.hoang on 6/25/17.
  */
 
 public class Task implements Parcelable {
+    /* Constants representing missing data */
+    public static final long NO_DATE = Long.MAX_VALUE;
+    public static final int NO_ID = -1;
+
     public static final int ACTIVE = 0;
     public static final int RESERVED = 1;
     public static final int IN_PROGRESS = 2;
@@ -20,35 +22,47 @@ public class Task implements Parcelable {
     public static final int DONE = 4;
     public static final int EXPIRED = 5;
 
+    public static final String ACTIVE_STR = "Active";
+    public static final String RESERVED_STR = "Reserved";
+    public static final String IN_PROGRESS_STR = "In Progress";
+    public static final String PAID_STR = "Paid";
+    public static final String DONE_STR = "Done";
+    public static final String EXPIRED_STR = "Expired";
+
     private int id;
     private String title;
     private String description;
     private String jobType;
     private double reward;
     private boolean isRequest;
-    private Date startTime;
-    private Date endTime;
+    private long startTime;
+    private long endTime;
     private String location; // will be changed to pick currents location or have location picker with map
     private int status;
     private int ownerId;
     private int takenBy; // Person who took the job & finished it
 
-    public Task(){}
+    public Task() {
+    }
 
-    public Task(Cursor cursor)
-    {
+    /**
+     * Create a new task from a database Cursor
+     */
+    public Task(Cursor cursor) {
         id = cursor.getInt(ProjectionUtils.INDEX_TASK_ID);
         title = cursor.getString(ProjectionUtils.INDEX_TASK_TITLE);
         description = cursor.getString(ProjectionUtils.INDEX_TASK_DESC);
         jobType = cursor.getString(ProjectionUtils.INDEX_TASK_JOB_TYPE);
         reward = cursor.getFloat(ProjectionUtils.INDEX_TASK_REWARD);
         isRequest = cursor.getInt(ProjectionUtils.INDEX_TASK_IS_REQUEST) != 0;
+        startTime = cursor.getLong(ProjectionUtils.INDEX_TASK_CREATION_DATE);
+        endTime = cursor.getLong(ProjectionUtils.INDEX_TASK_DUE_DATE);
         location = cursor.getString(ProjectionUtils.INDEX_TASK_LOCATION);
         status = cursor.getInt(ProjectionUtils.INDEX_TASK_STATUS);
         ownerId = cursor.getInt(ProjectionUtils.INDEX_TASK_OWNER_ID);
         takenBy = cursor.getInt(ProjectionUtils.INDEX_TASK_TAKEN_BY_ID);
     }
-  
+
     protected Task(Parcel in) {
         id = in.readInt();
         title = in.readString();
@@ -73,6 +87,21 @@ public class Task implements Parcelable {
             return new Task[size];
         }
     };
+
+    public Task(String title, String description, String jobType, double reward, boolean isRequest, long endTime, String location, int status, int ownerId, int takenBy) {
+        this.id = NO_ID; //Not set
+        this.title = title;
+        this.description = description;
+        this.jobType = jobType;
+        this.reward = reward;
+        this.isRequest = isRequest;
+        this.startTime = System.currentTimeMillis();
+        this.endTime = endTime;
+        this.location = location;
+        this.status = status;
+        this.ownerId = ownerId;
+        this.takenBy = takenBy;
+    }
 
     public int getId() {
         return id;
@@ -122,19 +151,19 @@ public class Task implements Parcelable {
         isRequest = request;
     }
 
-    public Date getStartTime() {
+    public long getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(Date startTime) {
+    public void setStartTime(long startTime) {
         this.startTime = startTime;
     }
 
-    public Date getEndTime() {
+    public long getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(Date endTime) {
+    public void setEndTime(long endTime) {
         this.endTime = endTime;
     }
 
@@ -156,6 +185,25 @@ public class Task implements Parcelable {
 
     public int getStatus() {
         return status;
+    }
+
+    public String getStatusString() {
+        switch (getStatus()) {
+            case ACTIVE:
+                return ACTIVE_STR;
+            case RESERVED:
+                return RESERVED_STR;
+            case IN_PROGRESS:
+                return IN_PROGRESS_STR;
+            case PAID:
+                return PAID_STR;
+            case DONE:
+                return DONE_STR;
+            case EXPIRED:
+                return EXPIRED_STR;
+            default:
+                return "Invalid Status";
+        }
     }
 
     public void setStatus(int status) {
