@@ -1,7 +1,10 @@
 package com.smarty.civis.models;
 
+import android.database.Cursor;
 import android.os.Parcel;
 import android.os.Parcelable;
+
+import com.smarty.civis.utils.ProjectionUtils;
 
 import java.util.Date;
 
@@ -20,7 +23,7 @@ public class Task implements Parcelable {
     private int id;
     private String title;
     private String description;
-    private int jobType;
+    private String jobType;
     private double reward;
     private boolean isRequest;
     private Date startTime;
@@ -32,12 +35,25 @@ public class Task implements Parcelable {
 
     public Task(){}
 
+    public Task(Cursor cursor)
+    {
+        id = cursor.getInt(ProjectionUtils.INDEX_TASK_ID);
+        title = cursor.getString(ProjectionUtils.INDEX_TASK_TITLE);
+        description = cursor.getString(ProjectionUtils.INDEX_TASK_DESC);
+        jobType = cursor.getString(ProjectionUtils.INDEX_TASK_JOB_TYPE);
+        reward = cursor.getFloat(ProjectionUtils.INDEX_TASK_REWARD);
+        isRequest = cursor.getInt(ProjectionUtils.INDEX_TASK_IS_REQUEST) != 0;
+        location = cursor.getString(ProjectionUtils.INDEX_TASK_LOCATION);
+        status = cursor.getInt(ProjectionUtils.INDEX_TASK_STATUS);
+        ownerId = cursor.getInt(ProjectionUtils.INDEX_TASK_OWNER_ID);
+        takenBy = cursor.getInt(ProjectionUtils.INDEX_TASK_TAKEN_BY_ID);
+    }
   
     protected Task(Parcel in) {
         id = in.readInt();
         title = in.readString();
         description = in.readString();
-        jobType = in.readInt();
+        jobType = in.readString();
         reward = in.readDouble();
         isRequest = in.readByte() != 0;
         location = in.readString();
@@ -82,11 +98,11 @@ public class Task implements Parcelable {
         this.description = description;
     }
 
-    public int getJobType() {
+    public String getJobType() {
         return jobType;
     }
 
-    public void setJobType(int jobType) {
+    public void setJobType(String jobType) {
         this.jobType = jobType;
     }
 
@@ -164,7 +180,7 @@ public class Task implements Parcelable {
         dest.writeInt(id);
         dest.writeString(title);
         dest.writeString(description);
-        dest.writeInt(jobType);
+        dest.writeString(jobType);
         dest.writeDouble(reward);
         dest.writeByte((byte) (isRequest ? 1 : 0));
         dest.writeString(location);
