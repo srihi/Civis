@@ -24,7 +24,7 @@ public class AssignmentAdapter extends RecyclerView.Adapter<AssignmentAdapter.Of
         this.context = context;
     }
 
-    public void setClickHandler(AssignmentAdapterOnClickHandler  clickHandler) {
+    public void setClickHandler(AssignmentAdapterOnClickHandler clickHandler) {
         this.clickHandler = clickHandler;
     }
 
@@ -49,15 +49,13 @@ public class AssignmentAdapter extends RecyclerView.Adapter<AssignmentAdapter.Of
             return;
         }
         mCursor.moveToPosition(position);
+
         Task task = new Task(mCursor);
 
         holder.title.setText(task.getTitle());
         holder.price.setText(String.valueOf(task.getReward()));
         holder.location.setText(task.getLocation());
 
-//        holder.title.setText("Skilled mobile developer needed for video streaming app");
-//        holder.price.setText("$790");
-//        holder.location.setText("London, Cambridge 7994 - 18 mins ago");
     }
 
     @Override
@@ -65,19 +63,17 @@ public class AssignmentAdapter extends RecyclerView.Adapter<AssignmentAdapter.Of
         return (mCursor != null) ? mCursor.getCount() : 0;
     }
 
-    public interface AssignmentAdapterOnClickHandler  {
+    public interface AssignmentAdapterOnClickHandler {
         void onClick(int position);
     }
 
     class OfferViewHolder extends RecyclerView.ViewHolder {
 
         TextView title;
+
         TextView price;
+
         TextView location;
-
-        void bindViews(Task task){
-
-        }
 
         OfferViewHolder(View itemView) {
             super(itemView);
@@ -93,6 +89,10 @@ public class AssignmentAdapter extends RecyclerView.Adapter<AssignmentAdapter.Of
             location = (TextView) itemView.findViewById(R.id.tv_location);
 
             price = (TextView) itemView.findViewById(R.id.tv_price);
+        }
+
+        void bindViews(Task task) {
+
         }
     }
 

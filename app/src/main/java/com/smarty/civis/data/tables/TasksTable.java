@@ -9,6 +9,7 @@ import android.net.Uri;
 import android.provider.BaseColumns;
 
 import com.smarty.civis.data.content.CivisContract;
+import com.smarty.civis.utils.DatabaseUtils;
 
 /**
  * Created by mohammed on 6/26/17.
@@ -49,8 +50,7 @@ public class TasksTable implements TableInterface
     }
 
     @Override
-    public void onCreate(SQLiteDatabase db)
-    {
+    public void onCreate(SQLiteDatabase db) {
         final String CREATE_TASKS_TABLE = "CREATE TABLE "+Entry.TABLE_NAME+" ("+
                 Entry._ID+" INTEGER PRIMARY KEY AUTOINCREMENT, "+
                 Entry.COLUMN_TITLE+" TEXT NOT NULL, "+

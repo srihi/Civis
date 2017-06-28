@@ -1,23 +1,15 @@
 package com.smarty.civis.viewmodel;
 
 import android.content.ContentResolver;
-import android.content.ContentValues;
-import android.content.Context;
-import android.net.Uri;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
-import android.test.ProviderTestCase2;
-import android.test.mock.MockContentResolver;
 
-import com.smarty.civis.data.CivisProvider;
-import com.smarty.civis.data.content.CivisContract;
-import com.smarty.civis.data.tables.UsersTable;
 import com.smarty.civis.models.User;
+import com.smarty.civis.utils.CivisViewModel;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
 
 import static junit.framework.Assert.*;
 
