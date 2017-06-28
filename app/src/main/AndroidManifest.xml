@@ -33,6 +33,10 @@
         <activity
             android:name=".activities.AddActivity"
             android:label="@string/add_screen_activity_title"></activity>
+        
+          <activity
+            android:name=".activities.DetailsActivity"
+            android:label="@string/title_activity_details"/>
 
         <provider
             android:name=".data.CivisProvider"
