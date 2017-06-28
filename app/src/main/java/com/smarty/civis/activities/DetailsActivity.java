@@ -18,10 +18,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class DetailsActivity extends AppCompatActivity {
-
-    Task task;
-    User user;
-
     @BindView(R.id.price)
     TextView price;
 
