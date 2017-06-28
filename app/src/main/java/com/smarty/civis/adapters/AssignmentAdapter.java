@@ -13,7 +13,6 @@ import com.smarty.civis.models.Task;
 
 public class AssignmentAdapter extends RecyclerView.Adapter<AssignmentAdapter.OfferViewHolder> {
 
-
     private final Context context;
 
     private Cursor mCursor;

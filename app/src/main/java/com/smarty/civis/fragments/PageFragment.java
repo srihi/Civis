@@ -3,6 +3,7 @@ package com.smarty.civis.fragments;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
@@ -32,6 +33,8 @@ public class PageFragment extends Fragment implements AssignmentAdapter.Assignme
 
     private FloatingActionButton fButton;
 
+    private RecyclerView recyclerView;
+
     private AssignmentAdapter assignmentAdapter;
 
     public PageFragment() {
@@ -44,6 +47,11 @@ public class PageFragment extends Fragment implements AssignmentAdapter.Assignme
         PageFragment fragment = new PageFragment();
         fragment.setArguments(bundle);
         return fragment;
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
     }
 
     @Override
@@ -68,20 +76,24 @@ public class PageFragment extends Fragment implements AssignmentAdapter.Assignme
             }
         });
 
-        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.rv_assignment);
+        return view;
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        recyclerView = (RecyclerView) view.findViewById(R.id.rv_assignment);
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        recyclerView.setHasFixedSize(true);
 
         assignmentAdapter = new AssignmentAdapter(getContext());
 
         assignmentAdapter.setClickHandler(this);
 
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-
         recyclerView.setAdapter(assignmentAdapter);
 
-        LoaderManager loaderManager = getActivity().getSupportLoaderManager();
-        loaderManager.initLoader(LOADER_ID, null, this);
-
-        return view;
+        getActivity().getSupportLoaderManager().restartLoader(LOADER_ID, null, this);
     }
 
     @Override
@@ -93,7 +105,7 @@ public class PageFragment extends Fragment implements AssignmentAdapter.Assignme
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
         switch (id) {
             case LOADER_ID:
-                return new CursorLoader(getContext(),
+                return new CursorLoader(getActivity(),
                         CivisContract.BASE_CONTENT_URI.buildUpon().appendPath(TasksTable.PATH_TASKS).build(),
                         null,
                         null,
@@ -111,7 +123,7 @@ public class PageFragment extends Fragment implements AssignmentAdapter.Assignme
 
     @Override
     public void onLoaderReset(Loader<Cursor> loader) {
-        assignmentAdapter.setCursor(null);
+
     }
 
 }
