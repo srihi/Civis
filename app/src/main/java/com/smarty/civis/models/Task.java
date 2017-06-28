@@ -1,34 +1,21 @@
 package com.smarty.civis.models;
 
-import android.database.Cursor;
-
-import com.smarty.civis.data.tables.TasksTable;
+import android.os.Parcel;
+import android.os.Parcelable;
 
 import java.util.Date;
-
-import static com.smarty.civis.data.content.CivisContract.getColumnDouble;
-import static com.smarty.civis.data.content.CivisContract.getColumnInt;
-import static com.smarty.civis.data.content.CivisContract.getColumnLong;
-import static com.smarty.civis.data.content.CivisContract.getColumnString;
 
 /**
  * Created by anh.hoang on 6/25/17.
  */
 
-public class Task {
+public class Task implements Parcelable {
     public static final int ACTIVE = 0;
     public static final int RESERVED = 1;
     public static final int IN_PROGRESS = 2;
     public static final int PAID = 3;
     public static final int DONE = 4;
     public static final int EXPIRED = 5;
-
-    public static final String ACTIVE_STR = "Active";
-    public static final String RESERVED_STR = "Reserved";
-    public static final String IN_PROGRESS_STR = "In Progress";
-    public static final String PAID_STR = "Paid";
-    public static final String DONE_STR = "Done";
-    public static final String EXPIRED_STR = "Expired";
 
     private int id;
     private String title;
@@ -43,23 +30,30 @@ public class Task {
     private int ownerId;
     private int takenBy; // Person who took the job & finished it
 
-
-    /**
-     * Create a new task from a database Cursor
-     */
-    public Task(Cursor cursor) {
-        this.id = getColumnInt(cursor, TasksTable.Entry._ID);
-        this.description = getColumnString(cursor, TasksTable.Entry.COLUMN_DESCRIPTION);
-        this.title = getColumnString(cursor, TasksTable.Entry.COLUMN_TITLE);
-        this.jobType = getColumnInt(cursor, TasksTable.Entry.COLUMN_JOB_TYPE);
-        this.reward = getColumnDouble(cursor, TasksTable.Entry.COLUMN_REWARD);
-        this.isRequest = getColumnInt(cursor, TasksTable.Entry.COLUMN_IS_REQUEST) == 1;
-        this.startTime = new Date(getColumnLong(cursor, TasksTable.Entry.COLUMN_CREATION_DATE));
-        this.endTime = new Date(getColumnLong(cursor, TasksTable.Entry.COLUMN_DUE_DATE));
-        this.status = getColumnInt(cursor, TasksTable.Entry.COLUMN_STATUS);
-        this.ownerId = getColumnInt(cursor, TasksTable.Entry.COLUMN_OWNER_ID);
-        this.takenBy = getColumnInt(cursor, TasksTable.Entry.COLUMN_TAKEN_BY_ID);
+    protected Task(Parcel in) {
+        id = in.readInt();
+        title = in.readString();
+        description = in.readString();
+        jobType = in.readInt();
+        reward = in.readDouble();
+        isRequest = in.readByte() != 0;
+        location = in.readString();
+        status = in.readInt();
+        ownerId = in.readInt();
+        takenBy = in.readInt();
     }
+
+    public static final Creator<Task> CREATOR = new Creator<Task>() {
+        @Override
+        public Task createFromParcel(Parcel in) {
+            return new Task(in);
+        }
+
+        @Override
+        public Task[] newArray(int size) {
+            return new Task[size];
+        }
+    };
 
     public int getId() {
         return id;
@@ -145,25 +139,6 @@ public class Task {
         return status;
     }
 
-    public String getStatusString() {
-        switch (getStatus()){
-            case ACTIVE:
-                return ACTIVE_STR;
-            case RESERVED:
-                return RESERVED_STR;
-            case IN_PROGRESS:
-                return IN_PROGRESS_STR;
-            case PAID:
-                return PAID_STR;
-            case DONE:
-                return DONE_STR;
-            case EXPIRED:
-                return EXPIRED_STR;
-            default:
-                return "Invalid Status";
-        }
-    }
-
     public void setStatus(int status) {
         this.status = status;
     }
@@ -176,4 +151,23 @@ public class Task {
         this.takenBy = takenBy;
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(id);
+        dest.writeString(title);
+        dest.writeString(description);
+        dest.writeInt(jobType);
+        dest.writeDouble(reward);
+        dest.writeByte((byte) (isRequest ? 1 : 0));
+        dest.writeString(location);
+        dest.writeInt(status);
+        dest.writeInt(ownerId);
+        dest.writeInt(takenBy);
+    }
 }
+
