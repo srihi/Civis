@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
+import android.text.format.DateFormat;
 import android.view.View;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -13,11 +14,23 @@ import com.smarty.civis.models.Task;
 import com.smarty.civis.models.User;
 
 import java.text.NumberFormat;
+import java.util.Date;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class DetailsActivity extends AppCompatActivity {
+
+
+    @BindView(R.id.category)
+    TextView category;
+
+    @BindView(R.id.day)
+    TextView day;
+
+    @BindView(R.id.month)
+    TextView month;
+
     @BindView(R.id.price)
     TextView price;
 
@@ -61,6 +74,12 @@ public class DetailsActivity extends AppCompatActivity {
         price.setText(NumberFormat.getCurrencyInstance().format(task.getReward()));
         title.setText(task.getTitle());
         disc.setText(task.getDescription());
+        Date date = task.getEndTime();
+        String _day = (String) DateFormat.format("dd",   date);
+        String _monthString  = (String) DateFormat.format("MMM",  date);
+        day.setText(_day);
+        month.setText(_monthString);
+        category.setText(task.getJobType());
         location.setText(task.getLocation());
         userName.setText(user.getFirstName() + " " + user.getLastName());
     }
@@ -71,3 +90,5 @@ public class DetailsActivity extends AppCompatActivity {
         scrollView.setVisibility(View.GONE);
     }
 }
+
+
