@@ -1,19 +1,20 @@
 package com.smarty.civis.sync;
 
-import com.squareup.moshi.Json;
+
+import com.google.gson.annotations.SerializedName;
 
 /**
  * Created by anh.hoang on 6/27/17.
  */
 
 public class TokenResponse {
-    @Json(name = "token_type")
+    @SerializedName("token_type")
     private String tokenType;
-    @Json(name = "expires_in")
+    @SerializedName("expires_in")
     private long expiresIn;
-    @Json(name = "access_token")
+    @SerializedName("access_token")
     private String accessToken;
-    @Json(name = "refresh_token")
+    @SerializedName("refresh_token")
     private String refreshToken;
 
     public String getTokenType() {

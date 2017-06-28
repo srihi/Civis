@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
@@ -37,32 +36,6 @@ public class LoginActivity extends AppCompatActivity {
     private DigitalTownApiService mApiService = DigitalTownApiService.getInstance();
     private Call<TokenResponse> mTokenCall;
     private Callback<TokenResponse> mTokenResponseCallback = new Callback<TokenResponse>() {
-        private Callback<User> mUserCallback = new Callback<User>() {
-            @Override
-            public void onResponse(Call<User> call, Response<User> response) {
-                if (response.code() == HttpURLConnection.HTTP_OK) {
-                    User user = response.body();
-                    TaskUpdateService.insertNewUser(LoginActivity.this, user.toContentValues());
-                    startMainActivity();
-                } else {
-                    mLoginRequested = false;
-                    Toast.makeText(LoginActivity.this, R.string.login_failed, Toast.LENGTH_SHORT).show();
-
-                    try {
-                        Log.e(LOG_TAG, response.errorBody().string());
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-
-            @Override
-            public void onFailure(Call<User> call, Throwable t) {
-                Log.e(LOG_TAG, t.getMessage());
-                mLoginRequested = false;
-                Toast.makeText(LoginActivity.this, R.string.login_failed, Toast.LENGTH_SHORT).show();
-            }
-        };
 
         @Override
         public void onResponse(Call<TokenResponse> call, Response<TokenResponse> response) {
@@ -99,18 +72,45 @@ public class LoginActivity extends AppCompatActivity {
     };
 
     private Call<User> mUserCall;
+    private Callback<User> mUserCallback = new Callback<User>() {
+        @Override
+        public void onResponse(Call<User> call, Response<User> response) {
+            if (response.code() == HttpURLConnection.HTTP_OK) {
+                User user = response.body();
+                TaskUpdateService.insertNewUser(LoginActivity.this, user.getContentValues());
+                startMainActivity();
+            } else {
+                mLoginRequested = false;
+                Toast.makeText(LoginActivity.this, R.string.login_failed, Toast.LENGTH_SHORT).show();
+
+                try {
+                    Log.e(LOG_TAG, response.errorBody().string());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        @Override
+        public void onFailure(Call<User> call, Throwable t) {
+            Log.e(LOG_TAG, t.getMessage());
+            mLoginRequested = false;
+            Toast.makeText(LoginActivity.this, R.string.login_failed, Toast.LENGTH_SHORT).show();
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // If we are already authorized go to MainActivity directly
-        if (!TextUtils.isEmpty(PrefUtils.getCode(this))) {
-            startActivity(new Intent(this, MainActivity.class));
-            finish();
-        }
-
         setContentView(R.layout.activity_login);
+
+
+        // If we are already authorized go to MainActivity directly
+//        if (!TextUtils.isEmpty(PrefUtils.getCode(this))) {
+//            startActivity(new Intent(this, MainActivity.class));
+//            finish();
+//        }
     }
 
     public void skipLogin(View view) {

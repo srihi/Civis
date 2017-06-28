@@ -4,7 +4,7 @@ import android.content.ContentValues;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import com.smarty.civis.data.tables.TasksTable;
+import com.google.gson.annotations.SerializedName;
 import com.smarty.civis.data.tables.UsersTable;
 
 import java.util.List;
@@ -14,9 +14,15 @@ import java.util.List;
  */
 
 public class User implements Parcelable {
+    @SerializedName("id")
     private int id;
+    @SerializedName("uuid")
+    private String uuid; // Saved like String for now, there is some minor problem json parsing UUID
+    @SerializedName("first_name")
     private String firstName;
+    @SerializedName("last_name")
     private String lastName;
+    @SerializedName("email")
     private String email;
     private String phone;
     private List<Task> ownTasks; // Requests and offers
@@ -24,11 +30,11 @@ public class User implements Parcelable {
 
 
     public User() {
-
     }
 
     User(Parcel in) {
         id = in.readInt();
+        uuid = in.readString();
         firstName = in.readString();
         lastName = in.readString();
         email = in.readString();
@@ -55,6 +61,14 @@ public class User implements Parcelable {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getUuid() {
+        return uuid;
+    }
+
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
     }
 
     public String getFirstName() {
@@ -113,6 +127,7 @@ public class User implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeInt(id);
+        dest.writeString(uuid);
         dest.writeString(firstName);
         dest.writeString(lastName);
         dest.writeString(email);
