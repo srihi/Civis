@@ -28,9 +28,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".activities.MainActivity" />
-        <activity
-            android:name=".activities.ProfileActivity"
-            android:label="@string/title_activity_profile" />
+        <activity android:name=".activities.ProfileActivity" />
         <activity
             android:name=".activities.AddActivity"
             android:label="@string/add_screen_activity_title" />
@@ -53,7 +51,7 @@
 
         <service
             android:name=".data.TaskUpdateService"
-            android:exported="false"></service>
+            android:exported="false" />
     </application>
 
 </manifest>
