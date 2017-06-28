@@ -28,6 +28,7 @@ public class TasksTable implements TableInterface
         public static final String COLUMN_IS_REQUEST = "is_request";
         public static final String COLUMN_CREATION_DATE = "creation_date";
         public static final String COLUMN_DUE_DATE = "due_date";
+        public static final String COLUMN_LOCATION = "location";
         public static final String COLUMN_STATUS = "status";
         public static final String COLUMN_OWNER_ID = "owner_id";
         public static final String COLUMN_TAKEN_BY_ID = "taken_by_id";
@@ -60,6 +61,7 @@ public class TasksTable implements TableInterface
                 Entry.COLUMN_IS_REQUEST+" INTEGER NOT NULL DEFAULT 1, "+
                 Entry.COLUMN_CREATION_DATE+" LONG NOT NULL, "+
                 Entry.COLUMN_DUE_DATE+" LONG NOT NULL, "+
+                Entry.COLUMN_LOCATION+" TEXT NOT NULL, "+
                 Entry.COLUMN_STATUS+" INTEGER NOT NULL DEFAULT 0, "+
                 Entry.COLUMN_OWNER_ID+" INTEGER NOT NULL, "+
                 Entry.COLUMN_TAKEN_BY_ID+" INTEGER NOT NULL DEFAULT -1"+

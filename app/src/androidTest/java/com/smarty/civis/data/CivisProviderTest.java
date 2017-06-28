@@ -101,6 +101,7 @@ public class CivisProviderTest extends ProviderTestCase2<CivisProvider>
         contentValues.put(TasksTable.Entry.COLUMN_DESCRIPTION, "Test Task Description");
         contentValues.put(TasksTable.Entry.COLUMN_CREATION_DATE, 1497415674); // timestamp
         contentValues.put(TasksTable.Entry.COLUMN_DUE_DATE, 1498515674); // timestamp
+        contentValues.put(TasksTable.Entry.COLUMN_LOCATION, "Erlangen, Germany"); // location
         contentValues.put(TasksTable.Entry.COLUMN_REWARD, 13.50); // float
         contentValues.put(TasksTable.Entry.COLUMN_JOB_TYPE, "Babysitter"); // string [ for MVP only ]
         contentValues.put(TasksTable.Entry.COLUMN_OWNER_ID, 1); // user id
@@ -121,6 +122,7 @@ public class CivisProviderTest extends ProviderTestCase2<CivisProvider>
         assertEquals("Test Task Description", c.getString(ProjectionUtils.INDEX_TASK_DESC));
         assertEquals(1498515674l, c.getInt(ProjectionUtils.INDEX_TASK_DUE_DATE));
         assertEquals(1497415674l, c.getInt(ProjectionUtils.INDEX_TASK_CREATION_DATE));
+        assertEquals("Erlangen, Germany", c.getString(ProjectionUtils.INDEX_TASK_LOCATION));
         assertEquals(13.50f, c.getFloat(ProjectionUtils.INDEX_TASK_REWARD));
         assertEquals("Babysitter", c.getString(ProjectionUtils.INDEX_TASK_JOB_TYPE));
         assertEquals(1, c.getInt(ProjectionUtils.INDEX_TASK_OWNER_ID));

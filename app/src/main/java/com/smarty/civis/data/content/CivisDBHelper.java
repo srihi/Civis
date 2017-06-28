@@ -13,7 +13,7 @@ import com.smarty.civis.data.tables.TableInterface;
 public class CivisDBHelper extends SQLiteOpenHelper
 {
     private static final String DB_NAME = "civis_db";
-    private static final int DB_VERSION = 1;
+    private static final int DB_VERSION = 2;
 
     private TableInterface tables[];
 
