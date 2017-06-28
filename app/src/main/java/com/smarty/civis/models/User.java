@@ -1,25 +1,44 @@
 package com.smarty.civis.models;
 
-import com.squareup.moshi.Json;
+import android.os.Parcel;
+import android.os.Parcelable;
 
 import java.util.List;
-import java.util.UUID;
 
 /**
  * Created by anh.hoang on 6/25/17.
  */
 
-public class User {
+public class User implements Parcelable{
     private int id;
-    private UUID uuid;
-    @Json(name = "first_name")
     private String firstName;
-    @Json(name = "last_name")
     private String lastName;
     private String email;
     private String phone;
     private List<Task> ownTasks; // Requests and offers
     private List<Task> tasksDone; // Requests from others that have been done by this user;
+
+    User(Parcel in) {
+        id = in.readInt();
+        firstName = in.readString();
+        lastName = in.readString();
+        email = in.readString();
+        phone = in.readString();
+        ownTasks = in.createTypedArrayList(Task.CREATOR);
+        tasksDone = in.createTypedArrayList(Task.CREATOR);
+    }
+
+    public static final Creator<User> CREATOR = new Creator<User>() {
+        @Override
+        public User createFromParcel(Parcel in) {
+            return new User(in);
+        }
+
+        @Override
+        public User[] newArray(int size) {
+            return new User[size];
+        }
+    };
 
     public int getId() {
         return id;
@@ -27,14 +46,6 @@ public class User {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public UUID getUuid() {
-        return uuid;
-    }
-
-    public void setUuid(UUID uuid) {
-        this.uuid = uuid;
     }
 
     public String getFirstName() {
@@ -83,5 +94,21 @@ public class User {
 
     public void setTasksDone(List<Task> tasksDone) {
         this.tasksDone = tasksDone;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(id);
+        dest.writeString(firstName);
+        dest.writeString(lastName);
+        dest.writeString(email);
+        dest.writeString(phone);
+        dest.writeTypedList(ownTasks);
+        dest.writeTypedList(tasksDone);
     }
 }
