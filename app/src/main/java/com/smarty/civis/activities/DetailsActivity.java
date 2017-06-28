@@ -1,113 +1,78 @@
 package com.smarty.civis.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentStatePagerAdapter;
-import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.LayoutInflater;
+
 import android.view.View;
-import android.view.ViewGroup;
+import android.widget.ScrollView;
+import android.widget.TextView;
 
 import com.smarty.civis.R;
+import com.smarty.civis.models.Task;
+import com.smarty.civis.models.User;
+
+import java.text.NumberFormat;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class DetailsActivity extends AppCompatActivity {
 
-   // @BindView(R.id.detailsViewPager)
-    ViewPager viewPager;
+    Task task;
+    User user;
 
-    PagerAdapter adapter;
+    @BindView(R.id.price)
+    TextView price;
 
-   // @BindView(R.id.detailsTabLayout)
-    TabLayout tabLayout;
+    @BindView(R.id.details_title)
+    TextView title;
 
-    Fragment[] pages = new Fragment[2];
+    @BindView(R.id.details_description)
+    TextView disc;
+
+    @BindView(R.id.details_user_name)
+    TextView userName;
+
+    @BindView(R.id.errorMessage)
+    TextView errorMessage;
+
+    @BindView(R.id.details_scrollview)
+    ScrollView scrollView;
+
+    @BindView(R.id.details_location)
+    TextView location;
+
+
+    public static final String ARG_TASK = "mTask";
+    public static final String ARG_USER = "mUser";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
         ButterKnife.bind(this);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+        Intent intent = getIntent();
+        if(intent.hasExtra(ARG_TASK) && intent.hasExtra(ARG_USER)){
+            loadData((Task)intent.getParcelableExtra(ARG_TASK),(User)intent.getParcelableExtra(ARG_USER));
+        }else
+            showError();
+    }
 
+    private void loadData(Task task, User user){
+        price.setText(NumberFormat.getCurrencyInstance().format(task.getReward()));
+        title.setText(task.getTitle());
+        disc.setText(task.getDescription());
+        location.setText(task.getLocation());
+        userName.setText(user.getFirstName() + " " + user.getLastName());
     }
 
 
-
-    private void setupViewPager(){
-        adapter = new PagerAdapter(getSupportFragmentManager());
-        viewPager.setAdapter(adapter);
-        tabLayout.setupWithViewPager(viewPager);
-
-    }
-
-
-    public static class DetailsFragment extends Fragment{
-
-        public static DetailsFragment newInstance() {
-            Bundle args = new Bundle();
-            DetailsFragment fragment = new DetailsFragment();
-            fragment.setArguments(args);
-            return fragment;
-        }
-
-
-        @Nullable
-        @Override
-        public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-            View v = inflater.inflate(R.layout.details_fragment,container,false);
-            ButterKnife.bind(this,v);
-            return v;
-        }
-
-        @Override
-        public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-            super.onViewCreated(view, savedInstanceState);
-        }
-    }
-
-    private class PagerAdapter extends FragmentStatePagerAdapter{
-
-        PagerAdapter(FragmentManager fm) {
-            super(fm);
-        }
-
-        @Override
-        public Fragment getItem(int position) {
-            if(pages[position] == null) {
-                pages[position] = position == 0 ? DetailsFragment.newInstance() : DetailsFragment.newInstance();
-            }
-
-            return DetailsFragment.newInstance();
-        }
-
-        @Override
-        public int getCount() {
-            return pages.length;
-        }
-
-        @Override
-        public CharSequence getPageTitle(int position) {
-            return position == 0 ? "Details" : "Rating";
-        }
+    private void showError(){
+        errorMessage.setVisibility(View.VISIBLE);
+        scrollView.setVisibility(View.GONE);
     }
 }
+
