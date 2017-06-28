@@ -56,5 +56,7 @@ dependencies {
     compile 'com.squareup.retrofit2:retrofit-converters:2.3.0'
     compile 'com.squareup.retrofit2:converter-moshi:2.3.0'
     compile 'de.hdodenhof:circleimageview:2.1.0'
+    compile 'com.jakewharton:butterknife:8.6.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.6.0'
     testCompile 'junit:junit:4.12'
 }
