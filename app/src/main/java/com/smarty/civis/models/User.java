@@ -18,6 +18,11 @@ public class User implements Parcelable{
     private List<Task> ownTasks; // Requests and offers
     private List<Task> tasksDone; // Requests from others that have been done by this user;
 
+
+    public User() {
+
+    }
+
     User(Parcel in) {
         id = in.readInt();
         firstName = in.readString();

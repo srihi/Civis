@@ -7,12 +7,9 @@ import android.database.Cursor;
 import android.net.Uri;
 
 import com.smarty.civis.data.content.CivisContract;
-import com.smarty.civis.data.tables.TasksTable;
 import com.smarty.civis.data.tables.UsersTable;
 import com.smarty.civis.models.User;
 import com.smarty.civis.utils.ProjectionUtils;
-
-import java.util.Date;
 
 /**
  * Created by mohammed on 6/27/17.
@@ -35,6 +32,12 @@ public class CivisViewModel
         return instance;
     }
 
+    /**
+     * Save User to Database
+     * @param user
+     * @return User ID
+     * @throws Exception
+     */
     public int saveUser(User user) throws Exception
     {
         Uri uri = CivisContract.BASE_CONTENT_URI.buildUpon()
@@ -50,6 +53,12 @@ public class CivisViewModel
         return (int) ContentUris.parseId(insertedUri);
     }
 
+    /**
+     * Get User From Database
+     * @param id
+     * @return
+     * @throws Exception
+     */
     public User getUser(int id) throws Exception
     {
         Uri uri = CivisContract.BASE_CONTENT_URI.buildUpon()
