@@ -5,7 +5,7 @@ import com.smarty.civis.models.User;
 
 import retrofit2.Call;
 import retrofit2.Retrofit;
-import retrofit2.converter.moshi.MoshiConverterFactory;
+import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
@@ -30,7 +30,7 @@ public class DigitalTownApiService {
         mRetrofit = new Retrofit
                 .Builder()
                 .baseUrl(URL)
-                .addConverterFactory(MoshiConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
         mDigitalTownApi = mRetrofit.create(IDigitalTownApi.class);
@@ -69,7 +69,7 @@ public class DigitalTownApiService {
     }
 
     public Call<User> getUser(String token) {
-        return mDigitalTownApi.user(token);
+        return mDigitalTownApi.user("Bearer " + token);
     }
 
 

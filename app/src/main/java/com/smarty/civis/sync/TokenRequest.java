@@ -1,24 +1,24 @@
 package com.smarty.civis.sync;
 
-import com.squareup.moshi.Json;
+import com.google.gson.annotations.SerializedName;
 
 /**
  * Created by anh.hoang on 6/27/17.
  */
 
 class TokenRequest {
-    @Json(name = "grant_type")
+    @SerializedName("grant_type")
     private final String grantType;
-    @Json(name = "client_id")
+    @SerializedName("client_id")
     private final String clientId;
-    @Json(name = "client_secret")
+    @SerializedName("client_secret")
     private final String clientSecret;
-    @Json(name = "redirect_uri")
+    @SerializedName("redirect_uri")
     private final String redirectUri;
-    @Json(name = "code")
+    @SerializedName("code")
     private final String authorizationCode;
 
-    public TokenRequest(String grantType, String clientId, String clientSecret, String redirectUri, String authorizationCode){
+    public TokenRequest(String grantType, String clientId, String clientSecret, String redirectUri, String authorizationCode) {
 
         this.grantType = grantType;
         this.clientId = clientId;

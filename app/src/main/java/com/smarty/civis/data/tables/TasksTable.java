@@ -11,6 +11,8 @@ import android.provider.BaseColumns;
 import com.smarty.civis.data.content.CivisContract;
 import com.smarty.civis.utils.DatabaseUtils;
 
+import static android.R.attr.id;
+
 /**
  * Created by mohammed on 6/26/17.
  */
@@ -29,6 +31,7 @@ public class TasksTable implements TableInterface
         public static final String COLUMN_IS_REQUEST = "is_request";
         public static final String COLUMN_CREATION_DATE = "creation_date";
         public static final String COLUMN_DUE_DATE = "due_date";
+        public static final String COLUMN_LOCATION = "location";
         public static final String COLUMN_STATUS = "status";
         public static final String COLUMN_OWNER_ID = "owner_id";
         public static final String COLUMN_TAKEN_BY_ID = "taken_by_id";
@@ -60,6 +63,7 @@ public class TasksTable implements TableInterface
                 Entry.COLUMN_IS_REQUEST+" INTEGER NOT NULL DEFAULT 1, "+
                 Entry.COLUMN_CREATION_DATE+" LONG NOT NULL, "+
                 Entry.COLUMN_DUE_DATE+" LONG NOT NULL, "+
+                Entry.COLUMN_LOCATION+" TEXT NOT NULL, "+
                 Entry.COLUMN_STATUS+" INTEGER NOT NULL DEFAULT 0, "+
                 Entry.COLUMN_OWNER_ID+" INTEGER NOT NULL, "+
                 Entry.COLUMN_TAKEN_BY_ID+" INTEGER NOT NULL DEFAULT -1"+
@@ -115,7 +119,9 @@ public class TasksTable implements TableInterface
         switch (sUriMatcher.match(uri))
         {
             case CODE_CERTAIN_TASK:
-                numberOfRows = db.update(Entry.TABLE_NAME,values,selection,selectionArgs);
+                String id = uri.getPathSegments().get(1);
+                numberOfRows = db.update(
+                        Entry.TABLE_NAME, values, "_id=?", new String[]{id});
                 break;
         }
         return numberOfRows;

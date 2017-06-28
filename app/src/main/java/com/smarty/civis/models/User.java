@@ -1,25 +1,59 @@
 package com.smarty.civis.models;
 
-import com.squareup.moshi.Json;
+import android.content.ContentValues;
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import com.google.gson.annotations.SerializedName;
+import com.smarty.civis.data.tables.UsersTable;
 
 import java.util.List;
-import java.util.UUID;
 
 /**
  * Created by anh.hoang on 6/25/17.
  */
 
-public class User {
+public class User implements Parcelable {
+    @SerializedName("id")
     private int id;
-    private UUID uuid;
-    @Json(name = "first_name")
+    @SerializedName("uuid")
+    private String uuid; // Saved like String for now, there is some minor problem json parsing UUID
+    @SerializedName("first_name")
     private String firstName;
-    @Json(name = "last_name")
+    @SerializedName("last_name")
     private String lastName;
+    @SerializedName("email")
     private String email;
     private String phone;
     private List<Task> ownTasks; // Requests and offers
     private List<Task> tasksDone; // Requests from others that have been done by this user;
+
+
+    public User() {
+    }
+
+    User(Parcel in) {
+        id = in.readInt();
+        uuid = in.readString();
+        firstName = in.readString();
+        lastName = in.readString();
+        email = in.readString();
+        phone = in.readString();
+        ownTasks = in.createTypedArrayList(Task.CREATOR);
+        tasksDone = in.createTypedArrayList(Task.CREATOR);
+    }
+
+    public static final Creator<User> CREATOR = new Creator<User>() {
+        @Override
+        public User createFromParcel(Parcel in) {
+            return new User(in);
+        }
+
+        @Override
+        public User[] newArray(int size) {
+            return new User[size];
+        }
+    };
 
     public int getId() {
         return id;
@@ -29,11 +63,11 @@ public class User {
         this.id = id;
     }
 
-    public UUID getUuid() {
+    public String getUuid() {
         return uuid;
     }
 
-    public void setUuid(UUID uuid) {
+    public void setUuid(String uuid) {
         this.uuid = uuid;
     }
 
@@ -83,5 +117,31 @@ public class User {
 
     public void setTasksDone(List<Task> tasksDone) {
         this.tasksDone = tasksDone;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(id);
+        dest.writeString(uuid);
+        dest.writeString(firstName);
+        dest.writeString(lastName);
+        dest.writeString(email);
+        dest.writeString(phone);
+        dest.writeTypedList(ownTasks);
+        dest.writeTypedList(tasksDone);
+    }
+
+    public ContentValues getContentValues() {
+        ContentValues values = new ContentValues(4);
+        values.put(UsersTable.Entry.COLUMN_FIRST_NAME, getFirstName());
+        values.put(UsersTable.Entry.COLUMN_LAST_NAME, getLastName());
+        values.put(UsersTable.Entry.COLUMN_EMAIL, getEmail());
+        values.put(UsersTable.Entry.COLUMN_PHONE, getPhone());
+        return values;
     }
 }

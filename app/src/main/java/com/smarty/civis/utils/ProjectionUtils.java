@@ -20,6 +20,7 @@ public class ProjectionUtils
             TasksTable.Entry.COLUMN_REWARD,
             TasksTable.Entry.COLUMN_CREATION_DATE,
             TasksTable.Entry.COLUMN_DUE_DATE,
+            TasksTable.Entry.COLUMN_LOCATION,
             TasksTable.Entry.COLUMN_IS_REQUEST,
             TasksTable.Entry.COLUMN_OWNER_ID,
             TasksTable.Entry.COLUMN_TAKEN_BY_ID,
@@ -32,10 +33,11 @@ public class ProjectionUtils
     public static final int INDEX_TASK_REWARD = 4;
     public static final int INDEX_TASK_CREATION_DATE = 5;
     public static final int INDEX_TASK_DUE_DATE = 6;
-    public static final int INDEX_TASK_IS_REQUEST = 7;
-    public static final int INDEX_TASK_OWNER_ID = 8;
-    public static final int INDEX_TASK_TAKEN_BY_ID = 9;
-    public static final int INDEX_TASK_STATUS = 10;
+    public static final int INDEX_TASK_LOCATION = 7;
+    public static final int INDEX_TASK_IS_REQUEST = 8;
+    public static final int INDEX_TASK_OWNER_ID = 9;
+    public static final int INDEX_TASK_TAKEN_BY_ID = 10;
+    public static final int INDEX_TASK_STATUS = 11;
 
     /*
         Should be The same order as index below

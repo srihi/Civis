@@ -10,6 +10,8 @@ import android.provider.BaseColumns;
 
 import com.smarty.civis.data.content.CivisContract;
 
+import static com.smarty.civis.data.tables.TasksTable.CODE_CERTAIN_TASK;
+
 
 /**
  * Created by mohammed on 6/26/17.
@@ -95,7 +97,16 @@ public class UsersTable implements TableInterface
     @Override
     public int update(SQLiteDatabase db, Uri uri, ContentValues values, String selection, String[] selectionArgs)
     {
-        throw new UnsupportedOperationException("Not Implemented");
+        int numberOfRows = -1;
+        switch (sUriMatcher.match(uri))
+        {
+            case CODE_CERTAIN_USER:
+                String id = uri.getPathSegments().get(1);
+                numberOfRows = db.update(
+                        Entry.TABLE_NAME, values, "_id=?", new String[]{id});
+                break;
+        }
+        return numberOfRows;
     }
 
     @Override

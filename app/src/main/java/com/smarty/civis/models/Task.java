@@ -1,21 +1,23 @@
 package com.smarty.civis.models;
 
+import android.content.ContentValues;
+import android.content.Context;
 import android.database.Cursor;
+import android.os.Parcel;
+import android.os.Parcelable;
 
 import com.smarty.civis.data.tables.TasksTable;
-
-import java.util.Date;
-
-import static com.smarty.civis.data.content.CivisContract.getColumnDouble;
-import static com.smarty.civis.data.content.CivisContract.getColumnInt;
-import static com.smarty.civis.data.content.CivisContract.getColumnLong;
-import static com.smarty.civis.data.content.CivisContract.getColumnString;
+import com.smarty.civis.utils.ProjectionUtils;
 
 /**
  * Created by anh.hoang on 6/25/17.
  */
 
-public class Task {
+public class Task implements Parcelable {
+    /* Constants representing missing data */
+    public static final long NO_DATE = Long.MAX_VALUE;
+    public static final int NO_ID = -1;
+
     public static final int ACTIVE = 0;
     public static final int RESERVED = 1;
     public static final int IN_PROGRESS = 2;
@@ -33,32 +35,75 @@ public class Task {
     private int id;
     private String title;
     private String description;
-    private int jobType;
+    private String jobType;
     private double reward;
     private boolean isRequest;
-    private Date startTime;
-    private Date endTime;
+    private long startTime;
+    private long endTime;
     private String location; // will be changed to pick currents location or have location picker with map
     private int status;
     private int ownerId;
     private int takenBy; // Person who took the job & finished it
 
+    public Task() {
+    }
 
     /**
      * Create a new task from a database Cursor
      */
     public Task(Cursor cursor) {
-        this.id = getColumnInt(cursor, TasksTable.Entry._ID);
-        this.description = getColumnString(cursor, TasksTable.Entry.COLUMN_DESCRIPTION);
-        this.title = getColumnString(cursor, TasksTable.Entry.COLUMN_TITLE);
-        this.jobType = getColumnInt(cursor, TasksTable.Entry.COLUMN_JOB_TYPE);
-        this.reward = getColumnDouble(cursor, TasksTable.Entry.COLUMN_REWARD);
-        this.isRequest = getColumnInt(cursor, TasksTable.Entry.COLUMN_IS_REQUEST) == 1;
-        this.startTime = new Date(getColumnLong(cursor, TasksTable.Entry.COLUMN_CREATION_DATE));
-        this.endTime = new Date(getColumnLong(cursor, TasksTable.Entry.COLUMN_DUE_DATE));
-        this.status = getColumnInt(cursor, TasksTable.Entry.COLUMN_STATUS);
-        this.ownerId = getColumnInt(cursor, TasksTable.Entry.COLUMN_OWNER_ID);
-        this.takenBy = getColumnInt(cursor, TasksTable.Entry.COLUMN_TAKEN_BY_ID);
+        id = cursor.getInt(ProjectionUtils.INDEX_TASK_ID);
+        title = cursor.getString(ProjectionUtils.INDEX_TASK_TITLE);
+        description = cursor.getString(ProjectionUtils.INDEX_TASK_DESC);
+        jobType = cursor.getString(ProjectionUtils.INDEX_TASK_JOB_TYPE);
+        reward = cursor.getFloat(ProjectionUtils.INDEX_TASK_REWARD);
+        isRequest = cursor.getInt(ProjectionUtils.INDEX_TASK_IS_REQUEST) != 0;
+        startTime = cursor.getLong(ProjectionUtils.INDEX_TASK_CREATION_DATE);
+        endTime = cursor.getLong(ProjectionUtils.INDEX_TASK_DUE_DATE);
+        location = cursor.getString(ProjectionUtils.INDEX_TASK_LOCATION);
+        status = cursor.getInt(ProjectionUtils.INDEX_TASK_STATUS);
+        ownerId = cursor.getInt(ProjectionUtils.INDEX_TASK_OWNER_ID);
+        takenBy = cursor.getInt(ProjectionUtils.INDEX_TASK_TAKEN_BY_ID);
+    }
+
+    protected Task(Parcel in) {
+        id = in.readInt();
+        title = in.readString();
+        description = in.readString();
+        jobType = in.readString();
+        reward = in.readDouble();
+        isRequest = in.readByte() != 0;
+        location = in.readString();
+        status = in.readInt();
+        ownerId = in.readInt();
+        takenBy = in.readInt();
+    }
+
+    public static final Creator<Task> CREATOR = new Creator<Task>() {
+        @Override
+        public Task createFromParcel(Parcel in) {
+            return new Task(in);
+        }
+
+        @Override
+        public Task[] newArray(int size) {
+            return new Task[size];
+        }
+    };
+
+    public Task(String title, String description, String jobType, double reward, boolean isRequest, long endTime, String location, int status, int ownerId, int takenBy) {
+        this.id = NO_ID; //Not set
+        this.title = title;
+        this.description = description;
+        this.jobType = jobType;
+        this.reward = reward;
+        this.isRequest = isRequest;
+        this.startTime = System.currentTimeMillis();
+        this.endTime = endTime;
+        this.location = location;
+        this.status = status;
+        this.ownerId = ownerId;
+        this.takenBy = takenBy;
     }
 
     public int getId() {
@@ -85,11 +130,11 @@ public class Task {
         this.description = description;
     }
 
-    public int getJobType() {
+    public String getJobType() {
         return jobType;
     }
 
-    public void setJobType(int jobType) {
+    public void setJobType(String jobType) {
         this.jobType = jobType;
     }
 
@@ -109,19 +154,19 @@ public class Task {
         isRequest = request;
     }
 
-    public Date getStartTime() {
+    public long getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(Date startTime) {
+    public void setStartTime(long startTime) {
         this.startTime = startTime;
     }
 
-    public Date getEndTime() {
+    public long getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(Date endTime) {
+    public void setEndTime(long endTime) {
         this.endTime = endTime;
     }
 
@@ -146,7 +191,7 @@ public class Task {
     }
 
     public String getStatusString() {
-        switch (getStatus()){
+        switch (getStatus()) {
             case ACTIVE:
                 return ACTIVE_STR;
             case RESERVED:
@@ -176,4 +221,40 @@ public class Task {
         this.takenBy = takenBy;
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(id);
+        dest.writeString(title);
+        dest.writeString(description);
+        dest.writeString(jobType);
+        dest.writeDouble(reward);
+        dest.writeByte((byte) (isRequest ? 1 : 0));
+        dest.writeString(location);
+        dest.writeInt(status);
+        dest.writeInt(ownerId);
+        dest.writeInt(takenBy);
+    }
+
+    public ContentValues getContentValues() {
+        ContentValues values = new ContentValues(11);
+        values.put(TasksTable.Entry.COLUMN_TITLE, getTitle());
+        values.put(TasksTable.Entry.COLUMN_DESCRIPTION, getDescription());
+        values.put(TasksTable.Entry.COLUMN_JOB_TYPE, getJobType());
+        values.put(TasksTable.Entry.COLUMN_REWARD, getReward());
+        values.put(TasksTable.Entry.COLUMN_IS_REQUEST, isRequest());
+        values.put(TasksTable.Entry.COLUMN_CREATION_DATE, getStartTime());
+        values.put(TasksTable.Entry.COLUMN_DUE_DATE, getEndTime());
+        values.put(TasksTable.Entry.COLUMN_LOCATION, getLocation());
+        values.put(TasksTable.Entry.COLUMN_STATUS, getStatus());
+        values.put(TasksTable.Entry.COLUMN_OWNER_ID, getOwnerId());
+        values.put(TasksTable.Entry.COLUMN_TAKEN_BY_ID, getTakenBy());
+        return values;
+    }
+
 }
+
