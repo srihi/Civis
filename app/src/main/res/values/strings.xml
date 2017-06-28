@@ -60,4 +60,9 @@
     <string name="login_failed">Login unsuccessful. Please try again.</string>
     <string name="pref_refresh_token_key">RefreshTokenKey</string>
     <string name="pref_expire_time_key">ExpireTimeKey</string>
+    
+     <!-- Strings related to details screen -->
+    <string name="title_activity_details">DetailsActivity</string>
+    <string name="write_a_message">Write a message</string>
+    <string name="details_error_message">An error occured while processing your request</string>
 </resources>
