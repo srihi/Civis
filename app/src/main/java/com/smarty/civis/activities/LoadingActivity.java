@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.smarty.civis.R;
+import com.smarty.civis.data.TaskUpdateService;
 import com.smarty.civis.models.User;
 import com.smarty.civis.sync.DigitalTownApiService;
 import com.smarty.civis.sync.TokenResponse;
@@ -50,7 +51,8 @@ public class LoadingActivity extends AppCompatActivity {
         @Override
         public void onResponse(Call<User> call, Response<User> response) {
             if (response.code() == HttpURLConnection.HTTP_OK) {
-                // TODO: Save/Update user somewhere
+                User user = response.body();
+                TaskUpdateService.insertNewUser(LoadingActivity.this, user.toContentValues());
                 Intent intent = new Intent(LoadingActivity.this, MainActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);

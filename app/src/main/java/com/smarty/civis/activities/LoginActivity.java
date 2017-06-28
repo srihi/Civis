@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.smarty.civis.R;
+import com.smarty.civis.data.TaskUpdateService;
 import com.smarty.civis.models.User;
 import com.smarty.civis.sync.DigitalTownApiService;
 import com.smarty.civis.sync.TokenResponse;
@@ -40,7 +41,8 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
                 if (response.code() == HttpURLConnection.HTTP_OK) {
-                    // TODO: Save user somewhere
+                    User user = response.body();
+                    TaskUpdateService.insertNewUser(LoginActivity.this, user.toContentValues());
                     startMainActivity();
                 } else {
                     mLoginRequested = false;
