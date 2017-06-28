@@ -21,7 +21,10 @@ import butterknife.ButterKnife;
 
 public class DetailsActivity extends AppCompatActivity {
 
-  
+
+    @BindView(R.id.category)
+    TextView category;
+
     @BindView(R.id.day)
     TextView day;
 
@@ -76,6 +79,7 @@ public class DetailsActivity extends AppCompatActivity {
         String _monthString  = (String) DateFormat.format("MMM",  date);
         day.setText(_day);
         month.setText(_monthString);
+        category.setText(task.getJobType());
         location.setText(task.getLocation());
         userName.setText(user.getFirstName() + " " + user.getLastName());
     }
@@ -86,4 +90,5 @@ public class DetailsActivity extends AppCompatActivity {
         scrollView.setVisibility(View.GONE);
     }
 }
+
 
