@@ -71,7 +71,7 @@ public class OfferedTasksFragment extends Fragment implements LoaderManager.Load
 
         return new CursorLoader(getActivity(),
                 CivisContract.TASKS_CONTENT_URI,
-                ProjectionUtils.TASK_PROJECTION,
+                null,
                 offersSelection,
                 selectionArgs, null);
     }

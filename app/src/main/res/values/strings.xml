@@ -72,5 +72,10 @@
     <string name="title_performed">Performed</string>
     <string name="requested_jobs">Requested Jobs</string>
     <string name="offered_jobs">Offered Jobs</string>
+    <string name="location">Location</string>
+    <string name="accept">Accept</string>
+    <string name="refuse">Refuse</string>
+    <string name="done">Done</string>
+    <string name="pay">Pay</string>
 
 </resources>
