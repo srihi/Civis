@@ -65,7 +65,7 @@ public class DetailsActivity extends AppCompatActivity implements LoaderManager.
     }
 
     private void loadData(Task task) {
-        price.setText(NumberFormat.getCurrencyInstance().format(task.getReward()));
+        price.setText("$ " + task.getReward());
         title.setText(task.getTitle());
         description.setText(task.getDescription());
         Date date = new Date(task.getEndTime());
