@@ -17,10 +17,15 @@ import android.view.ViewGroup;
 
 import com.smarty.civis.R;
 import com.smarty.civis.activities.AddActivity;
+import com.smarty.civis.activities.DetailsActivity;
 import com.smarty.civis.adapters.AssignmentAdapter;
 import com.smarty.civis.data.content.CivisContract;
 import com.smarty.civis.data.tables.TasksTable;
-import com.smarty.civis.utils.DatabaseUtils;
+import com.smarty.civis.models.Task;
+
+/**
+ * Created by itaseski.
+ */
 
 public class PageFragment extends Fragment implements AssignmentAdapter.AssignmentAdapterOnClickHandler,
         LoaderManager.LoaderCallbacks<Cursor> {
@@ -51,6 +56,7 @@ public class PageFragment extends Fragment implements AssignmentAdapter.Assignme
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        getActivity().getSupportLoaderManager().initLoader(LOADER_ID, null, this);
         super.onActivityCreated(savedInstanceState);
     }
 
@@ -93,12 +99,19 @@ public class PageFragment extends Fragment implements AssignmentAdapter.Assignme
 
         recyclerView.setAdapter(assignmentAdapter);
 
-        getActivity().getSupportLoaderManager().restartLoader(LOADER_ID, null, this);
     }
 
     @Override
-    public void onClick(int position) {
+    public void onResume() {
+        super.onResume();
+        assignmentAdapter.notifyDataSetChanged();
+    }
 
+    @Override
+    public void onClick(int position, Task task) {
+        Intent intent = new Intent(getContext(), DetailsActivity.class);
+        intent.putExtra(DetailsActivity.ARG_TASK, task);
+        startActivity(intent);
     }
 
     @Override
@@ -123,7 +136,7 @@ public class PageFragment extends Fragment implements AssignmentAdapter.Assignme
 
     @Override
     public void onLoaderReset(Loader<Cursor> loader) {
-
+        assignmentAdapter.setCursor(null);
     }
 
 }

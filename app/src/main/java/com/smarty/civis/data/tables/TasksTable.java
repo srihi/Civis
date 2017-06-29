@@ -9,9 +9,6 @@ import android.net.Uri;
 import android.provider.BaseColumns;
 
 import com.smarty.civis.data.content.CivisContract;
-import com.smarty.civis.utils.DatabaseUtils;
-
-import static android.R.attr.id;
 
 /**
  * Created by mohammed on 6/26/17.
@@ -69,6 +66,8 @@ public class TasksTable implements TableInterface
                 Entry.COLUMN_TAKEN_BY_ID+" INTEGER NOT NULL DEFAULT -1"+
                 ");";
         db.execSQL(CREATE_TASKS_TABLE);
+
+        populate(db);
     }
 
     @Override
@@ -137,5 +136,108 @@ public class TasksTable implements TableInterface
     public String getType(Uri uri)
     {
         throw new UnsupportedOperationException("Not Implemented");
+    }
+
+    private void populate(SQLiteDatabase db) {
+
+        ContentValues cv = new ContentValues();
+        cv.put(TasksTable.Entry.COLUMN_TITLE, "Pick up my prescription from chemist");
+        cv.put(TasksTable.Entry.COLUMN_DESCRIPTION, "I need someone who can go to my chemist and pick up my prescription");
+        cv.put(TasksTable.Entry.COLUMN_LOCATION, "London, Aldgate 22");
+        cv.put(TasksTable.Entry.COLUMN_CREATION_DATE, 1497415674);
+        cv.put(TasksTable.Entry.COLUMN_DUE_DATE, 1498515674);
+        cv.put(TasksTable.Entry.COLUMN_REWARD, 40.00);
+        cv.put(TasksTable.Entry.COLUMN_JOB_TYPE, "Delivery");
+        cv.put(TasksTable.Entry.COLUMN_OWNER_ID, 1);
+        db.insert(Entry.TABLE_NAME, null, cv);
+
+        cv = new ContentValues();
+        cv.put(TasksTable.Entry.COLUMN_TITLE, "Replace my Windows 10 operating system with Linux Fedora");
+        cv.put(TasksTable.Entry.COLUMN_DESCRIPTION, "if you can help me with the installation of Linux Fedora that would be great");
+        cv.put(TasksTable.Entry.COLUMN_LOCATION, "London, Fetter Lane 98");
+        cv.put(TasksTable.Entry.COLUMN_CREATION_DATE, 1497415674);
+        cv.put(TasksTable.Entry.COLUMN_DUE_DATE, 1498515674);
+        cv.put(TasksTable.Entry.COLUMN_REWARD, 30.00);
+        cv.put(TasksTable.Entry.COLUMN_JOB_TYPE, "Computer service & repair");
+        cv.put(TasksTable.Entry.COLUMN_OWNER_ID, 1);
+        db.insert(Entry.TABLE_NAME, null, cv);
+
+        cv = new ContentValues();
+        cv.put(TasksTable.Entry.COLUMN_TITLE, "I Need help with translation from Japanese to English");
+        cv.put(TasksTable.Entry.COLUMN_DESCRIPTION, "I need help with translation from Japanese to English and you don't have to be professional translator");
+        cv.put(TasksTable.Entry.COLUMN_LOCATION, "London, Philpot Lane 23");
+        cv.put(TasksTable.Entry.COLUMN_CREATION_DATE, 1497415674);
+        cv.put(TasksTable.Entry.COLUMN_DUE_DATE, 1498515674);
+        cv.put(TasksTable.Entry.COLUMN_REWARD, 100.00);
+        cv.put(TasksTable.Entry.COLUMN_JOB_TYPE, "Translation");
+        cv.put(TasksTable.Entry.COLUMN_OWNER_ID, 1);
+        db.insert(Entry.TABLE_NAME, null, cv);
+
+        cv = new ContentValues();
+        cv.put(TasksTable.Entry.COLUMN_TITLE, "Help me to get home safely");
+        cv.put(TasksTable.Entry.COLUMN_DESCRIPTION, "I am an elderly person who wants to get home safely");
+        cv.put(TasksTable.Entry.COLUMN_LOCATION, "London, Holborn Viaduct 112");
+        cv.put(TasksTable.Entry.COLUMN_CREATION_DATE, 1497415674);
+        cv.put(TasksTable.Entry.COLUMN_DUE_DATE, 1498515674);
+        cv.put(TasksTable.Entry.COLUMN_REWARD, 50.00);
+        cv.put(TasksTable.Entry.COLUMN_JOB_TYPE, "Social");
+        cv.put(TasksTable.Entry.COLUMN_OWNER_ID, 1);
+        db.insert(Entry.TABLE_NAME, null, cv);
+
+        cv = new ContentValues();
+        cv.put(TasksTable.Entry.COLUMN_TITLE, "Replace my hard drive");
+        cv.put(TasksTable.Entry.COLUMN_DESCRIPTION, "I need someone who can replace my old hard drive with a new one");
+        cv.put(TasksTable.Entry.COLUMN_LOCATION, "London, Paternoster Row 9");
+        cv.put(TasksTable.Entry.COLUMN_CREATION_DATE, 1497415674);
+        cv.put(TasksTable.Entry.COLUMN_DUE_DATE, 1498515674);
+        cv.put(TasksTable.Entry.COLUMN_REWARD, 35.00);
+        cv.put(TasksTable.Entry.COLUMN_JOB_TYPE, "Computer service & repair");
+        cv.put(TasksTable.Entry.COLUMN_OWNER_ID, 1);
+        db.insert(Entry.TABLE_NAME, null, cv);
+
+        cv = new ContentValues();
+        cv.put(TasksTable.Entry.COLUMN_TITLE, "Help me move my stuff to my new apartment");
+        cv.put(TasksTable.Entry.COLUMN_DESCRIPTION, "I need someone who is able to lift heavy objects and can help me to move to my new apartment");
+        cv.put(TasksTable.Entry.COLUMN_LOCATION, "London, Houndsditch 7");
+        cv.put(TasksTable.Entry.COLUMN_CREATION_DATE, 1497415674);
+        cv.put(TasksTable.Entry.COLUMN_DUE_DATE, 1498515674);
+        cv.put(TasksTable.Entry.COLUMN_REWARD, 75.00);
+        cv.put(TasksTable.Entry.COLUMN_JOB_TYPE, "Social");
+        cv.put(TasksTable.Entry.COLUMN_OWNER_ID, 1);
+        db.insert(Entry.TABLE_NAME, null, cv);
+
+        cv = new ContentValues();
+        cv.put(TasksTable.Entry.COLUMN_TITLE, "Buy me groceries");
+        cv.put(TasksTable.Entry.COLUMN_DESCRIPTION, "I am a disabled person and I need help with buying groceries");
+        cv.put(TasksTable.Entry.COLUMN_LOCATION, "London, Leadenhall Street 43");
+        cv.put(TasksTable.Entry.COLUMN_CREATION_DATE, 1497415674);
+        cv.put(TasksTable.Entry.COLUMN_DUE_DATE, 1498515674);
+        cv.put(TasksTable.Entry.COLUMN_REWARD, 20.00);
+        cv.put(TasksTable.Entry.COLUMN_JOB_TYPE, "Delivery");
+        cv.put(TasksTable.Entry.COLUMN_OWNER_ID, 1);
+        db.insert(Entry.TABLE_NAME, null, cv);
+
+        cv = new ContentValues();
+        cv.put(TasksTable.Entry.COLUMN_TITLE, "Help me choose and buy a new smartphone");
+        cv.put(TasksTable.Entry.COLUMN_DESCRIPTION, "I need someone who is tech savvy and can help me choose the best possible smartphone for me");
+        cv.put(TasksTable.Entry.COLUMN_LOCATION, "London, Cripplegate 39");
+        cv.put(TasksTable.Entry.COLUMN_CREATION_DATE, 1497415674);
+        cv.put(TasksTable.Entry.COLUMN_DUE_DATE, 1498515674);
+        cv.put(TasksTable.Entry.COLUMN_REWARD, 45.00);
+        cv.put(TasksTable.Entry.COLUMN_JOB_TYPE, "Advices & Query");
+        cv.put(TasksTable.Entry.COLUMN_OWNER_ID, 1);
+        db.insert(Entry.TABLE_NAME, null, cv);
+
+        cv = new ContentValues();
+        cv.put(TasksTable.Entry.COLUMN_TITLE, "Help me organize my CV");
+        cv.put(TasksTable.Entry.COLUMN_DESCRIPTION, "I need someone who can advice me on how to write my CV in the best possible way");
+        cv.put(TasksTable.Entry.COLUMN_LOCATION, "London, Walbrook 18");
+        cv.put(TasksTable.Entry.COLUMN_CREATION_DATE, 1497415674);
+        cv.put(TasksTable.Entry.COLUMN_DUE_DATE, 1498515674);
+        cv.put(TasksTable.Entry.COLUMN_REWARD, 25.00);
+        cv.put(TasksTable.Entry.COLUMN_JOB_TYPE, "Advices & Query");
+        cv.put(TasksTable.Entry.COLUMN_OWNER_ID, 1);
+        db.insert(Entry.TABLE_NAME, null, cv);
+
     }
 }

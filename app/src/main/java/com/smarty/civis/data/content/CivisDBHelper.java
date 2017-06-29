@@ -5,7 +5,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import com.smarty.civis.data.tables.TableInterface;
-import com.smarty.civis.utils.DatabaseUtils;
 
 /**
  * Created by mohammed on 6/26/17.
@@ -30,6 +29,7 @@ public class CivisDBHelper extends SQLiteOpenHelper
         for(TableInterface table:tables) {
             table.onCreate(db);
         }
+
     }
 
     @Override

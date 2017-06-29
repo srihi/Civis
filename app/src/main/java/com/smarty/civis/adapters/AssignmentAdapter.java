@@ -11,6 +11,10 @@ import android.widget.TextView;
 import com.smarty.civis.R;
 import com.smarty.civis.models.Task;
 
+/**
+ * Created by itaseski.
+ */
+
 public class AssignmentAdapter extends RecyclerView.Adapter<AssignmentAdapter.OfferViewHolder> {
 
     private final Context context;
@@ -63,7 +67,7 @@ public class AssignmentAdapter extends RecyclerView.Adapter<AssignmentAdapter.Of
     }
 
     public interface AssignmentAdapterOnClickHandler {
-        void onClick(int position);
+        void onClick(int position, Task task);
     }
 
     class OfferViewHolder extends RecyclerView.ViewHolder {
@@ -81,7 +85,9 @@ public class AssignmentAdapter extends RecyclerView.Adapter<AssignmentAdapter.Of
             title.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    clickHandler.onClick(getAdapterPosition());
+                    if (clickHandler != null) {
+                        clickHandler.onClick(getAdapterPosition(), new Task(mCursor));
+                    }
                 }
             });
 

@@ -12,6 +12,10 @@ import android.view.MenuItem;
 import com.smarty.civis.R;
 import com.smarty.civis.adapters.ListFragmentPagerAdapter;
 
+/**
+ * Created by itaseski.
+ */
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
