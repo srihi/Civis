@@ -115,8 +115,8 @@ public class PageFragment extends Fragment implements AssignmentAdapter.Assignme
                 return new CursorLoader(getActivity(),
                         CivisContract.BASE_CONTENT_URI.buildUpon().appendPath(TasksTable.PATH_TASKS).build(),
                         null,
-                        null,
-                        null,
+                        TasksTable.Entry.COLUMN_STATUS + "=?",
+                        new String[]{Integer.toString(Task.ACTIVE)},
                         null);
             default:
                 throw new RuntimeException("Loader not implemented: " + id);

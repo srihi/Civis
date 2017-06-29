@@ -43,6 +43,7 @@ public abstract class  ImprovedContentProvider extends ContentProvider
             throw new SQLException("Unknown Uri "+uri);
 
         returnedCursor.setNotificationUri(getContext().getContentResolver(),uri);
+
         return returnedCursor;
     }
 
