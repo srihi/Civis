@@ -1,16 +1,19 @@
 package com.smarty.civis.activities;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-
 import com.smarty.civis.R;
 import com.smarty.civis.adapters.ListFragmentPagerAdapter;
+
+/**
+ * Created by itaseski.
+ */
 
 /**
  * Created by itaseski.
@@ -28,7 +31,6 @@ public class MainActivity extends AppCompatActivity {
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.sliding_tabs);
         tabLayout.setupWithViewPager(viewPager);
-
     }
 
     @Override
