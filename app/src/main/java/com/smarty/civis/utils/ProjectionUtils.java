@@ -18,26 +18,27 @@ public class ProjectionUtils
             TasksTable.Entry.COLUMN_DESCRIPTION,
             TasksTable.Entry.COLUMN_JOB_TYPE,
             TasksTable.Entry.COLUMN_REWARD,
+            TasksTable.Entry.COLUMN_IS_REQUEST,
             TasksTable.Entry.COLUMN_CREATION_DATE,
             TasksTable.Entry.COLUMN_DUE_DATE,
             TasksTable.Entry.COLUMN_LOCATION,
-            TasksTable.Entry.COLUMN_IS_REQUEST,
+            TasksTable.Entry.COLUMN_STATUS,
             TasksTable.Entry.COLUMN_OWNER_ID,
             TasksTable.Entry.COLUMN_TAKEN_BY_ID,
-            TasksTable.Entry.COLUMN_STATUS
     };
+
     public static final int INDEX_TASK_ID = 0;
     public static final int INDEX_TASK_TITLE = 1;
     public static final int INDEX_TASK_DESC = 2;
     public static final int INDEX_TASK_JOB_TYPE = 3;
     public static final int INDEX_TASK_REWARD = 4;
-    public static final int INDEX_TASK_CREATION_DATE = 5;
-    public static final int INDEX_TASK_DUE_DATE = 6;
-    public static final int INDEX_TASK_LOCATION = 7;
-    public static final int INDEX_TASK_IS_REQUEST = 8;
-    public static final int INDEX_TASK_OWNER_ID = 9;
-    public static final int INDEX_TASK_TAKEN_BY_ID = 10;
-    public static final int INDEX_TASK_STATUS = 11;
+    public static final int INDEX_TASK_IS_REQUEST = 5;
+    public static final int INDEX_TASK_CREATION_DATE = 6;
+    public static final int INDEX_TASK_DUE_DATE = 7;
+    public static final int INDEX_TASK_LOCATION = 8;
+    public static final int INDEX_TASK_STATUS = 9;
+    public static final int INDEX_TASK_OWNER_ID = 10;
+    public static final int INDEX_TASK_TAKEN_BY_ID = 11;
 
     /*
         Should be The same order as index below

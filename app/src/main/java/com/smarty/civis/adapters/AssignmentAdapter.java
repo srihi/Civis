@@ -21,6 +21,10 @@ import java.util.List;
 import static com.smarty.civis.models.Task.ACTIVE;
 import static com.smarty.civis.models.Task.PAID;
 
+/**
+ * Created by itaseski.
+ */
+
 public class AssignmentAdapter extends RecyclerView.Adapter<AssignmentAdapter.OfferViewHolder> {
 
     private final Context mContext;
@@ -115,6 +119,18 @@ public class AssignmentAdapter extends RecyclerView.Adapter<AssignmentAdapter.Of
             case Task.EXPIRED:
             default:
         }
+
+        if (mCursor == null) {
+            return;
+        }
+        mCursor.moveToPosition(position);
+
+        Task task = new Task(mCursor);
+
+        holder.title.setText(task.getTitle());
+        holder.price.setText("$" + String.valueOf(task.getReward()));
+        holder.location.setText(task.getLocation());
+
     }
 
     @Override
@@ -124,7 +140,7 @@ public class AssignmentAdapter extends RecyclerView.Adapter<AssignmentAdapter.Of
     }
 
     public interface AssignmentAdapterOnClickHandler {
-        void onClick(int position);
+        void onClick(int position, Task task);
     }
 
     class OfferViewHolder extends RecyclerView.ViewHolder {
@@ -146,7 +162,10 @@ public class AssignmentAdapter extends RecyclerView.Adapter<AssignmentAdapter.Of
             title.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    clickHandler.onClick(getAdapterPosition());
+                    if (clickHandler != null) {
+                        mCursor.moveToPosition(getAdapterPosition());
+                        clickHandler.onClick(getAdapterPosition(), new Task(mCursor));
+                    }
                 }
             });
 

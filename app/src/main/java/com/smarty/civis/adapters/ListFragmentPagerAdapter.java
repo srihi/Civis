@@ -13,20 +13,24 @@ import android.text.style.ImageSpan;
 import com.smarty.civis.R;
 import com.smarty.civis.fragments.PageFragment;
 
+/**
+ * Created by itaseski.
+ */
+
 public class ListFragmentPagerAdapter extends android.support.v4.app.FragmentPagerAdapter {
 
     Context context;
 
-    final int PAGE_COUNT = 2;
+    final int PAGE_COUNT = 1;
 
     private String tabTitles[] = {
             "Assignments",
-            "Bookmarks"
+            //"Bookmarks"
     };
 
     private int[] imageResId = {
             R.drawable.ic_assignment_black_24dp,
-            R.drawable.ic_bookmark_black_24dp
+            //R.drawable.ic_bookmark_black_24dp
     };
 
     public ListFragmentPagerAdapter(FragmentManager fragmentManager, Context context) {

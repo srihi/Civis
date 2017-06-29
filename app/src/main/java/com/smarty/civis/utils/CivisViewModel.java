@@ -1,4 +1,4 @@
-package com.smarty.civis.viewmodel;
+package com.smarty.civis.utils;
 
 import android.content.ContentUris;
 import android.content.ContentValues;
@@ -9,6 +9,7 @@ import android.net.Uri;
 import com.smarty.civis.data.content.CivisContract;
 import com.smarty.civis.data.tables.UsersTable;
 import com.smarty.civis.models.User;
+
 import com.smarty.civis.utils.ProjectionUtils;
 
 /**

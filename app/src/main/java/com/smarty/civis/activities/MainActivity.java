@@ -25,6 +25,10 @@ import com.smarty.civis.viewmodel.CivisViewModel;
 import static android.R.attr.id;
 import static com.smarty.civis.models.Task.ACTIVE;
 
+/**
+ * Created by itaseski.
+ */
+
 public class MainActivity extends AppCompatActivity {
 
     @Override

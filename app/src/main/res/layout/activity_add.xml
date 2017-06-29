@@ -10,23 +10,23 @@
     <ScrollView
         android:id="@+id/sv_add_form"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
+        android:layout_height="match_parent">
+
         <LinearLayout
             android:id="@+id/ll_add_form"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:paddingBottom="@dimen/activity_vertical_margin"
-            android:paddingTop="@dimen/activity_vertical_margin"
             android:paddingLeft="@dimen/activity_horizontal_margin"
             android:paddingRight="@dimen/activity_horizontal_margin"
-            >
+            android:paddingTop="@dimen/activity_vertical_margin">
+
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/til_add_form_title"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                >
+                android:layout_height="wrap_content">
+
                 <AutoCompleteTextView
                     android:id="@+id/tv_add_form_title"
                     android:layout_width="match_parent"
@@ -35,126 +35,101 @@
                     android:inputType="text"
                     android:maxLines="1" />
             </android.support.design.widget.TextInputLayout>
+
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/til_add_form_desc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/activity_vertical_margin"
-                >
+                android:layout_marginTop="@dimen/activity_vertical_margin">
+
                 <AutoCompleteTextView
                     android:id="@+id/tv_add_form_desc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/add_form_desc_hint"
-                    android:inputType="textMultiLine"
                     android:height="70dp"
-                    />
+                    android:hint="@string/add_form_desc_hint"
+                    android:inputType="textMultiLine" />
             </android.support.design.widget.TextInputLayout>
+
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/til_add_form_price"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/activity_vertical_margin"
-                >
+                android:layout_marginTop="@dimen/activity_vertical_margin">
+
                 <AutoCompleteTextView
                     android:id="@+id/tv_add_form_price"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/add_form_price_hint"
                     android:inputType="numberDecimal"
-                    android:maxLines="1"
-                    />
+                    android:maxLines="1" />
             </android.support.design.widget.TextInputLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:layout_marginTop="@dimen/activity_vertical_margin"
-                >
+                android:orientation="horizontal">
+
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:paddingRight="8dp"
                     android:hint="@string/add_form_date_hint"
-                    />
+                    android:paddingRight="8dp" />
+
                 <EditText
                     android:id="@+id/et_add_form_date"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
-                    android:inputType="date"
                     android:focusable="false"
-                    android:onClick="pickDate"
-                    />
+                    android:inputType="date"
+                    android:onClick="pickDate" />
             </LinearLayout>
-            <RadioGroup
-                android:id="@+id/rg_add_form_offer_or_need"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="@dimen/activity_vertical_margin"
-                android:checkedButton="@+id/rb_add_form_need"
-                >
-                <RadioButton
-                    android:id="@+id/rb_add_form_need"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/add_form_need_text"
-                    />
-                <RadioButton
-                    android:id="@+id/rb_add_form_offer"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/add_form_offer_text"
-                    android:clickable="false"
-                    />
-            </RadioGroup>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:layout_marginTop="@dimen/activity_vertical_margin"
-                >
+                android:orientation="horizontal">
+
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="start|center"
-                    android:text="@string/add_form_type_text"
-                    />
+                    android:text="@string/add_form_type_text" />
+
                 <android.support.v7.widget.AppCompatSpinner
                     android:id="@+id/spinner_add_form_types"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="2"
-                    />
+                    android:layout_weight="2" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:layout_marginTop="32dp"
-                >
+                android:orientation="horizontal">
                 <!-- Frame layout For Ripple Effect -->
                 <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/colorAccent"
-                    >
+                    android:background="@color/colorAccent">
+
                     <Button
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/add_form_submit_button"
-                        android:textColor="#fff"
-                        android:gravity="center"
                         android:background="?android:attr/selectableItemBackground"
-                        android:paddingStart="8dp"
-                        android:paddingEnd="8dp"
+                        android:gravity="center"
                         android:onClick="addService"
-                        />
+                        android:paddingEnd="8dp"
+                        android:paddingStart="8dp"
+                        android:text="@string/add_form_submit_button"
+                        android:textColor="#fff" />
                 </FrameLayout>
             </LinearLayout>
         </LinearLayout>

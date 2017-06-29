@@ -1,6 +1,7 @@
 package com.smarty.civis.data.tables;
 
 import android.content.ContentValues;
+import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
@@ -11,7 +12,7 @@ import android.net.Uri;
 
 public interface TableInterface
 {
-    public void onCreate(SQLiteDatabase db);
+    public void onCreate(SQLiteDatabase db, Context context);
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion);
     public Cursor query(SQLiteDatabase db, Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder);
     public Uri insert(SQLiteDatabase db,Uri uri, ContentValues values);

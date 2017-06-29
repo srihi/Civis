@@ -31,8 +31,6 @@ public class AddActivity extends AppCompatActivity
     private TextInputLayout price_textInputLayout;
     private AutoCompleteTextView price_textview;
     private EditText dueDate_edittext;
-    private RadioGroup offer_or_need_radioGroup;
-    private RadioButton need_radioButton;
     private AppCompatSpinner types_spinner;
 
     private Date dueDate = Calendar.getInstance().getTime();
@@ -50,8 +48,6 @@ public class AddActivity extends AppCompatActivity
         price_textInputLayout = (TextInputLayout) findViewById(R.id.til_add_form_price);
         price_textview = (AutoCompleteTextView) findViewById(R.id.tv_add_form_price);
         dueDate_edittext = (EditText) findViewById(R.id.et_add_form_date);
-        offer_or_need_radioGroup = (RadioGroup) findViewById(R.id.rg_add_form_offer_or_need);
-        need_radioButton = (RadioButton) findViewById(R.id.rb_add_form_need);
 
         initActionBar();
         initTypesSpinner();

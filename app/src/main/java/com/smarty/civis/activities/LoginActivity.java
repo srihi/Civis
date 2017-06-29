@@ -77,6 +77,7 @@ public class LoginActivity extends AppCompatActivity {
         public void onResponse(Call<User> call, Response<User> response) {
             if (response.code() == HttpURLConnection.HTTP_OK) {
                 User user = response.body();
+                PrefUtils.putUserId(LoginActivity.this, user.getUuid());
                 TaskUpdateService.insertNewUser(LoginActivity.this, user.getContentValues());
                 startMainActivity();
             } else {

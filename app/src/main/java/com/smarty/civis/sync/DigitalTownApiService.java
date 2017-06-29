@@ -77,7 +77,7 @@ public class DigitalTownApiService {
         @POST("sso/token")
         Call<TokenResponse> token(@Body TokenRequest tokenRequest);
 
-        @POST("sso/refresh")
+        @POST("sso/token/refresh")
         Call<TokenResponse> refreshToken(@Body TokenRefreshRequest tokenRefreshRequest);
 
         @GET("sso/users")

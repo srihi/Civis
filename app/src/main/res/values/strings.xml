@@ -25,16 +25,16 @@
     <string name="add_form_need_text">I Need</string>
     <string name="add_form_type_text">Type</string>
     <string-array name="add_form_types">
-        <item>Babysitting</item>
-        <item>Cleaning</item>
-        <item>Educational</item>
-        <item>Maintenance</item>
-        <item>Printing</item>
+        <item>Education</item>
+        <item>Computer service</item>
+        <item>Translating</item>
+        <item>Social</item>
+        <item>Advices and Query</item>
+        <item>Writing</item>
         <item>Repairing</item>
-        <item>Shopping</item>
-        <item>Videotaping</item>
+        <item>Delivery</item>
     </string-array>
-    <string name="add_form_submit_button">Add Service</string>
+    <string name="add_form_submit_button">Add Assignment</string>
     <string name="error_empty_title">Task title is required</string>
     <string name="error_empty_desc">Task Description is required</string>
     <string name="error_wrong_price">Task Reward is required</string>
@@ -61,6 +61,7 @@
     <string name="pref_uid_key">UserIdKey</string>
     <string name="pref_access_token_key">AccessTokenKey</string>
     <string name="pref_code_key">CodeKey</string>
+    <string name="init_user_id_key">initIdKey</string>
 
     <!-- MyTasks screen -->
     <string name="my_requests">My Requests</string>

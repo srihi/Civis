@@ -3,9 +3,11 @@ package com.smarty.civis.fragments;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
+import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -15,16 +17,30 @@ import android.view.ViewGroup;
 
 import com.smarty.civis.R;
 import com.smarty.civis.activities.AddActivity;
+import com.smarty.civis.activities.DetailsActivity;
 import com.smarty.civis.adapters.AssignmentAdapter;
+import com.smarty.civis.data.content.CivisContract;
+import com.smarty.civis.data.tables.TasksTable;
+import com.smarty.civis.models.Task;
+
+/**
+ * Created by itaseski.
+ */
 
 public class PageFragment extends Fragment implements AssignmentAdapter.AssignmentAdapterOnClickHandler,
         LoaderManager.LoaderCallbacks<Cursor> {
+
+    private static final int LOADER_ID = 904328;
 
     private static final String ARG_PAGE = "page";
 
     private int page;
 
     private FloatingActionButton fButton;
+
+    private RecyclerView recyclerView;
+
+    private AssignmentAdapter assignmentAdapter;
 
     public PageFragment() {
 
@@ -36,6 +52,12 @@ public class PageFragment extends Fragment implements AssignmentAdapter.Assignme
         PageFragment fragment = new PageFragment();
         fragment.setArguments(bundle);
         return fragment;
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        getActivity().getSupportLoaderManager().initLoader(LOADER_ID, null, this);
+        super.onActivityCreated(savedInstanceState);
     }
 
     @Override
@@ -60,37 +82,55 @@ public class PageFragment extends Fragment implements AssignmentAdapter.Assignme
             }
         });
 
-        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.rv_assignment);
-
-        AssignmentAdapter adapter = new AssignmentAdapter(getContext());
-
-        adapter.setClickHandler(this);
-
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-
-        recyclerView.setAdapter(adapter);
-
         return view;
     }
 
     @Override
-    public void onClick(int position) {
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        recyclerView = (RecyclerView) view.findViewById(R.id.rv_assignment);
 
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        recyclerView.setHasFixedSize(true);
+
+        assignmentAdapter = new AssignmentAdapter(getContext());
+
+        assignmentAdapter.setClickHandler(this);
+
+        recyclerView.setAdapter(assignmentAdapter);
+
+    }
+
+    @Override
+    public void onClick(int position, Task task) {
+        Intent intent = new Intent(getContext(), DetailsActivity.class);
+        intent.putExtra(DetailsActivity.ARG_TASK, task);
+        startActivity(intent);
     }
 
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
-        return null;
+        switch (id) {
+            case LOADER_ID:
+                return new CursorLoader(getActivity(),
+                        CivisContract.BASE_CONTENT_URI.buildUpon().appendPath(TasksTable.PATH_TASKS).build(),
+                        null,
+                        null,
+                        null,
+                        null);
+            default:
+                throw new RuntimeException("Loader not implemented: " + id);
+        }
     }
 
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
-
+        assignmentAdapter.setCursor(data);
     }
 
     @Override
     public void onLoaderReset(Loader<Cursor> loader) {
-
+        assignmentAdapter.setCursor(null);
     }
 
 }
