@@ -66,7 +66,7 @@ public class AssignmentAdapter extends RecyclerView.Adapter<AssignmentAdapter.Of
         }
         mCursor.moveToPosition(position);
 
-        Task task = new Task(mCursor);
+        final Task task = new Task(mCursor);
 
         holder.title.setText(task.getTitle());
         holder.price.setText(String.valueOf(task.getReward()));
@@ -75,33 +75,63 @@ public class AssignmentAdapter extends RecyclerView.Adapter<AssignmentAdapter.Of
         holder.dueDate.setText(DateUtils.getRelativeTimeSpanString(task.getEndTime()));
 
         // Add appropriate buttons
-        switch (task.getStatus()){
+        switch (task.getStatus()) {
             // If the task is reserved and the user is the owner give the option to accept or refuse
             case Task.RESERVED:
-                if(PrefUtils.getUserId(mContext) == task.getOwnerId()) {
+                if (PrefUtils.getUserId(mContext) == task.getOwnerId()) {
                     Button btnAccept = holder.button1;
                     Button btnRefuse = holder.button2;
                     btnAccept.setText(R.string.accept);
                     btnRefuse.setText(R.string.refuse);
                     btnAccept.setVisibility(View.VISIBLE);
                     btnRefuse.setVisibility(View.VISIBLE);
+                    btnAccept.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            TaskUpdateService.updateTaskStatus(mContext, task, Task.IN_PROGRESS);
+                            v.setVisibility(View.GONE);
+                        }
+                    });
+                    btnRefuse.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            TaskUpdateService.updateTaskStatus(mContext, task, Task.ACTIVE);
+                            v.setVisibility(View.GONE);
+                        }
+                    });
                 }
                 break;
             // If the task is in progress and the user is the handler give the option to set as done
             case Task.IN_PROGRESS:
-                if(PrefUtils.getUserId(mContext) == task.getTakenBy()) {
+                if (PrefUtils.getUserId(mContext) == task.getTakenBy()) {
                     Button btnDone = holder.button1;
                     btnDone.setText(R.string.done);
                     btnDone.setVisibility(View.VISIBLE);
+                    btnDone.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            TaskUpdateService.updateTaskStatus(mContext, task, Task.DONE);
+                            v.setVisibility(View.GONE);
+                        }
+                    });
+
                     holder.button2.setVisibility(View.GONE);
                 }
                 break;
             // If the task is done and the user is the owner give the option to pay
             case Task.DONE:
-                if(PrefUtils.getUserId(mContext) == task.getOwnerId()) {
+                if (PrefUtils.getUserId(mContext) == task.getOwnerId()) {
                     Button btnPay = holder.button1;
                     btnPay.setText(R.string.pay);
                     btnPay.setVisibility(View.VISIBLE);
+                    btnPay.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            TaskUpdateService.updateTaskStatus(mContext, task, Task.PAID);
+                            v.setVisibility(View.GONE);
+                        }
+                    });
+
                     holder.button2.setVisibility(View.GONE);
                 }
                 break;
@@ -109,6 +139,8 @@ public class AssignmentAdapter extends RecyclerView.Adapter<AssignmentAdapter.Of
             case Task.PAID:
             case Task.EXPIRED:
             default:
+                holder.button1.setVisibility(View.GONE);
+                holder.button2.setVisibility(View.GONE);
         }
     }
 
