@@ -56,7 +56,7 @@ public class AssignmentAdapter extends RecyclerView.Adapter<AssignmentAdapter.Of
         Task task = new Task(mCursor);
 
         holder.title.setText(task.getTitle());
-        holder.price.setText(String.valueOf(task.getReward()));
+        holder.price.setText("$" + String.valueOf(task.getReward()));
         holder.location.setText(task.getLocation());
 
     }
@@ -86,6 +86,7 @@ public class AssignmentAdapter extends RecyclerView.Adapter<AssignmentAdapter.Of
                 @Override
                 public void onClick(View v) {
                     if (clickHandler != null) {
+                        mCursor.moveToPosition(getAdapterPosition());
                         clickHandler.onClick(getAdapterPosition(), new Task(mCursor));
                     }
                 }

@@ -102,12 +102,6 @@ public class PageFragment extends Fragment implements AssignmentAdapter.Assignme
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
-        assignmentAdapter.notifyDataSetChanged();
-    }
-
-    @Override
     public void onClick(int position, Task task) {
         Intent intent = new Intent(getContext(), DetailsActivity.class);
         intent.putExtra(DetailsActivity.ARG_TASK, task);

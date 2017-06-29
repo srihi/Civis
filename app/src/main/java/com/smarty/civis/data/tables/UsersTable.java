@@ -56,6 +56,7 @@ public class UsersTable implements TableInterface
                 Entry.COLUMN_PHONE+" TEXT NOT NULL"+
                 ");";
         db.execSQL(CREATE_USERS_TABLE);
+
     }
 
     @Override
