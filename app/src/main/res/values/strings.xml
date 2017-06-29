@@ -47,7 +47,7 @@
     <string name="sample_user_name">John Smith</string>
     <string name="title_activity_profile">Profile</string>
     <string name="title_profile">Profile</string>
-    <string name="title_performed">Performed</string>
+    <string name="title_requested">Requested</string>
     <string name="title_offered">Offered</string>
 
     <!-- Strings related to details screen -->
@@ -65,5 +65,11 @@
     <!-- MyTasks screen -->
     <string name="my_requests">My Requests</string>
     <string name="my_offers">My Offers</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_performed">Performed</string>
+    <string name="requested_jobs">Requested Jobs</string>
+    <string name="offered_jobs">Offered Jobs</string>
 
 </resources>

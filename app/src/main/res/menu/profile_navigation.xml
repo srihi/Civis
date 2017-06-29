@@ -6,10 +6,15 @@
         android:icon="@drawable/ic_account_box_black_24dp"
         android:title="@string/title_profile" />
 
+    <!--<item-->
+        <!--android:id="@+id/nav_jobs_performed"-->
+        <!--android:icon="@drawable/ic_done_black_24dp"-->
+        <!--android:title="@string/title_performed" />-->
+
     <item
-        android:id="@+id/nav_jobs_performed"
-        android:icon="@drawable/ic_done_black_24dp"
-        android:title="@string/title_performed" />
+        android:id="@+id/nav_jobs_requested"
+        android:icon="@drawable/ic_assignment_black_24dp"
+        android:title="@string/title_requested" />
 
     <item
         android:id="@+id/nav_jobs_offered"
