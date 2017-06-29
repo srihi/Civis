@@ -142,7 +142,9 @@ public class LoginActivity extends AppCompatActivity {
         super.onResume();
         Uri uri = getIntent().getData();
         if (uri != null) {
-            String code = uri.getQueryParameter("code");
+            String code = uri.getQueryParameter("code") != null ?
+                    uri.getQueryParameter("code") :
+                    uri.getQueryParameter("accessToken");
             if (code != null) {
                 PrefUtils.putCode(this, uri);
 
