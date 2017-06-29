@@ -132,6 +132,11 @@ public class LoginActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void startRegister(View view) {
+        Intent intent = AuthUtils.getRegisterIntent();
+        startActivity(intent);
+    }
+
     @Override
     protected void onResume() {
         super.onResume();
