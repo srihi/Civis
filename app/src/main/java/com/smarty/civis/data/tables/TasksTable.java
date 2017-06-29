@@ -158,7 +158,7 @@ public class TasksTable implements TableInterface
         cv.put(TasksTable.Entry.COLUMN_CREATION_DATE, 1497415674);
         cv.put(TasksTable.Entry.COLUMN_DUE_DATE, 1498515674);
         cv.put(TasksTable.Entry.COLUMN_REWARD, 30.00);
-        cv.put(TasksTable.Entry.COLUMN_JOB_TYPE, "Computer service & repair");
+        cv.put(TasksTable.Entry.COLUMN_JOB_TYPE, "Computer service");
         cv.put(TasksTable.Entry.COLUMN_OWNER_ID, 1);
         db.insert(Entry.TABLE_NAME, null, cv);
 
@@ -191,7 +191,7 @@ public class TasksTable implements TableInterface
         cv.put(TasksTable.Entry.COLUMN_CREATION_DATE, 1497415674);
         cv.put(TasksTable.Entry.COLUMN_DUE_DATE, 1498515674);
         cv.put(TasksTable.Entry.COLUMN_REWARD, 35.00);
-        cv.put(TasksTable.Entry.COLUMN_JOB_TYPE, "Computer service & repair");
+        cv.put(TasksTable.Entry.COLUMN_JOB_TYPE, "Computer service");
         cv.put(TasksTable.Entry.COLUMN_OWNER_ID, 1);
         db.insert(Entry.TABLE_NAME, null, cv);
 
@@ -224,7 +224,7 @@ public class TasksTable implements TableInterface
         cv.put(TasksTable.Entry.COLUMN_CREATION_DATE, 1497415674);
         cv.put(TasksTable.Entry.COLUMN_DUE_DATE, 1498515674);
         cv.put(TasksTable.Entry.COLUMN_REWARD, 45.00);
-        cv.put(TasksTable.Entry.COLUMN_JOB_TYPE, "Advices & Query");
+        cv.put(TasksTable.Entry.COLUMN_JOB_TYPE, "Advices and Query");
         cv.put(TasksTable.Entry.COLUMN_OWNER_ID, 1);
         db.insert(Entry.TABLE_NAME, null, cv);
 
@@ -235,7 +235,7 @@ public class TasksTable implements TableInterface
         cv.put(TasksTable.Entry.COLUMN_CREATION_DATE, 1497415674);
         cv.put(TasksTable.Entry.COLUMN_DUE_DATE, 1498515674);
         cv.put(TasksTable.Entry.COLUMN_REWARD, 25.00);
-        cv.put(TasksTable.Entry.COLUMN_JOB_TYPE, "Advices & Query");
+        cv.put(TasksTable.Entry.COLUMN_JOB_TYPE, "Advices and Query");
         cv.put(TasksTable.Entry.COLUMN_OWNER_ID, 1);
         db.insert(Entry.TABLE_NAME, null, cv);
 

@@ -65,7 +65,7 @@ public class DetailsActivity extends AppCompatActivity implements LoaderManager.
     }
 
     private void loadData(Task task) {
-        price.setText("$ " + task.getReward());
+        price.setText("$" + task.getReward());
         title.setText(task.getTitle());
         description.setText(task.getDescription());
         Date date = new Date(task.getEndTime());
@@ -97,7 +97,6 @@ public class DetailsActivity extends AppCompatActivity implements LoaderManager.
                         null,
                         null,
                         null);
-
             default:
                 throw new RuntimeException("Loader not implemented: " + id);
         }
