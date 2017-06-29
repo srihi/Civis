@@ -140,7 +140,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="3dp"
-                tools:text="Civis Score: 50"
+                android:text="Civis Score: 50"
+                android:textSize="16sp"
                 app:layout_constraintLeft_toLeftOf="@+id/details_user_name"
                 app:layout_constraintBottom_toBottomOf="@+id/imageView3"
                 android:layout_marginStart="3dp" />

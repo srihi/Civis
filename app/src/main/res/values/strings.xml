@@ -61,6 +61,7 @@
     <string name="pref_uid_key">UserIdKey</string>
     <string name="pref_access_token_key">AccessTokenKey</string>
     <string name="pref_code_key">CodeKey</string>
+    <string name="init_user_id_key">initIdKey</string>
 
     <!-- MyTasks screen -->
     <string name="my_requests">My Requests</string>
