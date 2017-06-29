@@ -13,6 +13,7 @@ import android.provider.BaseColumns;
 
 import com.smarty.civis.R;
 import com.smarty.civis.data.content.CivisContract;
+import com.smarty.civis.models.Task;
 
 /**
  * Created by mohammed on 6/26/17.
@@ -122,6 +123,7 @@ public class TasksTable implements TableInterface {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.remove(context.getString(R.string.init_user_id_key));
         editor.apply();
+        int i = 0;
 
         ContentValues cv = new ContentValues();
         cv.put(TasksTable.Entry.COLUMN_TITLE, "Pick up my prescription from chemist");
@@ -131,9 +133,23 @@ public class TasksTable implements TableInterface {
         cv.put(TasksTable.Entry.COLUMN_DUE_DATE, 1498515674);
         cv.put(TasksTable.Entry.COLUMN_REWARD, 40.00);
         cv.put(TasksTable.Entry.COLUMN_JOB_TYPE, "Delivery");
-        cv.put(TasksTable.Entry.COLUMN_OWNER_ID, id);
+        cv.put(TasksTable.Entry.COLUMN_OWNER_ID, 385);
+        cv.put(TasksTable.Entry.COLUMN_STATUS, Task.ACTIVE);
         db.insert(Entry.TABLE_NAME, null, cv);
 
+        cv = new ContentValues();
+        cv.put(TasksTable.Entry.COLUMN_TITLE, "Pick up my son from school");
+        cv.put(TasksTable.Entry.COLUMN_DESCRIPTION, "I need someone who can pick up my son from school");
+        cv.put(TasksTable.Entry.COLUMN_LOCATION, "London, Aldgate 22");
+        cv.put(TasksTable.Entry.COLUMN_CREATION_DATE, 1497415674);
+        cv.put(TasksTable.Entry.COLUMN_DUE_DATE, 1498515674);
+        cv.put(TasksTable.Entry.COLUMN_REWARD, 40.00);
+        cv.put(TasksTable.Entry.COLUMN_JOB_TYPE, "Delivery");
+        cv.put(TasksTable.Entry.COLUMN_OWNER_ID, 385);
+        cv.put(TasksTable.Entry.COLUMN_STATUS, Task.RESERVED);
+        db.insert(Entry.TABLE_NAME, null, cv);
+
+        i+=1;
         cv = new ContentValues();
         cv.put(TasksTable.Entry.COLUMN_TITLE, "Replace my Windows 10 operating system with Linux Fedora");
         cv.put(TasksTable.Entry.COLUMN_DESCRIPTION, "if you can help me with the installation of Linux Fedora that would be great");
@@ -142,9 +158,12 @@ public class TasksTable implements TableInterface {
         cv.put(TasksTable.Entry.COLUMN_DUE_DATE, 1498515674);
         cv.put(TasksTable.Entry.COLUMN_REWARD, 30.00);
         cv.put(TasksTable.Entry.COLUMN_JOB_TYPE, "Computer service");
-        cv.put(TasksTable.Entry.COLUMN_OWNER_ID, id);
+        cv.put(TasksTable.Entry.COLUMN_OWNER_ID, id + i);
+        cv.put(TasksTable.Entry.COLUMN_TAKEN_BY_ID, 385);
+        cv.put(TasksTable.Entry.COLUMN_STATUS, Task.IN_PROGRESS);
         db.insert(Entry.TABLE_NAME, null, cv);
 
+        i+=1;
         cv = new ContentValues();
         cv.put(TasksTable.Entry.COLUMN_TITLE, "I Need help with translation from Japanese to English");
         cv.put(TasksTable.Entry.COLUMN_DESCRIPTION, "I need help with translation from Japanese to English and you don't have to be professional translator");
@@ -153,9 +172,11 @@ public class TasksTable implements TableInterface {
         cv.put(TasksTable.Entry.COLUMN_DUE_DATE, 1498515674);
         cv.put(TasksTable.Entry.COLUMN_REWARD, 100.00);
         cv.put(TasksTable.Entry.COLUMN_JOB_TYPE, "Translation");
-        cv.put(TasksTable.Entry.COLUMN_OWNER_ID, id);
+        cv.put(TasksTable.Entry.COLUMN_OWNER_ID, id + i);
+        cv.put(TasksTable.Entry.COLUMN_STATUS, Task.EXPIRED);
         db.insert(Entry.TABLE_NAME, null, cv);
 
+        i+=1;
         cv = new ContentValues();
         cv.put(TasksTable.Entry.COLUMN_TITLE, "Help me to get home safely");
         cv.put(TasksTable.Entry.COLUMN_DESCRIPTION, "I am an elderly person who wants to get home safely");
@@ -164,7 +185,8 @@ public class TasksTable implements TableInterface {
         cv.put(TasksTable.Entry.COLUMN_DUE_DATE, 1498515674);
         cv.put(TasksTable.Entry.COLUMN_REWARD, 50.00);
         cv.put(TasksTable.Entry.COLUMN_JOB_TYPE, "Social");
-        cv.put(TasksTable.Entry.COLUMN_OWNER_ID, id);
+        cv.put(TasksTable.Entry.COLUMN_OWNER_ID, 385);
+        cv.put(TasksTable.Entry.COLUMN_STATUS, Task.DONE);
         db.insert(Entry.TABLE_NAME, null, cv);
 
         cv = new ContentValues();
@@ -175,7 +197,8 @@ public class TasksTable implements TableInterface {
         cv.put(TasksTable.Entry.COLUMN_DUE_DATE, 1498515674);
         cv.put(TasksTable.Entry.COLUMN_REWARD, 35.00);
         cv.put(TasksTable.Entry.COLUMN_JOB_TYPE, "Computer service");
-        cv.put(TasksTable.Entry.COLUMN_OWNER_ID, id);
+        cv.put(TasksTable.Entry.COLUMN_OWNER_ID, id + i);
+        cv.put(TasksTable.Entry.COLUMN_STATUS, Task.PAID);
         db.insert(Entry.TABLE_NAME, null, cv);
 
         cv = new ContentValues();
@@ -186,7 +209,8 @@ public class TasksTable implements TableInterface {
         cv.put(TasksTable.Entry.COLUMN_DUE_DATE, 1498515674);
         cv.put(TasksTable.Entry.COLUMN_REWARD, 75.00);
         cv.put(TasksTable.Entry.COLUMN_JOB_TYPE, "Social");
-        cv.put(TasksTable.Entry.COLUMN_OWNER_ID, id);
+        cv.put(TasksTable.Entry.COLUMN_OWNER_ID, id + i);
+        cv.put(TasksTable.Entry.COLUMN_STATUS, Task.RESERVED);
         db.insert(Entry.TABLE_NAME, null, cv);
 
         cv = new ContentValues();

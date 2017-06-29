@@ -12,6 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.smarty.civis.R;
+import com.smarty.civis.data.TaskUpdateService;
 import com.smarty.civis.models.Task;
 import com.smarty.civis.utils.PrefUtils;
 
@@ -78,27 +79,31 @@ public class AssignmentAdapter extends RecyclerView.Adapter<AssignmentAdapter.Of
             // If the task is reserved and the user is the owner give the option to accept or refuse
             case Task.RESERVED:
                 if(PrefUtils.getUserId(mContext) == task.getOwnerId()) {
-                    Button btnAccept = new Button(mContext);
-                    Button btnRefuse = new Button(mContext);
+                    Button btnAccept = holder.button1;
+                    Button btnRefuse = holder.button2;
                     btnAccept.setText(R.string.accept);
                     btnRefuse.setText(R.string.refuse);
-                    holder.buttonContainer.addView(btnAccept);
-                    holder.buttonContainer.addView(btnRefuse);
+                    btnAccept.setVisibility(View.VISIBLE);
+                    btnRefuse.setVisibility(View.VISIBLE);
                 }
                 break;
             // If the task is in progress and the user is the handler give the option to set as done
             case Task.IN_PROGRESS:
                 if(PrefUtils.getUserId(mContext) == task.getTakenBy()) {
-                    Button btnDone = new Button(mContext);
+                    Button btnDone = holder.button1;
                     btnDone.setText(R.string.done);
-                    holder.buttonContainer.addView(btnDone);
+                    btnDone.setVisibility(View.VISIBLE);
+                    holder.button2.setVisibility(View.GONE);
                 }
                 break;
             // If the task is done and the user is the owner give the option to pay
             case Task.DONE:
-                Button btnPaid = new Button(mContext);
-                btnPaid.setText(R.string.pay);
-                holder.buttonContainer.addView(btnPaid);
+                if(PrefUtils.getUserId(mContext) == task.getOwnerId()) {
+                    Button btnPay = holder.button1;
+                    btnPay.setText(R.string.pay);
+                    btnPay.setVisibility(View.VISIBLE);
+                    holder.button2.setVisibility(View.GONE);
+                }
                 break;
             case Task.ACTIVE:
             case Task.PAID:
@@ -124,6 +129,8 @@ public class AssignmentAdapter extends RecyclerView.Adapter<AssignmentAdapter.Of
         TextView status;
         TextView dueDate;
         LinearLayout buttonContainer;
+        Button button1;
+        Button button2;
 
         OfferViewHolder(View itemView) {
             super(itemView);
@@ -144,6 +151,8 @@ public class AssignmentAdapter extends RecyclerView.Adapter<AssignmentAdapter.Of
             price = (TextView) itemView.findViewById(R.id.tv_price);
             dueDate = (TextView) itemView.findViewById(R.id.tv_due_date);
             buttonContainer = (LinearLayout) itemView.findViewById(R.id.button_container);
+            button1 = (Button) itemView.findViewById(R.id.button1);
+            button2 = (Button) itemView.findViewById(R.id.button2);
         }
     }
 }
