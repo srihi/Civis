@@ -14,249 +14,248 @@
         android:layout_height="match_parent">
 
 
-    <android.support.constraint.ConstraintLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#F5F5F5">
-
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginTop="8dp"
-            android:background="#fff"
-            app:layout_constraintBottom_toTopOf="@+id/details_description"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintVertical_bias="0.0"
-            app:layout_constraintTop_toBottomOf="@+id/category"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp" />
-
-        <TextView
-            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-            android:id="@+id/price"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:text="25,00 €"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            app:layout_constraintVertical_bias="0.647"
-            app:layout_constraintTop_toTopOf="@+id/imageView6"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView6"
-            app:layout_constraintLeft_toLeftOf="@+id/details_location" />
-
-        <ImageView
-            android:id="@+id/imageView6"
-            android:layout_width="90dp"
-            android:layout_height="90dp"
-            android:layout_marginTop="16dp"
-            android:src="@drawable/cal"
-            app:layout_constraintTop_toBottomOf="@+id/details_location"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toLeftOf="@+id/guideline"
-            android:layout_marginRight="55dp" />
-
-        <TextView
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:id="@+id/details_title"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            tools:text="Looking for an an Android Developer"
-            android:layout_marginTop="16dp"
-            android:layout_marginLeft="16dp"
-            app:layout_constraintLeft_toLeftOf="@+id/imageView"
-            android:layout_marginRight="16dp"
-            app:layout_constraintRight_toRightOf="@+id/imageView"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintTop_toTopOf="@+id/imageView"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp" />
-
-
-        <TextView
-            android:id="@+id/details_description"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            tools:text="I want someone to build me a video streaming app"
-            android:layout_marginTop="24dp"
-            android:layout_marginLeft="8dp"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
-            android:paddingTop="24dp"
-            android:paddingBottom="16dp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            android:layout_marginRight="8dp"
-            android:background="#fff"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintTop_toBottomOf="@+id/imageView6"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp" />
-
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="0dp"
-            android:layout_height="160dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginTop="8dp"
-            android:background="#fff"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/details_description"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp" />
-
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:src="@drawable/profile_pic"
-            app:layout_constraintTop_toTopOf="@+id/imageView2"
-            android:layout_marginTop="16dp"
-            android:layout_marginLeft="16dp"
-            app:layout_constraintLeft_toLeftOf="@+id/imageView2"
-            android:id="@+id/imageView3"
-            android:layout_marginStart="16dp" />
-
-        <TextView
-            android:textSize="25sp"
-            android:id="@+id/details_user_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:text="John Smith"
-            app:layout_constraintTop_toTopOf="@+id/imageView3"
-            app:layout_constraintLeft_toRightOf="@+id/imageView3"
-            android:layout_marginLeft="16dp"
-            android:layout_marginStart="16dp" />
-
-        <TextView
-            android:id="@+id/textView6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="3dp"
-            tools:text="Civis Score: 50"
-            app:layout_constraintLeft_toLeftOf="@+id/details_user_name"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView3"
-            android:layout_marginStart="3dp" />
-
-        <LinearLayout
-            android:id="@+id/editTextContainer"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView2"
-            app:layout_constraintLeft_toLeftOf="@+id/imageView2"
-            app:layout_constraintRight_toLeftOf="@+id/imageView5"
-            app:layout_constraintTop_toBottomOf="@+id/textView6"
-            app:layout_constraintVertical_bias="0.0"
-            app:layout_constraintHorizontal_bias="0.0"
-            android:layout_marginBottom="8dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp">
-            <EditText
-                android:hint="@string/write_a_message"
-                android:id="@+id/editText"
-                android:gravity="bottom"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:inputType="text"
-                />
-        </LinearLayout>
-
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@android:drawable/ic_menu_send"
-            android:layout_marginRight="8dp"
-            app:layout_constraintRight_toRightOf="@+id/imageView2"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView2"
-            android:layout_marginBottom="24dp"
-            app:layout_constraintTop_toTopOf="@+id/editTextContainer"
-            android:layout_marginTop="8dp"
-            android:id="@+id/imageView5"
-            app:layout_constraintVertical_bias="1.0"
-            android:layout_marginEnd="8dp" />
-
-        <TextView
-            android:id="@+id/details_location"
-            android:layout_width="wrap_content"
-            android:textSize="12sp"
-            android:layout_height="wrap_content"
-            android:text="London, Cambridge 7994"
-            android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/details_title"
-            app:layout_constraintRight_toRightOf="@+id/details_title" />
-
-        <TextView
-            android:id="@+id/category"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="12sp"
-            android:layout_marginTop="8dp"
-            android:text="Software Development > Android"
-            app:layout_constraintLeft_toLeftOf="@+id/imageView"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:textStyle="bold"
-            android:id="@+id/day"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginTop="8dp"
-            android:text="25"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView6"
-            app:layout_constraintTop_toTopOf="@+id/imageView6"
-            app:layout_constraintVertical_bias="0.77"
-            android:layout_marginRight="8dp"
-            app:layout_constraintRight_toRightOf="@+id/imageView6"
-            android:layout_marginLeft="8dp"
-            app:layout_constraintLeft_toLeftOf="@+id/imageView6"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp" />
-
-        <TextView
-            android:id="@+id/month"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="June"
-            android:textColor="#fff"
-            android:layout_marginRight="8dp"
-            app:layout_constraintRight_toRightOf="@+id/imageView6"
-            android:layout_marginLeft="8dp"
-            app:layout_constraintLeft_toLeftOf="@+id/imageView6"
-            app:layout_constraintTop_toTopOf="@+id/imageView6"
-            android:layout_marginTop="8dp"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView6"
-            android:layout_marginBottom="8dp"
-            app:layout_constraintVertical_bias="0.13"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp" />
-
-        <android.support.constraint.Guideline
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/guideline"
+        <android.support.constraint.ConstraintLayout
             android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.5" />
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#F5F5F5">
 
-    </android.support.constraint.ConstraintLayout>
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="8dp"
+                android:background="#fff"
+                app:layout_constraintBottom_toTopOf="@+id/details_description"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintVertical_bias="0.0"
+                app:layout_constraintTop_toBottomOf="@+id/category"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp" />
+
+            <TextView
+                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                android:id="@+id/price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="$ 790,00"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintTop_toTopOf="@+id/imageView6"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView6"
+                app:layout_constraintRight_toRightOf="@+id/details_location"
+                />
+
+            <ImageView
+                android:id="@+id/imageView6"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:layout_marginTop="15dp"
+                android:src="@drawable/cal"
+                app:layout_constraintTop_toBottomOf="@+id/details_location"
+                app:layout_constraintLeft_toLeftOf="@+id/details_title"
+                />
+
+            <TextView
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:id="@+id/details_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                tools:text="Looking for an an Android Developer"
+                android:layout_marginTop="16dp"
+                android:layout_marginLeft="16dp"
+                app:layout_constraintLeft_toLeftOf="@+id/imageView"
+                android:layout_marginRight="16dp"
+                app:layout_constraintRight_toRightOf="@+id/imageView"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintTop_toTopOf="@+id/imageView"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp" />
 
 
-</ScrollView>
+            <TextView
+                android:id="@+id/details_description"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                tools:text="I want someone to build me a video streaming app"
+                android:layout_marginTop="24dp"
+                android:layout_marginLeft="8dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:paddingTop="24dp"
+                android:paddingBottom="16dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:layout_marginRight="8dp"
+                android:background="#fff"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintTop_toBottomOf="@+id/imageView6"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp" />
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="0dp"
+                android:layout_height="160dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="8dp"
+                android:background="#fff"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/details_description"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:src="@drawable/profile_pic"
+                app:layout_constraintTop_toTopOf="@+id/imageView2"
+                android:layout_marginTop="16dp"
+                android:layout_marginLeft="16dp"
+                app:layout_constraintLeft_toLeftOf="@+id/imageView2"
+                android:id="@+id/imageView3"
+                android:layout_marginStart="16dp" />
+
+            <TextView
+                android:textSize="25sp"
+                android:id="@+id/details_user_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="John Smith"
+                app:layout_constraintTop_toTopOf="@+id/imageView3"
+                app:layout_constraintLeft_toRightOf="@+id/imageView3"
+                android:layout_marginLeft="16dp"
+                android:layout_marginStart="16dp" />
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
+                tools:text="Civis Score: 50"
+                app:layout_constraintLeft_toLeftOf="@+id/details_user_name"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+                android:layout_marginStart="3dp" />
+
+            <LinearLayout
+                android:id="@+id/editTextContainer"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+                app:layout_constraintLeft_toLeftOf="@+id/imageView2"
+                app:layout_constraintRight_toLeftOf="@+id/imageView5"
+                app:layout_constraintTop_toBottomOf="@+id/textView6"
+                app:layout_constraintVertical_bias="0.0"
+                app:layout_constraintHorizontal_bias="0.0"
+                android:layout_marginBottom="8dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp">
+                <EditText
+                    android:hint="@string/write_a_message"
+                    android:id="@+id/editText"
+                    android:gravity="bottom"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:inputType="text"
+                    />
+            </LinearLayout>
+
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@android:drawable/ic_menu_send"
+                android:layout_marginRight="16dp"
+                app:layout_constraintRight_toRightOf="@+id/imageView2"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+                android:layout_marginBottom="24dp"
+                app:layout_constraintTop_toTopOf="@+id/editTextContainer"
+                android:layout_marginTop="8dp"
+                android:id="@+id/imageView5"
+                app:layout_constraintVertical_bias="1.0"
+                android:layout_marginEnd="16dp" />
+
+            <TextView
+                android:id="@+id/details_location"
+                android:layout_width="wrap_content"
+                android:textSize="12sp"
+                android:layout_height="wrap_content"
+                android:text="London, Cambridge 7994"
+                android:layout_marginTop="8dp"
+                app:layout_constraintTop_toBottomOf="@+id/details_title"
+                app:layout_constraintRight_toRightOf="@+id/details_title" />
+
+            <TextView
+                android:id="@+id/category"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:layout_marginTop="8dp"
+                android:text="Software Development > Android"
+                app:layout_constraintLeft_toLeftOf="@+id/imageView"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:textStyle="bold"
+                android:id="@+id/day"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp"
+                android:text="25"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView6"
+                app:layout_constraintTop_toTopOf="@+id/imageView6"
+                app:layout_constraintVertical_bias="0.77"
+                android:layout_marginRight="8dp"
+                app:layout_constraintRight_toRightOf="@+id/imageView6"
+                android:layout_marginLeft="8dp"
+                app:layout_constraintLeft_toLeftOf="@+id/imageView6"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp" />
+
+            <TextView
+                android:id="@+id/month"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="June"
+                android:textColor="#fff"
+                android:layout_marginRight="8dp"
+                app:layout_constraintRight_toRightOf="@+id/imageView6"
+                android:layout_marginLeft="8dp"
+                app:layout_constraintLeft_toLeftOf="@+id/imageView6"
+                app:layout_constraintTop_toTopOf="@+id/imageView6"
+                android:layout_marginTop="8dp"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView6"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintVertical_bias="0.13"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp" />
+
+            <android.support.constraint.Guideline
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/guideline"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.5" />
+
+        </android.support.constraint.ConstraintLayout>
+
+
+    </ScrollView>
 
     <TextView
         android:id="@+id/errorMessage"
