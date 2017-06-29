@@ -105,18 +105,6 @@ public class AssignmentAdapter extends RecyclerView.Adapter<AssignmentAdapter.Of
             case Task.EXPIRED:
             default:
         }
-
-        if (mCursor == null) {
-            return;
-        }
-        mCursor.moveToPosition(position);
-
-        Task task = new Task(mCursor);
-
-        holder.title.setText(task.getTitle());
-        holder.price.setText("$" + String.valueOf(task.getReward()));
-        holder.location.setText(task.getLocation());
-
     }
 
     @Override
