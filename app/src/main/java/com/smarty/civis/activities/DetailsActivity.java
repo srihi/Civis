@@ -14,12 +14,10 @@ import android.widget.TextView;
 
 import com.smarty.civis.R;
 import com.smarty.civis.data.content.CivisContract;
-import com.smarty.civis.data.tables.TasksTable;
 import com.smarty.civis.data.tables.UsersTable;
 import com.smarty.civis.models.Task;
 import com.smarty.civis.utils.ProjectionUtils;
 
-import java.text.NumberFormat;
 import java.util.Date;
 
 import butterknife.BindView;

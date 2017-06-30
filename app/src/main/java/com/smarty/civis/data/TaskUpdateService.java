@@ -1,6 +1,7 @@
 package com.smarty.civis.data;
 
 import android.app.IntentService;
+import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.content.Context;
@@ -8,6 +9,8 @@ import android.net.Uri;
 import android.util.Log;
 
 import com.smarty.civis.data.content.CivisContract;
+import com.smarty.civis.data.tables.TasksTable;
+import com.smarty.civis.models.Task;
 
 /* Process DB actions on a background thread */
 public class TaskUpdateService extends IntentService {
@@ -36,6 +39,13 @@ public class TaskUpdateService extends IntentService {
         intent.setData(uri);
         intent.putExtra(EXTRA_VALUES, values);
         context.startService(intent);
+    }
+
+    public static void updateTaskStatus(Context context, Task task, int newStatus){
+        Uri uri = ContentUris.withAppendedId(CivisContract.TASKS_CONTENT_URI, task.getId());
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(TasksTable.Entry.COLUMN_STATUS, newStatus);
+        updateTask(context, uri, contentValues);
     }
 
     public static void deleteTask(Context context, Uri uri) {

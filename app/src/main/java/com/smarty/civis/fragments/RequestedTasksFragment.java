@@ -65,7 +65,8 @@ public class RequestedTasksFragment extends Fragment implements LoaderManager.Lo
 
         return new CursorLoader(getActivity(),
                 CivisContract.TASKS_CONTENT_URI,
-                ProjectionUtils.TASK_PROJECTION,
+                null,
+//                null, null, null);
                 requestsSelection,
                 selectionArgs, null);
     }

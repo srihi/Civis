@@ -75,15 +75,15 @@ public class PrefUtils {
         return preferences.getLong(context.getString(R.string.pref_expire_time_key), -1);
     }
 
-    public static void putUserId(Context context, String uid) {
+    public static void putUserId(Context context, int uid) {
             SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
             SharedPreferences.Editor editor = preferences.edit();
-            editor.putString(context.getString(R.string.pref_uid_key), uid);
+            editor.putInt(context.getString(R.string.pref_uid_key), uid);
             editor.commit();
     }
 
-    public static String getUserId(Context context) {
+    public static int getUserId(Context context) {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
-        return preferences.getString(context.getString(R.string.pref_uid_key), null);
+        return preferences.getInt(context.getString(R.string.pref_uid_key), -1);
     }
 }
