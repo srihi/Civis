@@ -1,8 +1,3 @@
 # Civis
-Civis:
-![Screenshot](login.png)
-![Screenshot](main.png)
-![Screenshot](details.png)
-![Screenshot](add.png)
-![Screenshot](profile.png)
+![alt text](https://github.com/ditek/Civis/blob/master/login.png)
 
