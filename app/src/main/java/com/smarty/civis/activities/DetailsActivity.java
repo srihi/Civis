@@ -13,6 +13,7 @@ import android.text.format.DateFormat;
 import android.view.View;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.smarty.civis.R;
 import com.smarty.civis.data.content.CivisContract;
@@ -101,6 +102,7 @@ public class DetailsActivity extends AppCompatActivity implements LoaderManager.
                 .appendPath(Integer.toString(taskId))
                 .build();
         getContentResolver().update(queryUri, contentValues, null, null);
+        Toast.makeText(this, getString(R.string.requst_button), Toast.LENGTH_LONG).show();
         finish();
     }
 

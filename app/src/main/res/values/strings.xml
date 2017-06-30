@@ -17,7 +17,7 @@
     <string name="skip">Skip login</string>
 
     <!-- Strings related to addScreen -->
-    <string name="add_screen_activity_title">Add New Task</string>
+    <string name="add_screen_activity_title">Add New Assignment</string>
     <string name="add_form_title_hint">Title</string>
     <string name="add_form_desc_hint">Description</string>
     <string name="add_form_price_hint">Reward ( $ )</string>
@@ -53,6 +53,7 @@
     <string name="title_offered">Offers</string>
 
     <!-- Strings related to details screen -->
+    <string name="requst_button">You have made a request for the assignment</string>
     <string name="title_activity_details">Details</string>
     <string name="write_a_message">Write a message</string>
     <string name="details_error_message">An error occurred while processing your request</string>
