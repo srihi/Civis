@@ -11,7 +11,11 @@
         android:id="@+id/details_scrollview"
         tools:visibility="visible"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="80dp">
 
 
         <android.support.constraint.ConstraintLayout
@@ -104,14 +108,30 @@
                 android:layout_height="160dp"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="-498dp"
                 android:background="#fff"
-                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/details_description"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp" />
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editTextContainer"
+                android:background="@color/colorAccent"
+                android:onClick="button"
+                android:textColor="#fff"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:text="@string/add_form_submit_button"/>
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:layout_width="60dp"
@@ -256,15 +276,6 @@
         </android.support.constraint.ConstraintLayout>
 
 
-    </ScrollView>
+   </ScrollView>
 
-    <TextView
-        android:id="@+id/errorMessage"
-        android:visibility="gone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="16dp"
-        android:background="#fff"
-        android:layout_centerInParent="true"
-        android:text="@string/details_error_message"/>
 </RelativeLayout>
