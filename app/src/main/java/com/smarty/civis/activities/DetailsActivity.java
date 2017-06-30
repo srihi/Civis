@@ -8,8 +8,10 @@ import android.os.Bundle;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.text.format.DateFormat;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -69,6 +71,7 @@ public class DetailsActivity extends AppCompatActivity implements LoaderManager.
         userName = (TextView) findViewById(R.id.details_user_name);
         scrollView = (ScrollView) findViewById(R.id.details_scrollview);
 
+        initActionBar();
 
         Intent intent = getIntent();
         if (intent.hasExtra(ARG_TASK)) {
@@ -91,6 +94,22 @@ public class DetailsActivity extends AppCompatActivity implements LoaderManager.
         taskId = task.getId();
         getSupportLoaderManager().initLoader(LOADER_ID, null, this);
 
+    }
+
+    private void initActionBar() {
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            this.finish();
+            return true;
+        }
+        return false;
     }
 
     public void button(View view) {
