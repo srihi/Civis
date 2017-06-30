@@ -17,7 +17,7 @@
     <string name="skip">Skip login</string>
 
     <!-- Strings related to addScreen -->
-    <string name="add_screen_activity_title">Add New Assignment</string>
+    <string name="add_screen_activity_title">Add Assignment</string>
     <string name="add_form_title_hint">Title</string>
     <string name="add_form_desc_hint">Description</string>
     <string name="add_form_price_hint">Reward ( $ )</string>
