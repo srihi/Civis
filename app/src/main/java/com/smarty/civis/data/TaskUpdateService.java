@@ -41,10 +41,22 @@ public class TaskUpdateService extends IntentService {
         context.startService(intent);
     }
 
+    public static void updateTask(Context context, Task task) {
+        Uri uri = ContentUris.withAppendedId(CivisContract.TASKS_CONTENT_URI, task.getId());
+        updateTask(context, uri, task.getContentValues());
+    }
+
     public static void updateTaskStatus(Context context, Task task, int newStatus){
         Uri uri = ContentUris.withAppendedId(CivisContract.TASKS_CONTENT_URI, task.getId());
         ContentValues contentValues = new ContentValues();
         contentValues.put(TasksTable.Entry.COLUMN_STATUS, newStatus);
+        updateTask(context, uri, contentValues);
+    }
+
+    public static void updateTaskTaker(Context context, Task task, int newTakerId){
+        Uri uri = ContentUris.withAppendedId(CivisContract.TASKS_CONTENT_URI, task.getId());
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(TasksTable.Entry.COLUMN_TAKEN_BY_ID, newTakerId);
         updateTask(context, uri, contentValues);
     }
 

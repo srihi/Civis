@@ -49,7 +49,7 @@
     <string name="sample_user_name">John Smith</string>
     <string name="title_activity_profile">Profile</string>
     <string name="title_profile">Profile</string>
-    <string name="title_requested">Applications</string>
+    <string name="title_requested">Requests</string>
     <string name="title_offered">Offers</string>
 
     <!-- Strings related to details screen -->

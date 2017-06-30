@@ -91,7 +91,10 @@ public class AssignmentAdapter extends RecyclerView.Adapter<AssignmentAdapter.Of
                     btnRefuse.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            TaskUpdateService.updateTaskStatus(mContext, task, Task.ACTIVE);
+                            task.setStatus(Task.ACTIVE);
+                            task.setTakenBy(-1);
+                            TaskUpdateService.updateTask(mContext, task);
+//                            TaskUpdateService.updateTaskStatus(mContext, task, Task.ACTIVE);
                             v.setVisibility(View.GONE);
                         }
                     });
@@ -106,7 +109,9 @@ public class AssignmentAdapter extends RecyclerView.Adapter<AssignmentAdapter.Of
                     btnDone.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            TaskUpdateService.updateTaskStatus(mContext, task, Task.DONE);
+//                            TaskUpdateService.updateTaskStatus(mContext, task, Task.DONE);
+                            task.setStatus(Task.DONE);
+                            TaskUpdateService.updateTask(mContext, task);
                             v.setVisibility(View.GONE);
                         }
                     });
