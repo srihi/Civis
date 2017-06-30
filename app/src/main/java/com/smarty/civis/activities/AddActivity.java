@@ -1,12 +1,11 @@
 package com.smarty.civis.activities;
 
 import android.app.DatePickerDialog;
-import android.content.ContentValues;
+import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.AppCompatSpinner;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,9 +13,6 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.smarty.civis.R;
@@ -27,8 +23,8 @@ import com.smarty.civis.utils.PrefUtils;
 import java.util.Calendar;
 import java.util.Date;
 
-public class AddActivity extends AppCompatActivity
-{
+public class AddActivity extends AppCompatActivity {
+
     private TextInputLayout title_textInputLayout;
     private AutoCompleteTextView title_textview;
     private TextInputLayout desc_textInputLayout;
@@ -42,8 +38,7 @@ public class AddActivity extends AppCompatActivity
     private Date dueDate = Calendar.getInstance().getTime();
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add);
 
@@ -65,11 +60,9 @@ public class AddActivity extends AppCompatActivity
     /**
      * Init Action Bar [ Title and buttons ]
      */
-    private void initActionBar()
-    {
+    private void initActionBar() {
         ActionBar actionBar = getSupportActionBar();
-        if(actionBar != null)
-        {
+        if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
             actionBar.setTitle(getString(R.string.add_screen_activity_title));
 
@@ -79,8 +72,7 @@ public class AddActivity extends AppCompatActivity
     /**
      * Init Service Types
      */
-    private void initTypesSpinner()
-    {
+    private void initTypesSpinner() {
         types_spinner = (AppCompatSpinner) findViewById(R.id.spinner_add_form_types);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.add_form_types, android.R.layout.simple_spinner_item);
@@ -89,15 +81,12 @@ public class AddActivity extends AppCompatActivity
     }
 
     /**
-     *
      * @param item
      * @return
      */
     @Override
-    public boolean onOptionsItemSelected(MenuItem item)
-    {
-        if(item.getItemId() == android.R.id.home)
-        {
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
             this.finish();
             return true;
         }
@@ -127,59 +116,42 @@ public class AddActivity extends AppCompatActivity
     /*
             Add Service
          */
-    public void addService(View view)
-    {
+    public void addService(View view) {
         boolean success = true;
 
         String title = title_textview.getText().toString();
-        if(title.trim().isEmpty())
-        {
+        if (title.trim().isEmpty()) {
             title_textInputLayout.setError(getString(R.string.error_empty_title));
             success = false;
         }
 
         String desc = desc_textview.getText().toString();
-        if(desc.trim().isEmpty())
-        {
+        if (desc.trim().isEmpty()) {
             desc_textInputLayout.setError(getString(R.string.error_empty_desc));
             success = false;
         }
 
         double price = 0.0;
-        try
-        {
+        try {
             String value = price_textview.getText().toString();
             price = Double.parseDouble(value);
-        }
-        catch (Exception err)
-        {
+        } catch (Exception err) {
             price_textInputLayout.setError(getString(R.string.error_wrong_price));
             success = false;
         }
 
-        /* NOT NEEDED FOR MVP
-        String section = need_radioButton.isChecked() ? "need" : "offer";
-        if(offer_or_need_radioGroup.getCheckedRadioButtonId() == 0)
-        {
-            need_radioButton.setError(getString(R.string.error_select_offer_or_need));
-            success = false;
-        }
-        */
-        if(dueDate.before(Calendar.getInstance().getTime()))
-        {
-            Toast.makeText(this,getString(R.string.error_wrong_date), Toast.LENGTH_LONG).show();
+        if (dueDate.before(Calendar.getInstance().getTime())) {
+            Toast.makeText(this, getString(R.string.error_wrong_date), Toast.LENGTH_LONG).show();
             success = false;
         }
 
         String type = types_spinner.getSelectedItem().toString();
-        if(type == null)
-        {
-            Toast.makeText(this,getString(R.string.error_select_service_type), Toast.LENGTH_LONG).show();
+        if (type == null) {
+            Toast.makeText(this, getString(R.string.error_select_service_type), Toast.LENGTH_LONG).show();
             success = false;
         }
 
-        if(success)
-        {
+        if (success) {
             Task task = new Task();
 
             task.setTitle(title_textview.getText().toString());
@@ -196,6 +168,5 @@ public class AddActivity extends AppCompatActivity
             Toast.makeText(this, getString(R.string.success_add_form), Toast.LENGTH_LONG).show();
             finish();
         }
-
     }
 }

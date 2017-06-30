@@ -36,6 +36,7 @@
         <item>Delivery</item>
     </string-array>
     <string name="add_form_submit_button">Add Assignment</string>
+    <string name="details_apply_button">Apply for Assignment</string>
     <string name="error_empty_title">Task title is required</string>
     <string name="error_empty_desc">Task Description is required</string>
     <string name="error_wrong_price">Task Reward is required</string>
@@ -48,11 +49,11 @@
     <string name="sample_user_name">John Smith</string>
     <string name="title_activity_profile">Profile</string>
     <string name="title_profile">Profile</string>
-    <string name="title_requested">Requested</string>
-    <string name="title_offered">Offered</string>
+    <string name="title_requested">Applications</string>
+    <string name="title_offered">Offers</string>
 
     <!-- Strings related to details screen -->
-    <string name="title_activity_details">DetailsActivity</string>
+    <string name="title_activity_details">Details</string>
     <string name="write_a_message">Write a message</string>
     <string name="details_error_message">An error occurred while processing your request</string>
 

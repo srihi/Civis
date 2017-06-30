@@ -15,10 +15,6 @@ import com.smarty.civis.adapters.ListFragmentPagerAdapter;
  * Created by itaseski.
  */
 
-/**
- * Created by itaseski.
- */
-
 public class MainActivity extends AppCompatActivity {
 
     @Override

@@ -19,36 +19,41 @@ import com.smarty.civis.R;
 import com.smarty.civis.adapters.AssignmentAdapter;
 import com.smarty.civis.data.content.CivisContract;
 import com.smarty.civis.data.tables.TasksTable;
-import com.smarty.civis.utils.ProjectionUtils;
 
-public class RequestedTasksFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor> {
+public class ApplicationsTasksFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor> {
 
-    private final String LOG_TAG = RequestedTasksFragment.class.getSimpleName();
-    private static final int LOADER_REQUESTS_ID = 1;
+    private final String LOG_TAG = ApplicationsTasksFragment.class.getSimpleName();
+    private static final int LOADER_OFFERS_ID = 0;
 
-    AssignmentAdapter mRequestsAdapter;
+    AssignmentAdapter mOffersAdapter;
 
-    public RequestedTasksFragment() {
+    public ApplicationsTasksFragment() {
         // Required empty public constructor
     }
 
-    public static RequestedTasksFragment newInstance() {
-        return new RequestedTasksFragment();
+    public static ApplicationsTasksFragment newInstance() {
+        return new ApplicationsTasksFragment();
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_requested_tasks, container, false);
-        getActivity().setTitle(getString(R.string.requested_jobs));
+        View view = inflater.inflate(R.layout.fragment_offered_tasks, container, false);
+        getActivity().setTitle(getString(R.string.offered_jobs));
 
-        RecyclerView rv_requests = (RecyclerView) view.findViewById(R.id.rv_requests);
-        mRequestsAdapter = new AssignmentAdapter(getContext());
-        rv_requests.setLayoutManager(new LinearLayoutManager(getContext()));
-        rv_requests.setAdapter(mRequestsAdapter);
+        RecyclerView rv_offers = (RecyclerView) view.findViewById(R.id.rv_offers);
+        mOffersAdapter = new AssignmentAdapter(getContext());
+        rv_offers.setLayoutManager(new LinearLayoutManager(getContext()));
+        rv_offers.setAdapter(mOffersAdapter);
 
-        getActivity().getSupportLoaderManager().initLoader(LOADER_REQUESTS_ID, null, this);
+        getActivity().getSupportLoaderManager().initLoader(LOADER_OFFERS_ID, null, this);
+
         return view;
     }
 
@@ -60,24 +65,23 @@ public class RequestedTasksFragment extends Fragment implements LoaderManager.Lo
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getActivity());
         int uid = sharedPref.getInt(getString(R.string.pref_uid_key), -1);
 
-        String requestsSelection = TasksTable.Entry.COLUMN_OWNER_ID + " = ?";
+        String offersSelection = TasksTable.Entry.COLUMN_TAKEN_BY_ID + " = ?";
         String[] selectionArgs = new String[]{String.valueOf(uid)};
 
         return new CursorLoader(getActivity(),
                 CivisContract.TASKS_CONTENT_URI,
                 null,
-//                null, null, null);
-                requestsSelection,
+                offersSelection,
                 selectionArgs, null);
     }
 
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
-        mRequestsAdapter.setCursor(data);
+        mOffersAdapter.setCursor(data);
     }
 
     @Override
     public void onLoaderReset(Loader<Cursor> loader) {
-        mRequestsAdapter.setCursor(null);
+        mOffersAdapter.setCursor(null);
     }
 }

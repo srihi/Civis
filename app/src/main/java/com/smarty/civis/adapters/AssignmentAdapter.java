@@ -22,10 +22,6 @@ import java.util.List;
  * Created by itaseski.
  */
 
-/**
- * Created by itaseski.
- */
-
 public class AssignmentAdapter extends RecyclerView.Adapter<AssignmentAdapter.OfferViewHolder> {
 
     private final Context mContext;
@@ -69,7 +65,7 @@ public class AssignmentAdapter extends RecyclerView.Adapter<AssignmentAdapter.Of
         final Task task = new Task(mCursor);
 
         holder.title.setText(task.getTitle());
-        holder.price.setText(String.valueOf(task.getReward()));
+        holder.price.setText("$" + String.valueOf(task.getReward()));
         holder.location.setText(task.getLocation());
         holder.status.setText(task.getStatusString());
         holder.dueDate.setText(DateUtils.getRelativeTimeSpanString(task.getEndTime()));

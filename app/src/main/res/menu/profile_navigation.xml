@@ -14,11 +14,11 @@
     <item
         android:id="@+id/nav_jobs_requested"
         android:icon="@drawable/ic_assignment_black_24dp"
-        android:title="@string/title_requested" />
+        android:title="@string/title_offered"/>
 
     <item
         android:id="@+id/nav_jobs_offered"
         android:icon="@drawable/ic_work_black_24dp"
-        android:title="@string/title_offered" />
+        android:title="@string/title_requested" />
 
 </menu>

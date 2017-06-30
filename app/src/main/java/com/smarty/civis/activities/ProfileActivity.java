@@ -8,9 +8,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
 import com.smarty.civis.R;
-import com.smarty.civis.fragments.OfferedTasksFragment;
+import com.smarty.civis.fragments.ApplicationsTasksFragment;
 import com.smarty.civis.fragments.ProfileFragment;
-import com.smarty.civis.fragments.RequestedTasksFragment;
+import com.smarty.civis.fragments.OffersTasksFragment;
 
 public class ProfileActivity extends AppCompatActivity {
 
@@ -48,10 +48,10 @@ public class ProfileActivity extends AppCompatActivity {
                     fragment = ProfileFragment.newInstance();
                     break;
                 case R.id.nav_jobs_requested:
-                    fragment = RequestedTasksFragment.newInstance();
+                    fragment = OffersTasksFragment.newInstance();
                     break;
                 case R.id.nav_jobs_offered:
-                    fragment = OfferedTasksFragment.newInstance();
+                    fragment = ApplicationsTasksFragment.newInstance();
                     break;
                 default:
                     itemExists = false;
