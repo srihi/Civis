@@ -89,7 +89,7 @@ public class UsersTable implements TableInterface {
             case CODE_CERTAIN_USER:
                 String id = uri.getPathSegments().get(1);
                 numberOfRows = db.update(
-                        Entry.TABLE_NAME, values, "_id=?", new String[]{id});
+                        Entry.TABLE_NAME, values, Entry._ID + "=?", new String[]{id});
                 break;
         }
         return numberOfRows;

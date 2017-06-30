@@ -43,6 +43,7 @@
                 android:id="@+id/tv_status"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
                 android:layout_marginBottom="8dp"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
@@ -60,6 +61,26 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:text="Due date: "
+                    android:textSize="15sp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="15dp"
+                    android:textSize="16sp"
+                    android:id="@+id/tv_due_date"
+                    tools:text="25/7/2017"/>
+
+                <View
+                    android:background="@android:color/darker_gray"
+                    android:layout_width="1dp"
+                    android:layout_height="20dp"/>
+
+                <TextView
+                    android:layout_marginLeft="15dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:text="Reward: "
                     android:textSize="15sp" />
 
@@ -67,18 +88,9 @@
                     android:id="@+id/tv_price"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="17sp"
+                    android:textSize="18sp"
                     android:textStyle="bold"
                     tools:text="$790" />
-
-                <TextView
-                    android:id="@+id/tv_due_date"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="end"
-                    android:textAlignment="gravity"
-                    android:textSize="15sp"
-                    tools:text="25/7/2017" />
 
             </LinearLayout>
 

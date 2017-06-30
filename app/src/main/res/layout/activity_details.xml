@@ -127,11 +127,11 @@
                 android:background="@color/colorAccent"
                 android:onClick="button"
                 android:textColor="#fff"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
+                android:layout_marginTop="18dp"
+                android:layout_marginBottom="5dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
-                android:text="@string/add_form_submit_button"/>
+                android:text="@string/details_apply_button"/>
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:layout_width="60dp"

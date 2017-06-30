@@ -16,8 +16,10 @@ import android.widget.TextView;
 
 import com.smarty.civis.R;
 import com.smarty.civis.data.content.CivisContract;
+import com.smarty.civis.data.tables.TasksTable;
 import com.smarty.civis.data.tables.UsersTable;
 import com.smarty.civis.models.Task;
+import com.smarty.civis.utils.PrefUtils;
 import com.smarty.civis.utils.ProjectionUtils;
 
 import java.util.Date;
@@ -29,6 +31,8 @@ public class DetailsActivity extends AppCompatActivity implements LoaderManager.
     private static final int LOADER_ID = 901905;
 
     private int userId;
+
+    private int taskId;
 
     TextView title;
 
@@ -83,6 +87,7 @@ public class DetailsActivity extends AppCompatActivity implements LoaderManager.
         category.setText(task.getJobType());
         location.setText(task.getLocation());
         userId = task.getOwnerId();
+        taskId = task.getId();
         getSupportLoaderManager().initLoader(LOADER_ID, null, this);
 
     }
@@ -90,10 +95,10 @@ public class DetailsActivity extends AppCompatActivity implements LoaderManager.
     public void button(View view) {
         ContentValues contentValues = new ContentValues();
         contentValues.put(TasksTable.Entry.COLUMN_STATUS, Task.RESERVED);
-        contentValues.put(TasksTable.Entry.COLUMN_TAKEN_BY_ID, 23);
+        contentValues.put(TasksTable.Entry.COLUMN_TAKEN_BY_ID, PrefUtils.getUserId(this));
         Uri queryUri = CivisContract.BASE_CONTENT_URI.buildUpon()
-                .appendPath(UsersTable.PATH_USERS)
-                .appendPath(Integer.toString(userId))
+                .appendPath(TasksTable.PATH_TASKS)
+                .appendPath(Integer.toString(taskId))
                 .build();
         getContentResolver().update(queryUri, contentValues, null, null);
         finish();
