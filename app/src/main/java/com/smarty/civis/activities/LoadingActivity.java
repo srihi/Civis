@@ -34,8 +34,10 @@ public class LoadingActivity extends AppCompatActivity {
 
                 if (mUserCall != null && !mUserCall.isCanceled()) {
                     mUserCall.cancel();
-                    mUserCall.enqueue(mUserCallback);
                 }
+
+                mUserCall = mApiService.getUser(tokenResponse.getAccessToken());
+                mUserCall.enqueue(mUserCallback);
             } else {
                 // Token callback doesn't work, just authorize again
                 startLoginActivity();
@@ -56,6 +58,7 @@ public class LoadingActivity extends AppCompatActivity {
                 TaskUpdateService.insertNewUser(LoadingActivity.this, user.getContentValues());
                 Intent intent = new Intent(LoadingActivity.this, MainActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
             } else {
                 // Something went wrong just login again?
@@ -97,6 +100,7 @@ public class LoadingActivity extends AppCompatActivity {
     private void startLoginActivity() {
         Intent intent = new Intent(this, LoginActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
     }
 
