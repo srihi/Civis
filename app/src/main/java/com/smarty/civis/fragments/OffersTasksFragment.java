@@ -40,7 +40,7 @@ public class OffersTasksFragment extends Fragment implements LoaderManager.Loade
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_requested_tasks, container, false);
-        getActivity().setTitle(getString(R.string.requested_jobs));
+        getActivity().setTitle(getString(R.string.offered_jobs));
 
         RecyclerView rv_requests = (RecyclerView) view.findViewById(R.id.rv_requests);
         mRequestsAdapter = new AssignmentAdapter(getContext());

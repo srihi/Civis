@@ -53,7 +53,7 @@
     <string name="title_offered">Offers</string>
 
     <!-- Strings related to details screen -->
-    <string name="requst_button">You have made a request for the assignment</string>
+    <string name="requst_button">You have applied for the assignment</string>
     <string name="title_activity_details">Details</string>
     <string name="write_a_message">Write a message</string>
     <string name="details_error_message">An error occurred while processing your request</string>
