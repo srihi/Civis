@@ -27,7 +27,6 @@ public class AssignmentAdapter extends RecyclerView.Adapter<AssignmentAdapter.Of
     private final Context mContext;
 
     private Cursor mCursor;
-    private List<Task> mTestList;
 
     private AssignmentAdapterOnClickHandler clickHandler;
 
@@ -75,8 +74,8 @@ public class AssignmentAdapter extends RecyclerView.Adapter<AssignmentAdapter.Of
             // If the task is reserved and the user is the owner give the option to accept or refuse
             case Task.RESERVED:
                 if (PrefUtils.getUserId(mContext) == task.getOwnerId()) {
-                    Button btnAccept = holder.button1;
-                    Button btnRefuse = holder.button2;
+                    final Button btnAccept = holder.button1;
+                    final Button btnRefuse = holder.button2;
                     btnAccept.setText(R.string.accept);
                     btnRefuse.setText(R.string.refuse);
                     btnAccept.setVisibility(View.VISIBLE);
@@ -86,6 +85,7 @@ public class AssignmentAdapter extends RecyclerView.Adapter<AssignmentAdapter.Of
                         public void onClick(View v) {
                             TaskUpdateService.updateTaskStatus(mContext, task, Task.IN_PROGRESS);
                             v.setVisibility(View.GONE);
+                            btnRefuse.setVisibility(View.GONE);
                         }
                     });
                     btnRefuse.setOnClickListener(new View.OnClickListener() {
@@ -96,6 +96,7 @@ public class AssignmentAdapter extends RecyclerView.Adapter<AssignmentAdapter.Of
                             TaskUpdateService.updateTask(mContext, task);
 //                            TaskUpdateService.updateTaskStatus(mContext, task, Task.ACTIVE);
                             v.setVisibility(View.GONE);
+                            btnAccept.setVisibility(View.GONE);
                         }
                     });
                 }
