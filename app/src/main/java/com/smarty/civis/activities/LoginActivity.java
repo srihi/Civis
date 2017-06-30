@@ -77,7 +77,7 @@ public class LoginActivity extends AppCompatActivity {
         public void onResponse(Call<User> call, Response<User> response) {
             if (response.code() == HttpURLConnection.HTTP_OK) {
                 User user = response.body();
-                PrefUtils.putUserId(LoginActivity.this, user.getUuid());
+                PrefUtils.putUserId(LoginActivity.this, user.getId());
                 TaskUpdateService.insertNewUser(LoginActivity.this, user.getContentValues());
                 startMainActivity();
             } else {
@@ -106,19 +106,11 @@ public class LoginActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_login);
 
-
         // If we are already authorized go to MainActivity directly
 //        if (!TextUtils.isEmpty(PrefUtils.getCode(this))) {
 //            startActivity(new Intent(this, MainActivity.class));
 //            finish();
 //        }
-    }
-
-    public void skipLogin(View view) {
-        Intent intent = new Intent(this, MainActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(intent);
-        finish();
     }
 
     /**
@@ -132,12 +124,19 @@ public class LoginActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void startRegister(View view) {
+        Intent intent = AuthUtils.getRegisterIntent();
+        startActivity(intent);
+    }
+
     @Override
     protected void onResume() {
         super.onResume();
         Uri uri = getIntent().getData();
         if (uri != null) {
-            String code = uri.getQueryParameter("code");
+            String code = uri.getQueryParameter("code") != null ?
+                    uri.getQueryParameter("code") :
+                    uri.getQueryParameter("accessToken");
             if (code != null) {
                 PrefUtils.putCode(this, uri);
 

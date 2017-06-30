@@ -5,14 +5,15 @@
     <string name="title_activity_login">Sign in</string>
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
-    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in">Sign In</string>
     <string name="action_sign_in_short">Sign in</string>
     <string name="error_invalid_email">This email address is invalid</string>
     <string name="error_invalid_password">This password is too short</string>
     <string name="error_incorrect_password">This password is incorrect</string>
     <string name="error_field_required">This field is required</string>
     <string name="login_failed">Login unsuccessful. Please try again.</string>
-    <string name="signup">No account yet? Create one</string>
+    <string name="signup_question">Don\'t have an account?</string>
+    <string name="signup">Sign Up!</string>
     <string name="skip">Skip login</string>
 
     <!-- Strings related to addScreen -->
@@ -72,5 +73,10 @@
     <string name="title_performed">Performed</string>
     <string name="requested_jobs">Requested Jobs</string>
     <string name="offered_jobs">Offered Jobs</string>
+    <string name="location">Location</string>
+    <string name="accept">Accept</string>
+    <string name="refuse">Refuse</string>
+    <string name="done">Done</string>
+    <string name="pay">Pay</string>
 
 </resources>

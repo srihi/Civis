@@ -43,7 +43,7 @@ public class UsersTable implements TableInterface {
                 Entry.COLUMN_FIRST_NAME + " TEXT NOT NULL, " +
                 Entry.COLUMN_LAST_NAME + " TEXT NOT NULL, " +
                 Entry.COLUMN_EMAIL + " TEXT NOT NULL, " +
-                Entry.COLUMN_PHONE + " TEXT NOT NULL" +
+                Entry.COLUMN_PHONE + " TEXT NOT NULL DEFAULT ''" +
                 ");";
         db.execSQL(CREATE_USERS_TABLE);
 

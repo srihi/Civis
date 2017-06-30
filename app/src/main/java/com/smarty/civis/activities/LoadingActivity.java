@@ -34,8 +34,8 @@ public class LoadingActivity extends AppCompatActivity {
 
                 if (mUserCall != null && !mUserCall.isCanceled()) {
                     mUserCall.cancel();
+                    mUserCall.enqueue(mUserCallback);
                 }
-                mUserCall.enqueue(mUserCallback);
             } else {
                 // Token callback doesn't work, just authorize again
                 startLoginActivity();
@@ -52,7 +52,7 @@ public class LoadingActivity extends AppCompatActivity {
         public void onResponse(Call<User> call, Response<User> response) {
             if (response.code() == HttpURLConnection.HTTP_OK) {
                 User user = response.body();
-                PrefUtils.putUserId(LoadingActivity.this, user.getUuid());
+                PrefUtils.putUserId(LoadingActivity.this, user.getId());
                 TaskUpdateService.insertNewUser(LoadingActivity.this, user.getContentValues());
                 Intent intent = new Intent(LoadingActivity.this, MainActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -96,7 +96,7 @@ public class LoadingActivity extends AppCompatActivity {
 
     private void startLoginActivity() {
         Intent intent = new Intent(this, LoginActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
     }
 

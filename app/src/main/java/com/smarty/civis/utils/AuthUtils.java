@@ -10,7 +10,9 @@ import com.smarty.civis.BuildConfig;
  */
 
 public class AuthUtils {
-    private static final String URL = "https://v1-sso-api.digitaltown.com/oauth/authorize";
+    private static final String URL = "https://v1-sso-api.digitaltown.com/";
+    private static final String AUTH_URL = URL + "oauth/authorize";
+    private static final String REGISTER_URL = URL + "register";
     private static final String CLIENT_ID_PARAM = "client_id";
 
     private static final String RESPONSE_TYPE_PARAM = "response_type";
@@ -19,6 +21,7 @@ public class AuthUtils {
     private static final String SCOPE_PARAM = "scope";
     private static final String SCOPE = "email";
 
+    private static final String CALLBACK_PARAM = "callback";
     private static final String REDIRECT_URI_PARAM = "redirect_uri";
     private static final String REDIRECT_URI = "http://auth/callback";
 
@@ -28,11 +31,30 @@ public class AuthUtils {
 
 
     public static Intent getAuthenticationIntent() {
-        return new Intent(Intent.ACTION_VIEW, getAuthorizationUrl());
+        return generateIntent(getAuthorizationUrl());
+    }
+
+    public static Intent getRegisterIntent() {
+        return generateIntent(getRegisterUrl());
+    }
+
+    private static Intent generateIntent(Uri uri) {
+        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        return intent;
+    }
+
+    private static Uri getRegisterUrl() {
+        Uri registerUrl = Uri.parse(REGISTER_URL)
+                .buildUpon()
+                .appendQueryParameter(CALLBACK_PARAM, REDIRECT_URI)
+                .build();
+
+        return registerUrl;
     }
 
     private static Uri getAuthorizationUrl() {
-        Uri authUrl = Uri.parse(URL)
+        Uri authUrl = Uri.parse(AUTH_URL)
                 .buildUpon()
                 .appendQueryParameter(CLIENT_ID_PARAM, BuildConfig.DT_CLIENT_ID)
                 .appendQueryParameter(RESPONSE_TYPE_PARAM, RESPONSE_TYPE)

@@ -96,7 +96,7 @@ public class User implements Parcelable {
     }
 
     public String getPhone() {
-        return phone;
+        return phone != null ? phone : "";
     }
 
     public void setPhone(String phone) {
