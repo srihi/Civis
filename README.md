@@ -11,6 +11,6 @@ In order to authenticate, if your phone have set default application to handle h
 
 <br> 
 
-<img src="https://github.com/ditek/Civis/blob/master/login.png" width="250" hspace="15"> <img src="https://github.com/ditek/Civis/blob/master/main.png" width="250" hspace="15"> <img src="https://github.com/ditek/Civis/blob/master/details.png" width="250" hspace="15">
+<img src="https://github.com/ditek/Civis/blob/master/login.png" width="250" hspace="20"> <img src="https://github.com/ditek/Civis/blob/master/main.png" width="250" hspace="20"> <img src="https://github.com/ditek/Civis/blob/master/details.png" width="250" hspace="20">
 
 <img src="https://github.com/ditek/Civis/blob/master/add.png" width="250"> <img src="https://github.com/ditek/Civis/blob/master/profile.png" width="250"> <img src="https://github.com/ditek/Civis/blob/master/offers.png" width="250">  
