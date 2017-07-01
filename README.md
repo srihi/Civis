@@ -1,5 +1,5 @@
 # Civis
-The project is named Civis, means Civilian in Latin. The app helps with engaging the community, it helps users seek for some help or offer a help to other users nearby. You can offer/request a service via the app, be it heavy lifting(move heavy objects), buy groceries, walk dogs or something as nice as request for meet up to talk with a stranger and what not.
+The project is named Civis, means Civilian in Latin. The app helps with engaging the community, it helps users seek for some help or offer a help to other users nearby. You can offer/request a service via the app, be it heavy lifting(move heavy objects), buy groceries, walk dogs or something as nice as a request for an advice from another user.
 
 ## Instructions to run
 
