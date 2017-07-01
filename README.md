@@ -7,4 +7,4 @@ In order to authenticate, if your phone have set default application to handle h
 
 <img src="https://github.com/ditek/Civis/blob/master/login.png" width="250"> <img src="https://github.com/ditek/Civis/blob/master/main.png" width="250"> <img src="https://github.com/ditek/Civis/blob/master/details.png" width="250">
 
-<img src="https://github.com/ditek/Civis/blob/master/add.png" width="250"> <img src="https://github.com/ditek/Civis/blob/master/profile.png" width="250"> <img src="https://github.com/ditek/Civis/blob/master/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" width="150"> 
+<img src="https://github.com/ditek/Civis/blob/master/add.png" width="250"> <img src="https://github.com/ditek/Civis/blob/master/profile.png" width="250"> <p align="center"><img src="https://github.com/ditek/Civis/blob/master/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" width="150"></p> 
