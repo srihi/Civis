@@ -80,5 +80,6 @@
     <string name="refuse">Refuse</string>
     <string name="done">Done</string>
     <string name="pay">Pay</string>
+    <string name="first_login_key">firstLoginKey</string>
 
 </resources>

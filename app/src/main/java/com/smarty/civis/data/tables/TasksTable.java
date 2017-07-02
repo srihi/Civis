@@ -10,7 +10,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.preference.PreferenceManager;
 import android.provider.BaseColumns;
-import android.provider.Settings;
 
 import com.smarty.civis.R;
 import com.smarty.civis.data.content.CivisContract;
@@ -55,7 +54,7 @@ public class TasksTable implements TableInterface {
                 ");";
         db.execSQL(CREATE_TASKS_TABLE);
 
-        populate(db, context);
+//        populate(db, context);
     }
 
     @Override

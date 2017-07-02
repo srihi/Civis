@@ -1,7 +1,9 @@
 package com.smarty.civis.activities;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +12,8 @@ import android.view.MenuItem;
 
 import com.smarty.civis.R;
 import com.smarty.civis.adapters.ListFragmentPagerAdapter;
+import com.smarty.civis.utils.CivisViewModel;
+import com.smarty.civis.utils.PrefUtils;
 
 /**
  * Created by itaseski.
@@ -27,6 +31,16 @@ public class MainActivity extends AppCompatActivity {
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.sliding_tabs);
         tabLayout.setupWithViewPager(viewPager);
+
+        // Create dummy db entries if it's the first time the app is launched
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        boolean firstLogin = sharedPreferences.getBoolean(getString(R.string.first_login_key), true);
+        if(firstLogin){
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putBoolean(getString(R.string.first_login_key), false);
+            editor.apply();
+            CivisViewModel.populateDb(getApplicationContext(), PrefUtils.getUserId(this));
+        }
     }
 
     @Override
