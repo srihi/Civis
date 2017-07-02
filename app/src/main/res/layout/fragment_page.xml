@@ -1,14 +1,15 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.smarty.civis.fragments.PageFragment">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_assignment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        tools:listitem="@layout/list_item_assignment" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
@@ -16,11 +17,11 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="16dp"
-        app:srcCompat="@drawable/fab_plus"
-        app:tabIndicatorColor="@color/colorAccent"
         app:borderWidth="0dp"
         app:elevation="6dp"
         app:fabSize="normal"
-        app:pressedTranslationZ="12dp" />
+        app:pressedTranslationZ="12dp"
+        app:srcCompat="@drawable/fab_plus"
+        app:tabIndicatorColor="@color/colorAccent" />
 
 </FrameLayout>

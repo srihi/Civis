@@ -1,122 +1,157 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_marginTop="@dimen/card_margin"
+    android:layout_marginRight="@dimen/card_margin"
+    android:layout_marginLeft="@dimen/card_margin"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginBottom="2dp"
-    android:layout_marginTop="2dp">
+    android:layout_height="wrap_content">
 
-    <LinearLayout
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content">
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/tv_title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="4"
-            android:orientation="vertical">
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/heading_text_size"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_constraintLeft_creator="1"
+            tools:layout_constraintRight_creator="1"
+            tools:layout_constraintTop_creator="1"
+            tools:text="Skilled mobile developer needed for video streaming app"
+            android:layout_marginRight="8dp"
+            app:layout_constraintRight_toRightOf="parent" />
 
-            <TextView
-                android:id="@+id/tv_title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="4dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                android:layout_marginTop="7dp"
-                android:textColor="@color/colorPrimary"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                tools:text="Skilled mobile developer needed for video streaming app" />
+        <TextView
+            android:id="@+id/tv_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="8dp"
+            android:textSize="@dimen/body_text_size"
+            app:layout_constraintLeft_toLeftOf="@+id/tv_title"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title"
+            tools:layout_conversion_absoluteHeight="17dp"
+            tools:layout_conversion_absoluteWidth="245dp"
+            tools:layout_conversion_absoluteX="15dp"
+            tools:layout_conversion_absoluteY="76dp"
+            tools:text="London, Cambridge 7994" />
 
-            <TextView
-                android:id="@+id/tv_location"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                android:textSize="15sp"
-                tools:text="London, Cambridge 7994" />
+        <TextView
+            android:id="@+id/tv_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="-8dp"
+            android:layout_marginTop="8dp"
+            android:textSize="@dimen/body_text_size"
+            app:layout_constraintLeft_toLeftOf="@+id/tv_location"
+            app:layout_constraintTop_toBottomOf="@+id/tv_location"
+            tools:layout_conversion_absoluteHeight="17dp"
+            tools:layout_conversion_absoluteWidth="245dp"
+            tools:layout_conversion_absoluteX="15dp"
+            tools:layout_conversion_absoluteY="98dp"
+            tools:text="Active" />
 
-            <TextView
-                android:id="@+id/tv_status"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="8dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                android:textSize="15sp"
-                tools:text="Active" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="7dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                android:orientation="horizontal">
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/due_date"
+            android:textSize="@dimen/body_text_size"
+            app:layout_constraintLeft_toLeftOf="@+id/tv_status"
+            app:layout_constraintTop_toBottomOf="@+id/tv_status"
+            tools:layout_conversion_absoluteHeight="17dp"
+            tools:layout_conversion_absoluteWidth="67dp"
+            tools:layout_conversion_absoluteX="15dp"
+            tools:layout_conversion_absoluteY="127dp" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Due date: "
-                    android:textSize="15sp"/>
+        <TextView
+            android:id="@+id/tv_due_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="7dp"
+            android:layout_marginTop="0dp"
+            android:textSize="@dimen/body_text_size"
+            app:layout_constraintLeft_toRightOf="@+id/textView4"
+            app:layout_constraintTop_toTopOf="@+id/textView4"
+            tools:layout_conversion_absoluteHeight="19dp"
+            tools:layout_conversion_absoluteWidth="76dp"
+            tools:layout_conversion_absoluteX="82dp"
+            tools:layout_conversion_absoluteY="126dp"
+            tools:text="25/7/2017" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="15dp"
-                    android:textSize="16sp"
-                    android:id="@+id/tv_due_date"
-                    tools:text="25/7/2017"/>
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/reward"
+            android:textSize="@dimen/body_text_size"
+            app:layout_constraintLeft_toLeftOf="@+id/textView4"
+            app:layout_constraintTop_toBottomOf="@+id/textView4"
+            tools:layout_conversion_absoluteHeight="17dp"
+            tools:layout_conversion_absoluteWidth="57dp"
+            tools:layout_conversion_absoluteX="189dp"
+            tools:layout_conversion_absoluteY="127dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="8dp" />
 
-                <View
-                    android:background="@android:color/darker_gray"
-                    android:layout_width="1dp"
-                    android:layout_height="20dp"/>
+        <TextView
+            android:id="@+id/tv_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="0dp"
+            android:textSize="@dimen/body_text_size"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toRightOf="@+id/textView3"
+            app:layout_constraintTop_toTopOf="@+id/textView3"
+            tools:layout_conversion_absoluteHeight="86dp"
+            tools:layout_conversion_absoluteWidth="13dp"
+            tools:layout_conversion_absoluteX="246dp"
+            tools:layout_conversion_absoluteY="124dp"
+            tools:text="$790" />
 
-                <TextView
-                    android:layout_marginLeft="15dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Reward: "
-                    android:textSize="15sp" />
 
-                <TextView
-                    android:id="@+id/tv_price"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    tools:text="$790" />
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="8dp"
+            android:visibility="gone"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title"
+            tools:text="Button1"
+            tools:visibility="visible" />
 
-            </LinearLayout>
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="0dp"
+            android:textSize="@dimen/button_text_size"
+            android:visibility="gone"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toLeftOf="@+id/button1"
+            app:layout_constraintRight_toRightOf="@+id/button1"
+            app:layout_constraintTop_toBottomOf="@+id/button1"
+            tools:text="Button2"
+            tools:visibility="visible" />
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/button_container"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp"
-            android:orientation="vertical">
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/button1"
-                android:visibility="gone"
-                tools:visibility="visible"/>
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/button2"
-                android:visibility="gone"
-                tools:visibility="visible"/>
-
-        </LinearLayout>
-    </LinearLayout>
+    </android.support.constraint.ConstraintLayout>
 </android.support.v7.widget.CardView>

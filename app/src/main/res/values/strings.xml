@@ -81,5 +81,7 @@
     <string name="done">Done</string>
     <string name="pay">Pay</string>
     <string name="first_login_key">firstLoginKey</string>
+    <string name="reward">Reward:</string>
+    <string name="due_date">Due date:</string>
 
 </resources>

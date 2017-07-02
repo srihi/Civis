@@ -162,7 +162,6 @@ public class AssignmentAdapter extends RecyclerView.Adapter<AssignmentAdapter.Of
         TextView location;
         TextView status;
         TextView dueDate;
-        LinearLayout buttonContainer;
         Button button1;
         Button button2;
 
@@ -184,7 +183,6 @@ public class AssignmentAdapter extends RecyclerView.Adapter<AssignmentAdapter.Of
             status = (TextView) itemView.findViewById(R.id.tv_status);
             price = (TextView) itemView.findViewById(R.id.tv_price);
             dueDate = (TextView) itemView.findViewById(R.id.tv_due_date);
-            buttonContainer = (LinearLayout) itemView.findViewById(R.id.button_container);
             button1 = (Button) itemView.findViewById(R.id.button1);
             button2 = (Button) itemView.findViewById(R.id.button2);
         }
