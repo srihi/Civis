@@ -11,11 +11,4 @@ In order to authenticate, if your phone have set default application to handle h
 
 <br>
 
-<img src="screenshots/login.png" width="250" hspace="20">
-<img src="screenshots/loading.jpg" width="250" hspace="20">
-<img src="screenshots/main.png" width="250" hspace="20">
-<img src="screenshots/details.png" width="250" hspace="20">
-<img src="screenshots/add.jpg" width="250" hspace="20">
-<img src="screenshots/profile.png" width="250" hspace="20">
-<img src="screenshots/offers.jpg" width="250" hspace="20">
-<img src="screenshots/requests.jpg" width="250" hspace="20">
+<img src="screenshots/login.png" width="250" hspace="20"><img src="screenshots/loading.jpg" width="250" hspace="20"><img src="screenshots/main.png" width="250" hspace="20"><img src="screenshots/details.png" width="250" hspace="20"><img src="screenshots/add.jpg" width="250" hspace="20"><img src="screenshots/profile.png" width="250" hspace="20"><img src="screenshots/offers.jpg" width="250" hspace="20"><img src="screenshots/requests.jpg" width="250" hspace="20">
